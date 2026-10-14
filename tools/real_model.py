@@ -225,6 +225,14 @@ def worker(args):
         print('PASS: all 450 held-out images, C backends vs sklearn and float64 oracle')
 
 
+def cpu_name():
+    if sys.platform == 'darwin':
+        result = subprocess.run(['sysctl', '-n', 'machdep.cpu.brand_string'],
+                                capture_output=True, text=True)
+        return result.stdout.strip() if result.returncode == 0 else None
+    return platform.processor() or None
+
+
 def benchmark(args):
     require(1 <= args.runs <= 24 and 1 <= args.samples <= 100, 'invalid run/sample count')
     sources = ['tools/real_model.py', 'tests/test_reference.py', 'src/tiny_infer.c',
@@ -264,8 +272,7 @@ def benchmark(args):
          sources=before, library_sha256=digest(args.library),
          build_metadata=json.loads((ROOT / 'build/real-model-build.json').read_text()),
          platform=dict(system=platform.system(), release=platform.release(), machine=platform.machine(),
-                       cpu=subprocess.check_output(['sysctl', '-n', 'machdep.cpu.brand_string'], text=True).strip()
-                       if sys.platform == 'darwin' else platform.processor()),
+                       cpu=cpu_name()),
          runs=args.runs, samples=args.samples, summaries=summaries,
          files={p.name: digest(p) for p in args.output.glob('*.json')}))
     print(json.dumps(summaries, indent=2))
