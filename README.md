@@ -78,8 +78,9 @@ The default engine build and synthetic tests still require no numerical Python p
 The C API also supports contiguous batches, with caller-owned workspace and a
 system-BLAS SGEMM path. [Matched-batch validation and real measurements](docs/BATCH_INFERENCE.md)
 compare batch sizes 1, 8, 32, 128 and 450 with NumPy and sklearn using the same
-450 held-out images and tail partitions. A simultaneously measured single-image
-C loop shows how much call/validation overhead batching can amortize.
+450 held-out images and tail partitions. Simultaneously measured direct and wrapped single-image C controls show how
+call/validation and wrapper overhead affect batching. The [batch review](docs/BATCH_REVIEW.md)
+adds anti-stale tail checks and untimed observations of actual native inputs/calls.
 
 ## Measured result
 

@@ -2,7 +2,10 @@
 
 - [Apple M5 Pro, 2026-10-14](apple-m5-pro-20261014/report.json): six shapes, three
   backends, six process rounds, 30 matched groups per process.
-- [Matched-batch digits measurement, 2026-10-14](digits-batch-20261014/manifest.json):
+- [Reviewed matched-batch measurement, 2026-10-14](digits-batch-reviewed-20261014/manifest.json):
+  anti-stale tail checks, observed native calls/inputs, direct and wrapped controls,
+  six processes and paired improvement ratios; [review](../../docs/BATCH_REVIEW.md).
+- [Original matched-batch digits measurement, 2026-10-14](digits-batch-20261014/manifest.json):
   batch sizes 1/8/32/128/450, matched tails, C/NumPy/sklearn, six processes and
   20 sweeps per API/batch/process; [protocol and results](../../docs/BATCH_INFERENCE.md).
 - [Reviewed digits array-API measurement, 2026-10-14](digits-reviewed-20261014/manifest.json):
@@ -32,4 +35,5 @@ Matched-batch evidence uses the same optional environment:
 
 ```sh
 build/real-model-venv/bin/python tools/verify_batch.py results/published/digits-batch-20261014
+build/real-model-venv/bin/python tools/verify_batch.py results/published/digits-batch-reviewed-20261014
 ```
