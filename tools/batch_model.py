@@ -20,6 +20,8 @@ SOURCES = sorted(set(rm.SOURCES + ['tools/batch_model.py', 'tools/verify_batch.p
     'tests/test_batch.c', 'tests/test_batch_reference.py', 'tests/test_batch_model.py',
     'tests/test_batch_report.py', 'tests/test_batch_mutations.py']))
 DIAGNOSTIC = 'c_single_loop_input_first'
+DIRECT = 'c_single_direct_input_first'
+DIAGNOSTICS = {DIAGNOSTIC,DIRECT}
 
 
 def partitions(size):
@@ -47,13 +49,18 @@ class CBatch:
             h,y = np.empty((n,32),np.float32),np.empty((n,10),np.float32)
             self.buffers[n] = h,y,rm.pointer(h),rm.pointer(y)
 
+    def poison(self):
+        for h,y,_,_ in self.buffers.values():
+            h.fill(np.nan);y.fill(np.nan)
+
     def logits(self, block, kernel):
         block = prepared(block)
         rm.require(len(block) in self.buffers, 'batch size was not configured')
         h,y,hp,yp = self.buffers[len(block)]
-        rm.require(self.engine.lib.ti_forward_batch(C.byref(self.engine.model), rm.pointer(block),
-                   len(block), block.size, hp, h.size, yp, y.size, kernel)==0,
-                   'batch C forward')
+        status = self.engine.lib.ti_forward_batch(C.byref(self.engine.model), rm.pointer(block),
+                   len(block), block.size, hp, h.size, yp, y.size, kernel)
+        rm.require(status != 4, 'nonfinite batch C input/output')
+        rm.require(status == 0, 'batch C forward')
         return y
 
     def probabilities(self, block, kernel):
@@ -65,6 +72,10 @@ class NumpyBatch:
         self.clf = clf
         self.buffers = {n: (np.empty((n,32),np.float32),np.empty((n,10),np.float32))
                         for n in sizes}
+
+    def poison(self):
+        for h,y in self.buffers.values():
+            h.fill(np.nan);y.fill(np.nan)
 
     def logits(self, block):
         block = prepared(block)
@@ -95,6 +106,8 @@ def setup(library, sizes=BATCHES):
             answer[i] = engine.predict_proba(block[i:i+1],1)[0]
         return answer
     calls[DIAGNOSTIC] = single_loop
+    # DIRECT is dispatched by sweep(); the callback remains useful for block checks.
+    calls[DIRECT] = single_loop
     return model,x,y,clf,engine,c,numpy,calls
 
 
@@ -117,12 +130,16 @@ def correctness(library, sizes=BATCHES):
     for size in sizes:
         result = {}
         for name,call in calls.items():
-            probs = np.concatenate([call(x[a:b]) for a,b in partitions(size)])
+            poison(setup_values)
+            probs = (sweep(name,[],calls,engine,[row.reshape(1,64) for row in x]) if name==DIRECT else
+                     np.concatenate([call(x[a:b]) for a,b in partitions(size)]))
             logits = None
             if name in engine.names:
                 k = engine.names.index(name)
+                c.poison()
                 logits = np.concatenate([c.logits(x[a:b],k).copy() for a,b in partitions(size)])
             elif name == 'numpy_batch':
+                numpy.poison()
                 logits = np.concatenate([numpy.logits(x[a:b]).copy() for a,b in partitions(size)])
             rm.require(probs.shape == (450,10) and np.isfinite(probs).all() and
                        np.allclose(probs,gold_probs,atol=rm.ATOL,rtol=rm.RTOL) and
@@ -145,7 +162,7 @@ def correctness(library, sizes=BATCHES):
 
 
 def schedule(names,batches,run,sample,samples):
-    primary = sorted(n for n in names if n != DIAGNOSTIC)
+    primary = sorted(n for n in names if n not in DIAGNOSTICS)
     orders = list(itertools.permutations(primary))
     rotated = batches[(run+sample)%len(batches):] + batches[:(run+sample)%len(batches)]
     out = []
@@ -153,44 +170,112 @@ def schedule(names,batches,run,sample,samples):
         offset = batches.index(size)
         order = list(orders[(run*samples+sample+offset)%len(orders)])
         order.insert((run+sample+offset)%(len(order)+1),DIAGNOSTIC)
+        if DIRECT in names:
+            order.insert((run+sample*2+offset)%(len(order)+1),DIRECT)
         out.extend((size,name) for name in order)
     return out
+
+
+def poison(values):
+    values[5].poison();values[6].poison()
+    values[4].h.fill(np.nan);values[4].out.fill(np.nan)
+
+
+def sweep(name,pieces,calls,engine,single_rows):
+    # Filling the collector is timed for every API. A skipped tail stays NaN.
+    answer=np.full((450,10),np.nan,np.float32)
+    if name==DIRECT:
+        for i,row in enumerate(single_rows):
+            answer[i]=engine.predict_proba(row,1)[0]
+    else:
+        for slot,block in pieces:
+            answer[slot]=calls[name](block)
+    return answer
+
+
+def validate_sweep(answer,reference):
+    rm.require(answer.shape==(450,10) and np.isfinite(answer).all() and
+               np.allclose(answer,reference,atol=rm.ATOL,rtol=rm.RTOL) and
+               np.array_equal(answer.argmax(1),reference.argmax(1)), 'timed batch mismatch')
+
+
+def audit_native_calls(values,batches,reference):
+    # Untimed audit of the very same sweep path, not instrumentation in timings.
+    _,x,_,_,engine,_,_,calls=values
+    lib=engine.lib
+    original_batch,original_single=lib.ti_forward_batch,lib.ti_forward
+    single_rows=[row.reshape(1,64) for row in x]
+    observed=[]
+    def wrap(original,is_batch):
+        def record(*args):
+            status=original(*args)
+            if status==0:
+                rows=args[2] if is_batch else 1
+                count=args[3] if is_batch else args[2]
+                rm.require(count==rows*64, 'observed native input count mismatch')
+                actual=np.ctypeslib.as_array(args[1],shape=(count,)).reshape(rows,64).copy()
+                observed.append(actual)
+            return status
+        return record
+    results={}
+    lib.ti_forward_batch=wrap(original_batch,True)
+    lib.ti_forward=wrap(original_single,False)
+    try:
+        for size in batches:
+            results[str(size)]={}
+            pieces=[(slice(a,b),x[a:b]) for a,b in partitions(size)]
+            for name in list(engine.names)+[DIAGNOSTIC,DIRECT]:
+                observed.clear();poison(values)
+                answer=sweep(name,pieces,calls,engine,single_rows)
+                validate_sweep(answer,reference)
+                expected=[1]*450 if name in DIAGNOSTICS else [b-a for a,b in partitions(size)]
+                rm.require([len(a) for a in observed]==expected and
+                           np.array_equal(np.concatenate(observed),x), 'native row coverage mismatch')
+                results[str(size)][name]=dict(observed_calls=len(observed),
+                    observed_rows=sum(map(len,observed)),
+                    batch_rows=expected,
+                    input_sha256=rm.hashlib.sha256(np.concatenate(observed).astype('<f4').tobytes()).hexdigest())
+    finally:
+        lib.ti_forward_batch,lib.ti_forward=original_batch,original_single
+    return results
 
 
 def worker(args):
     with threadpool_limits(limits=1):
         values,checks = correctness(args.library,args.batches)
         _,x,_,_,engine,_,_,calls = values
+        single_rows=[row.reshape(1,64) for row in x]
         pieces = {size:[(slice(a,b),x[a:b]) for a,b in partitions(size)] for size in args.batches}
         for size in args.batches:
             for call in calls.values():
                 for _,block in pieces[size]:
                     call(block)
         gold = np.array(checks['reference_probabilities'])
+        observations=audit_native_calls(values,args.batches,gold)
         raw = []
         for sample in range(args.samples):
             for size,name in schedule(list(calls),args.batches,args.run,sample,args.samples):
+                poison(values)  # outside timing: invalidate all reused scratch/output state
                 start = time.perf_counter_ns()
-                answer = np.empty((450,10),np.float32)
-                for slot,block in pieces[size]:
-                    answer[slot] = calls[name](block)
+                answer = sweep(name,pieces[size],calls,engine,single_rows)
                 elapsed = time.perf_counter_ns()-start
-                rm.require(np.isfinite(answer).all() and np.allclose(answer,gold,atol=rm.ATOL,rtol=rm.RTOL)
-                           and np.array_equal(answer.argmax(1),gold.argmax(1)), 'timed batch mismatch')
+                validate_sweep(answer,gold)
                 raw.append(dict(sample=sample,batch_size=size,backend=name,predictions=450,
-                    adapter_calls=len(pieces[size]), c_forward_calls=(450 if name==DIAGNOSTIC else
+                    adapter_calls=(450 if name==DIRECT else len(pieces[size])), expected_c_forward_calls=(450 if name in DIAGNOSTICS else
                     len(pieces[size]) if name in engine.names else None), elapsed_ns=elapsed,
                     ns_per_prediction=elapsed/450))
         pools = [{k:v for k,v in p.items() if k!='filepath'} for p in threadpool_info()]
         rm.require(bool(pools) and all(p['num_threads']==1 for p in pools),'uncontrolled threads')
-        rm.save(args.output,dict(schema=1,run=args.run,checks=checks,raw=raw,versions=rm.versions(),
+        rm.save(args.output,dict(schema=2,run=args.run,checks=checks,raw=raw,observations=observations,versions=rm.versions(),
                     threadpools=pools,c_blas=engine.lib.ti_blas_name().decode(),
                     c_single_thread=bool(engine.lib.ti_blas_is_single_threaded())))
         print('PASS: matched batch sizes',args.batches,'all 450 outputs/classes verified')
 
 
 def build(args):
+    before={p:rm.digest(p) for p in SOURCES}
     rm.build(args)
+    production=json.loads((rm.ROOT/'build/real-model-build.json').read_text())
     _,libs = native_flags(args.blas)
     command = ['cc','-Iinclude','-std=c11','-O3','-Wall','-Wextra','-Wpedantic','-Werror',
                'tests/test_batch.c']+rm.OBJECTS+libs+['-lm','-o','build/real_test_batch']
@@ -199,8 +284,12 @@ def build(args):
     for mode in ([],['-O']):
         subprocess.run([sys.executable]+mode+['tests/test_batch_reference.py',str(args.library)],
                        cwd=rm.ROOT,check=True)
+    rm.require(before=={p:rm.digest(p) for p in SOURCES} and
+               production['library_sha256']==rm.digest(args.library) and
+               all(rm.digest(p)==v for p,v in production['objects'].items()),
+               'source/production objects changed during batch build tests')
     rm.save(rm.ROOT/'build/batch-model-build.json',dict(
-        production=json.loads((rm.ROOT/'build/real-model-build.json').read_text()),
+        production=production,
         batch_test_command=command, batch_test_sha256=rm.digest('build/real_test_batch')))
 
 
@@ -214,6 +303,21 @@ def summaries(records,batches,names):
             out[str(size)][name]=dict(median_ns=float(np.median(medians)),process_medians_ns=medians,
                          min_process_median_ns=min(medians),max_process_median_ns=max(medians))
     return out
+
+
+def improvements(stats):
+    result={}
+    for batch,rows in stats.items():
+        result[batch]={}
+        for title,numerator,denominator in [
+            ('direct_over_batch_input_first',DIRECT,'input_first'),
+            ('wrapped_over_batch_input_first',DIAGNOSTIC,'input_first'),
+            ('wrapper_over_direct',DIAGNOSTIC,DIRECT)]:
+            pairs=[a/b for a,b in zip(rows[numerator]['process_medians_ns'],
+                                     rows[denominator]['process_medians_ns'])]
+            result[batch][title]=dict(median=float(np.median(pairs)),
+                 process_ratios=pairs,minimum=min(pairs),maximum=max(pairs))
+    return result
 
 
 def benchmark(args):
@@ -248,11 +352,11 @@ def benchmark(args):
         record.pop('checks')
         rm.save(args.output/('run-%02d.json'%run),record)
     stats=summaries(records,args.batches,names)
-    rm.save(args.output/'manifest.json',dict(schema=1,protocol='matched-batch-array-api-v1',
+    rm.save(args.output/'manifest.json',dict(schema=2,protocol='matched-batch-poisoned-direct-v2',
         created_utc=dt.datetime.now(dt.timezone.utc).isoformat(),source_revision=revision,sources=before,
         library_sha256=libhash,build_metadata=info,runs=args.runs,samples=args.samples,batches=args.batches,
         partitions={str(b):[end-start for start,end in partitions(b)] for b in args.batches},
-        summaries=stats,platform=dict(system=platform.system(),release=platform.release(),
+        summaries=stats,improvements=improvements(stats),platform=dict(system=platform.system(),release=platform.release(),
         machine=platform.machine(),cpu=rm.cpu_name()),
         files={p.name:rm.digest(p) for p in args.output.glob('*.json')}))
     print(json.dumps({b:{n:round(s['median_ns']/1000,3) for n,s in rows.items()}

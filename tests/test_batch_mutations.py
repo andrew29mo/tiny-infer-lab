@@ -15,6 +15,7 @@ defines,libs=native_flags(args.blas)
 engine=(ROOT/'src/tiny_infer.c').read_text()
 blas=(ROOT/'src/blas_backend.c').read_text()
 mutations=[
+ ('stale_batch_row','engine','row < batch; ++row)\n            dense','row + 1 < batch; ++row)\n            dense'),
  ('batch_relu','engine','if (h[index] < 0) h[index] = 0;','if (h[index] < 0) h[index] = h[index];'),
  ('batch_last_row','engine','for (size_t row = 0; row < batch; ++row)\n            dense',
   'for (size_t z = 0; z < batch * out; ++z) y[z] = 0;\n        for (size_t row = 0; row + 1 < batch; ++row)\n            dense'),
@@ -41,6 +42,7 @@ for name,where,target,replacement in mutations:
                 result=subprocess.run([sys.executable]+mode+command,cwd=ROOT,capture_output=True,text=True)
                 if result.returncode==0 or not any(s in result.stderr for s in
                     ['AssertionError: batch oracle mismatch','AssertionError: batch/single mismatch',
-                     'ValueError: batch probability mismatch','ValueError: logit mismatch']):
+                     'ValueError: batch probability mismatch','ValueError: logit mismatch',
+                     'ValueError: nonfinite batch C input/output']):
                     raise SystemExit('fault not numerically rejected: '+name+'\n'+result.stderr)
         print('PASS: synthetic/trained batch checks reject '+name+' under normal Python and -O')

@@ -14,10 +14,33 @@ def sha(value):
     return isinstance(value,str) and re.fullmatch('[0-9a-f]{64}',value) is not None
 
 
+def validate_build_commands(info,system,blas):
+    rm.require(system in {'Darwin','Linux'},'unsupported recorded build platform')
+    defines=(['-DTI_ENABLE_BLAS','-DACCELERATE_NEW_LAPACK'] if system=='Darwin' else
+             ['-DTI_ENABLE_BLAS','-DTI_BLAS_OPENBLAS']) if blas else []
+    libs=(['-framework','Accelerate'] if system=='Darwin' else ['-lopenblas']) if blas else []
+    commands=info['production']['commands']
+    rm.require(isinstance(commands,list) and len(commands)==4 and
+               all(isinstance(c,list) and c and all(isinstance(a,str) and a for a in c) for c in commands),
+               'invalid production build commands')
+    library=commands[2][-1]
+    flags=['cc','-Iinclude','-std=c11','-O3','-Wall','-Wextra','-Wpedantic','-Werror',
+           '-ffp-contract=off','-fPIC']
+    expected=[flags+defines+['-c',source,'-o',obj] for source,obj in
+              zip(['src/tiny_infer.c','src/blas_backend.c'],rm.OBJECTS)]
+    expected += [['cc','-shared']+rm.OBJECTS+libs+['-lm','-o',library],
+                 ['cc','-Iinclude','-std=c11','-O3']+defines+['tests/test_engine.c']+
+                 rm.OBJECTS+libs+['-lm','-o','build/real_test_engine']]
+    batch=['cc','-Iinclude','-std=c11','-O3','-Wall','-Wextra','-Wpedantic','-Werror',
+           'tests/test_batch.c']+rm.OBJECTS+libs+['-lm','-o','build/real_test_batch']
+    rm.require(commands==expected and info['batch_test_command']==batch,
+               'production/test link or compiler flags mismatch')
+
+
 def verify(directory):
     directory=Path(directory)
     m=json.loads((directory/'manifest.json').read_text())
-    rm.require(type(m['schema']) is int and m['schema']==1 and m['protocol']=='matched-batch-array-api-v1',
+    rm.require(type(m['schema']) is int and m['schema'] in (1,2) and m['protocol']=={1:'matched-batch-array-api-v1',2:'matched-batch-poisoned-direct-v2'}[m['schema']],
                'invalid batch schema/protocol')
     batches=m['batches']
     rm.require(bool(batches) and len(set(batches))==len(batches) and
@@ -60,7 +83,9 @@ def verify(directory):
     rm.require(set(checks['outputs'])==set(map(str,batches)),'missing batch outputs')
     names=set(checks['outputs'][str(batches[0])])
     core={'output_first','input_first','numpy_batch','sklearn_batch',bm.DIAGNOSTIC}
+    if m['schema']==2:core.add(bm.DIRECT)
     rm.require(names in (core,core|{'system_blas'}),'backend inventory mismatch')
+    validate_build_commands(info,m['platform']['system'],'system_blas' in names)
     for size in batches:
         rm.require(set(checks['outputs'][str(size)])==names,'batch backend mismatch')
         for name,result in checks['outputs'][str(size)].items():
@@ -71,7 +96,7 @@ def verify(directory):
             rm.require(result['correct']==int((probs.argmax(1)==y).sum()) and
                        result['accuracy']==float(np.mean(probs.argmax(1)==y))>=.94 and
                        result['max_probability_error']==float(np.max(abs(probs-gold_probs))), 'accuracy/probability statistics mismatch')
-            if name not in {'sklearn_batch',bm.DIAGNOSTIC}:
+            if name not in {'sklearn_batch',bm.DIAGNOSTIC,bm.DIRECT}:
                 logits=np.array(logits)
                 rm.validate_outputs(logits,probs,gold_logits,gold_probs)
                 rm.require(result['max_logit_error']==float(np.max(abs(logits-gold_logits))),'logit error mismatch')
@@ -80,7 +105,7 @@ def verify(directory):
     records=[]
     for i in range(m['runs']):
         r=json.loads((directory/('run-%02d.json'%i)).read_text())
-        rm.require(r['schema']==1 and r['run']==i and r['threadpools'] and
+        rm.require(r['schema']==m['schema'] and r['run']==i and r['threadpools'] and
                    any(t['user_api']=='blas' for t in r['threadpools']) and
                    all(type(t['num_threads']) is int and t['num_threads']==1 for t in r['threadpools']),
                    'run/thread policy mismatch')
@@ -95,14 +120,27 @@ def verify(directory):
                    'sample/backend/order mismatch')
         for row in r['raw']:
             calls=len(bm.partitions(row['batch_size']))
-            expected_native=(450 if row['backend']==bm.DIAGNOSTIC else calls
+            expected_native=(450 if row['backend'] in bm.DIAGNOSTICS else calls
                               if row['backend'] in {'output_first','input_first','system_blas'} else None)
-            rm.require(row['predictions']==450 and row['adapter_calls']==calls and
-                       row['c_forward_calls']==expected_native and type(row['elapsed_ns']) is int
+            rm.require(row['predictions']==450 and row['adapter_calls']==(450 if row['backend']==bm.DIRECT else calls) and
+                       row['c_forward_calls' if m['schema']==1 else 'expected_c_forward_calls']==expected_native and type(row['elapsed_ns']) is int
                        and row['elapsed_ns']>0 and row['ns_per_prediction']==row['elapsed_ns']/450,
                        'call counts/timing mismatch')
+        if m['schema']==2:
+            native_names=names-{'numpy_batch','sklearn_batch'}
+            rm.require(set(r['observations'])==set(map(str,batches)), 'missing observed batch sizes')
+            input_sha=rm.hashlib.sha256(x.astype('<f4').tobytes()).hexdigest()
+            for size in batches:
+                rm.require(set(r['observations'][str(size)])==native_names, 'missing observed backends')
+                for name in native_names:
+                    observed=r['observations'][str(size)][name]
+                    rows=[1]*450 if name in bm.DIAGNOSTICS else [b-a for a,b in bm.partitions(size)]
+                    rm.require(observed==dict(observed_calls=len(rows),observed_rows=450,
+                               batch_rows=rows,input_sha256=input_sha), 'observed native row coverage mismatch')
         records.append(r)
     rm.require(m['summaries']==bm.summaries(records,batches,sorted(names)),'summary mismatch')
+    if m['schema']==2:
+        rm.require(m['improvements']==bm.improvements(m['summaries']), 'paired improvement mismatch')
     print('PASS: matched-batch references, every saved row, accuracy, tails, raw timings and historical provenance')
 
 

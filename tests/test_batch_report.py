@@ -10,13 +10,17 @@ import unittest
 from threadpoolctl import threadpool_limits
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'tools'))
 import real_model as rm
+import batch_model as bm
 from verify_batch import verify
-BASELINE=rm.ROOT/'results/published/digits-batch-20261014'
+BASELINE=rm.ROOT/'results/published/digits-batch-reviewed-20261014'
+LEGACY=rm.ROOT/'results/published/digits-batch-20261014'
 
 
 class ReportTests(unittest.TestCase):
     def test_baseline(self):
-        with threadpool_limits(limits=1):verify(BASELINE)
+        with threadpool_limits(limits=1):
+            verify(BASELINE)
+            verify(LEGACY)
 
     def test_primary_orders_are_balanced_in_actual_samples(self):
         m=json.loads((BASELINE/'manifest.json').read_text())
@@ -26,13 +30,13 @@ class ReportTests(unittest.TestCase):
                 rows=json.loads((BASELINE/('run-%02d.json'%i)).read_text())['raw']
                 for sample in range(m['samples']):
                     order=tuple(row['backend'] for row in rows if row['sample']==sample and
-                                row['batch_size']==batch and row['backend']!='c_single_loop_input_first')
+                                row['batch_size']==batch and row['backend'] not in bm.DIAGNOSTICS)
                     counts[order]+=1
             self.assertEqual(len(counts),math.factorial(5))
             self.assertEqual(set(counts.values()),{1})
 
     def test_corruption_rejected(self):
-        defects=['tail','missing_batch','last_row','calls','timing','order','summary','source','threads','reference']
+        defects=['tail','missing_batch','last_row','calls','timing','order','summary','source','threads','reference','observed_tail','observed_input','paired_ratio','link','flags']
         for defect in defects:
             with self.subTest(defect=defect),tempfile.TemporaryDirectory() as temp:
                 d=Path(temp)/'report';shutil.copytree(BASELINE,d)
@@ -48,7 +52,12 @@ class ReportTests(unittest.TestCase):
                 elif defect=='summary':m['summaries']['32']['input_first']['median_ns']+=1
                 elif defect=='source':m['sources']={}
                 elif defect=='threads':r['threadpools']=[]
-                else:c['oracle_logits'][-1][0]+=1
+                elif defect=='reference':c['oracle_logits'][-1][0]+=1
+                elif defect=='observed_tail':r['observations']['128']['input_first']['batch_rows'][-1]-=1
+                elif defect=='observed_input':r['observations']['8']['input_first']['input_sha256']='0'*64
+                elif defect=='paired_ratio':m['improvements']['450']['direct_over_batch_input_first']['median']+=1
+                elif defect=='link':m['build_metadata']['batch_test_command'].remove('build/real_tiny_infer.o')
+                else:m['build_metadata']['production']['commands'][0].remove('-ffp-contract=off')
                 rm.save(d/'correctness.json',c);rm.save(d/'run-00.json',r)
                 m['files']={name:rm.digest(d/name) for name in m['files']}
                 rm.save(d/'manifest.json',m)
