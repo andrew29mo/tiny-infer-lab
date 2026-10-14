@@ -1,0 +1,545 @@
+{
+  "schema": 2,
+  "run": 4,
+  "raw": [
+    {
+      "sample": 0,
+      "backend": "output_first",
+      "elapsed_ns": 2316667,
+      "predictions": 450,
+      "ns_per_prediction": 5148.148888888889
+    },
+    {
+      "sample": 0,
+      "backend": "input_first",
+      "elapsed_ns": 1990583,
+      "predictions": 450,
+      "ns_per_prediction": 4423.517777777778
+    },
+    {
+      "sample": 0,
+      "backend": "system_blas",
+      "elapsed_ns": 1909375,
+      "predictions": 450,
+      "ns_per_prediction": 4243.055555555556
+    },
+    {
+      "sample": 0,
+      "backend": "sklearn_single",
+      "elapsed_ns": 15995584,
+      "predictions": 450,
+      "ns_per_prediction": 35545.74222222222
+    },
+    {
+      "sample": 0,
+      "backend": "numpy_prepared_single",
+      "elapsed_ns": 1515083,
+      "predictions": 450,
+      "ns_per_prediction": 3366.851111111111
+    },
+    {
+      "sample": 0,
+      "backend": "sklearn_batch",
+      "elapsed_ns": 104958,
+      "predictions": 450,
+      "ns_per_prediction": 233.24
+    },
+    {
+      "sample": 1,
+      "backend": "numpy_prepared_single",
+      "elapsed_ns": 1537083,
+      "predictions": 450,
+      "ns_per_prediction": 3415.74
+    },
+    {
+      "sample": 1,
+      "backend": "sklearn_batch",
+      "elapsed_ns": 100667,
+      "predictions": 450,
+      "ns_per_prediction": 223.70444444444445
+    },
+    {
+      "sample": 1,
+      "backend": "output_first",
+      "elapsed_ns": 2433333,
+      "predictions": 450,
+      "ns_per_prediction": 5407.406666666667
+    },
+    {
+      "sample": 1,
+      "backend": "input_first",
+      "elapsed_ns": 2092333,
+      "predictions": 450,
+      "ns_per_prediction": 4649.6288888888885
+    },
+    {
+      "sample": 1,
+      "backend": "sklearn_single",
+      "elapsed_ns": 15278541,
+      "predictions": 450,
+      "ns_per_prediction": 33952.31333333333
+    },
+    {
+      "sample": 1,
+      "backend": "system_blas",
+      "elapsed_ns": 2010041,
+      "predictions": 450,
+      "ns_per_prediction": 4466.757777777778
+    },
+    {
+      "sample": 2,
+      "backend": "output_first",
+      "elapsed_ns": 2244708,
+      "predictions": 450,
+      "ns_per_prediction": 4988.24
+    },
+    {
+      "sample": 2,
+      "backend": "sklearn_batch",
+      "elapsed_ns": 161958,
+      "predictions": 450,
+      "ns_per_prediction": 359.9066666666667
+    },
+    {
+      "sample": 2,
+      "backend": "numpy_prepared_single",
+      "elapsed_ns": 1479334,
+      "predictions": 450,
+      "ns_per_prediction": 3287.4088888888887
+    },
+    {
+      "sample": 2,
+      "backend": "system_blas",
+      "elapsed_ns": 1849750,
+      "predictions": 450,
+      "ns_per_prediction": 4110.555555555556
+    },
+    {
+      "sample": 2,
+      "backend": "input_first",
+      "elapsed_ns": 1958375,
+      "predictions": 450,
+      "ns_per_prediction": 4351.944444444444
+    },
+    {
+      "sample": 2,
+      "backend": "sklearn_single",
+      "elapsed_ns": 14790792,
+      "predictions": 450,
+      "ns_per_prediction": 32868.426666666666
+    },
+    {
+      "sample": 3,
+      "backend": "output_first",
+      "elapsed_ns": 2048958,
+      "predictions": 450,
+      "ns_per_prediction": 4553.24
+    },
+    {
+      "sample": 3,
+      "backend": "system_blas",
+      "elapsed_ns": 1841791,
+      "predictions": 450,
+      "ns_per_prediction": 4092.8688888888887
+    },
+    {
+      "sample": 3,
+      "backend": "sklearn_batch",
+      "elapsed_ns": 117209,
+      "predictions": 450,
+      "ns_per_prediction": 260.46444444444444
+    },
+    {
+      "sample": 3,
+      "backend": "sklearn_single",
+      "elapsed_ns": 14447042,
+      "predictions": 450,
+      "ns_per_prediction": 32104.53777777778
+    },
+    {
+      "sample": 3,
+      "backend": "numpy_prepared_single",
+      "elapsed_ns": 1506708,
+      "predictions": 450,
+      "ns_per_prediction": 3348.24
+    },
+    {
+      "sample": 3,
+      "backend": "input_first",
+      "elapsed_ns": 2016250,
+      "predictions": 450,
+      "ns_per_prediction": 4480.555555555556
+    },
+    {
+      "sample": 4,
+      "backend": "numpy_prepared_single",
+      "elapsed_ns": 1481833,
+      "predictions": 450,
+      "ns_per_prediction": 3292.9622222222224
+    },
+    {
+      "sample": 4,
+      "backend": "output_first",
+      "elapsed_ns": 2141417,
+      "predictions": 450,
+      "ns_per_prediction": 4758.704444444445
+    },
+    {
+      "sample": 4,
+      "backend": "sklearn_single",
+      "elapsed_ns": 14809541,
+      "predictions": 450,
+      "ns_per_prediction": 32910.09111111111
+    },
+    {
+      "sample": 4,
+      "backend": "input_first",
+      "elapsed_ns": 1988000,
+      "predictions": 450,
+      "ns_per_prediction": 4417.777777777777
+    },
+    {
+      "sample": 4,
+      "backend": "sklearn_batch",
+      "elapsed_ns": 110542,
+      "predictions": 450,
+      "ns_per_prediction": 245.64888888888888
+    },
+    {
+      "sample": 4,
+      "backend": "system_blas",
+      "elapsed_ns": 1912125,
+      "predictions": 450,
+      "ns_per_prediction": 4249.166666666667
+    },
+    {
+      "sample": 5,
+      "backend": "output_first",
+      "elapsed_ns": 2132209,
+      "predictions": 450,
+      "ns_per_prediction": 4738.242222222222
+    },
+    {
+      "sample": 5,
+      "backend": "sklearn_single",
+      "elapsed_ns": 14578958,
+      "predictions": 450,
+      "ns_per_prediction": 32397.684444444443
+    },
+    {
+      "sample": 5,
+      "backend": "numpy_prepared_single",
+      "elapsed_ns": 1539041,
+      "predictions": 450,
+      "ns_per_prediction": 3420.0911111111113
+    },
+    {
+      "sample": 5,
+      "backend": "system_blas",
+      "elapsed_ns": 1974500,
+      "predictions": 450,
+      "ns_per_prediction": 4387.777777777777
+    },
+    {
+      "sample": 5,
+      "backend": "input_first",
+      "elapsed_ns": 2027541,
+      "predictions": 450,
+      "ns_per_prediction": 4505.6466666666665
+    },
+    {
+      "sample": 5,
+      "backend": "sklearn_batch",
+      "elapsed_ns": 112083,
+      "predictions": 450,
+      "ns_per_prediction": 249.07333333333332
+    },
+    {
+      "sample": 6,
+      "backend": "sklearn_batch",
+      "elapsed_ns": 94500,
+      "predictions": 450,
+      "ns_per_prediction": 210.0
+    },
+    {
+      "sample": 6,
+      "backend": "input_first",
+      "elapsed_ns": 2043083,
+      "predictions": 450,
+      "ns_per_prediction": 4540.184444444444
+    },
+    {
+      "sample": 6,
+      "backend": "output_first",
+      "elapsed_ns": 2097041,
+      "predictions": 450,
+      "ns_per_prediction": 4660.091111111111
+    },
+    {
+      "sample": 6,
+      "backend": "system_blas",
+      "elapsed_ns": 1864750,
+      "predictions": 450,
+      "ns_per_prediction": 4143.888888888889
+    },
+    {
+      "sample": 6,
+      "backend": "numpy_prepared_single",
+      "elapsed_ns": 1508875,
+      "predictions": 450,
+      "ns_per_prediction": 3353.0555555555557
+    },
+    {
+      "sample": 6,
+      "backend": "sklearn_single",
+      "elapsed_ns": 14662167,
+      "predictions": 450,
+      "ns_per_prediction": 32582.593333333334
+    },
+    {
+      "sample": 7,
+      "backend": "numpy_prepared_single",
+      "elapsed_ns": 1447500,
+      "predictions": 450,
+      "ns_per_prediction": 3216.6666666666665
+    },
+    {
+      "sample": 7,
+      "backend": "input_first",
+      "elapsed_ns": 2013625,
+      "predictions": 450,
+      "ns_per_prediction": 4474.722222222223
+    },
+    {
+      "sample": 7,
+      "backend": "sklearn_batch",
+      "elapsed_ns": 107875,
+      "predictions": 450,
+      "ns_per_prediction": 239.72222222222223
+    },
+    {
+      "sample": 7,
+      "backend": "output_first",
+      "elapsed_ns": 2138459,
+      "predictions": 450,
+      "ns_per_prediction": 4752.131111111111
+    },
+    {
+      "sample": 7,
+      "backend": "sklearn_single",
+      "elapsed_ns": 14956625,
+      "predictions": 450,
+      "ns_per_prediction": 33236.944444444445
+    },
+    {
+      "sample": 7,
+      "backend": "system_blas",
+      "elapsed_ns": 1955250,
+      "predictions": 450,
+      "ns_per_prediction": 4345.0
+    },
+    {
+      "sample": 8,
+      "backend": "input_first",
+      "elapsed_ns": 1977750,
+      "predictions": 450,
+      "ns_per_prediction": 4395.0
+    },
+    {
+      "sample": 8,
+      "backend": "system_blas",
+      "elapsed_ns": 1896375,
+      "predictions": 450,
+      "ns_per_prediction": 4214.166666666667
+    },
+    {
+      "sample": 8,
+      "backend": "numpy_prepared_single",
+      "elapsed_ns": 1534292,
+      "predictions": 450,
+      "ns_per_prediction": 3409.5377777777776
+    },
+    {
+      "sample": 8,
+      "backend": "sklearn_batch",
+      "elapsed_ns": 114334,
+      "predictions": 450,
+      "ns_per_prediction": 254.07555555555555
+    },
+    {
+      "sample": 8,
+      "backend": "output_first",
+      "elapsed_ns": 2112708,
+      "predictions": 450,
+      "ns_per_prediction": 4694.906666666667
+    },
+    {
+      "sample": 8,
+      "backend": "sklearn_single",
+      "elapsed_ns": 14398333,
+      "predictions": 450,
+      "ns_per_prediction": 31996.295555555556
+    },
+    {
+      "sample": 9,
+      "backend": "input_first",
+      "elapsed_ns": 2049708,
+      "predictions": 450,
+      "ns_per_prediction": 4554.906666666667
+    },
+    {
+      "sample": 9,
+      "backend": "system_blas",
+      "elapsed_ns": 1936875,
+      "predictions": 450,
+      "ns_per_prediction": 4304.166666666667
+    },
+    {
+      "sample": 9,
+      "backend": "sklearn_single",
+      "elapsed_ns": 14744250,
+      "predictions": 450,
+      "ns_per_prediction": 32765.0
+    },
+    {
+      "sample": 9,
+      "backend": "sklearn_batch",
+      "elapsed_ns": 96583,
+      "predictions": 450,
+      "ns_per_prediction": 214.6288888888889
+    },
+    {
+      "sample": 9,
+      "backend": "numpy_prepared_single",
+      "elapsed_ns": 1550208,
+      "predictions": 450,
+      "ns_per_prediction": 3444.9066666666668
+    },
+    {
+      "sample": 9,
+      "backend": "output_first",
+      "elapsed_ns": 2211083,
+      "predictions": 450,
+      "ns_per_prediction": 4913.517777777778
+    },
+    {
+      "sample": 10,
+      "backend": "numpy_prepared_single",
+      "elapsed_ns": 1548416,
+      "predictions": 450,
+      "ns_per_prediction": 3440.9244444444444
+    },
+    {
+      "sample": 10,
+      "backend": "input_first",
+      "elapsed_ns": 1870875,
+      "predictions": 450,
+      "ns_per_prediction": 4157.5
+    },
+    {
+      "sample": 10,
+      "backend": "sklearn_single",
+      "elapsed_ns": 14461750,
+      "predictions": 450,
+      "ns_per_prediction": 32137.222222222223
+    },
+    {
+      "sample": 10,
+      "backend": "output_first",
+      "elapsed_ns": 2191541,
+      "predictions": 450,
+      "ns_per_prediction": 4870.091111111111
+    },
+    {
+      "sample": 10,
+      "backend": "system_blas",
+      "elapsed_ns": 1946500,
+      "predictions": 450,
+      "ns_per_prediction": 4325.555555555556
+    },
+    {
+      "sample": 10,
+      "backend": "sklearn_batch",
+      "elapsed_ns": 130667,
+      "predictions": 450,
+      "ns_per_prediction": 290.37111111111113
+    },
+    {
+      "sample": 11,
+      "backend": "sklearn_batch",
+      "elapsed_ns": 89834,
+      "predictions": 450,
+      "ns_per_prediction": 199.63111111111112
+    },
+    {
+      "sample": 11,
+      "backend": "input_first",
+      "elapsed_ns": 1887458,
+      "predictions": 450,
+      "ns_per_prediction": 4194.351111111111
+    },
+    {
+      "sample": 11,
+      "backend": "numpy_prepared_single",
+      "elapsed_ns": 1484542,
+      "predictions": 450,
+      "ns_per_prediction": 3298.9822222222224
+    },
+    {
+      "sample": 11,
+      "backend": "sklearn_single",
+      "elapsed_ns": 14954958,
+      "predictions": 450,
+      "ns_per_prediction": 33233.24
+    },
+    {
+      "sample": 11,
+      "backend": "system_blas",
+      "elapsed_ns": 1955042,
+      "predictions": 450,
+      "ns_per_prediction": 4344.537777777778
+    },
+    {
+      "sample": 11,
+      "backend": "output_first",
+      "elapsed_ns": 2048833,
+      "predictions": 450,
+      "ns_per_prediction": 4552.962222222222
+    }
+  ],
+  "versions": {
+    "python": "3.9.6",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "sklearn": "1.6.1"
+  },
+  "threadpools": [
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 1,
+      "prefix": "libopenblas",
+      "version": "0.3.23.dev",
+      "threading_layer": "pthreads",
+      "architecture": "armv8"
+    },
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 1,
+      "prefix": "libopenblas",
+      "version": "0.3.27",
+      "threading_layer": "pthreads",
+      "architecture": "neoversen1"
+    },
+    {
+      "user_api": "openmp",
+      "internal_api": "openmp",
+      "num_threads": 1,
+      "prefix": "libomp",
+      "version": null
+    }
+  ],
+  "c_blas": "Apple Accelerate CBLAS",
+  "c_single_thread": true
+}

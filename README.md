@@ -68,7 +68,9 @@ a speedup on one shape is not advertised as a general engine speedup.
 An optional 64→32→10 handwritten-digit classifier uses a fixed held-out split,
 trained weights and scikit-learn as a reference, plus an independent float64 oracle.
 It compares all enabled C backends on every test image and measures single-image
-Python APIs separately from sklearn batch throughput. See [setup, protocol and results](docs/REAL_MODEL.md).
+array-input APIs separately from sklearn batch throughput and a prepared NumPy
+diagnostic. Training-isolation and deliberately broken C implementations challenge
+the validation pipeline. See [setup, protocol and results](docs/REAL_MODEL.md).
 The default engine build and synthetic tests still require no numerical Python packages.
 
 ## Measured result
@@ -161,7 +163,8 @@ checks macOS and Linux with BLAS enabled and disabled.
 
 ## Project status
 
-See the [pre-publication review and corrected findings](docs/PREPUBLICATION_REVIEW.md).
+See the [pre-publication review and corrected findings](docs/PREPUBLICATION_REVIEW.md)
+and the [real-model review](docs/REAL_MODEL_REVIEW.md).
 
 This repository is being prepared for public review. See
 [contribution guidance](CONTRIBUTING.md).

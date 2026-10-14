@@ -1,0 +1,199 @@
+{
+  "schema": 2,
+  "protocol": "single-image-array-api-v2",
+  "created_utc": "2026-10-14T05:50:42.346587+00:00",
+  "source_revision": "0d1ec5924efc28abb203a8bb612bcb34b22e9b42",
+  "sources": {
+    "tools/real_model.py": "9fe3935a86e51fe86ff14392214e7b3d535fb93a6db57aaf8554ce310bd0f819",
+    "tests/test_reference.py": "11a0f0583292f66a4a0ccef815ad11369cb7c7bcac0c1010b430bc1681e6b0e0",
+    "src/tiny_infer.c": "16afde5e47ac1eb6da9e9abc81e1f667c745afd3caad60b429d5bef331b1f8a4",
+    "src/blas_backend.c": "fcde7325189bf4df0b8d3f77973d7aa43a4e3bb42460e3a0a8fa3f16b6b2fa1c",
+    "src/blas_backend.h": "7d386bc48579c894c3f12730b85144c5e237aa0dd0f3aff7d0465a7729f81995",
+    "include/tiny_infer.h": "6f38972278709e9f33fdda4b242aac7dbde742e149c876d50078129510741c22",
+    "Makefile": "cbae0f1737e59eff2dda3d04a5b449df3dbdbb4291541a6fecb32548f73d92ae",
+    "requirements-real-model.txt": "95fa829941cb048ce16f5f406f6b38631ee87c03082db25ab070c8fd623603e2",
+    "models/digits/model.json": "c9a23808427cfe2f8b13002d8154442d5a3f21d66f4116fd1268f9b9054f08e8",
+    "tools/verify_real_model.py": "a4fd68c0e8f242ff6b3a8aaaddb3442c9c6ff3f77bfec35d264b6a587490a00c",
+    "tests/test_real_model.py": "0cde582305bf08ffd704a7c0faa8434dc938efcc53389a319a3ca7e808b8595f",
+    "tests/test_real_report.py": "fce6609c0df2e524806134819b579ff3245406bde67d1dbaba676bd939d1e9c9",
+    "tests/test_mutations.py": "deff73fb48c22d3e403d381b9cc9dcf33a7059061cb4104fcc228af63de31cf5"
+  },
+  "library_sha256": "247826643b703eaa462bb4b492b384e55d6509b267599721d8402de1a8261489",
+  "build_metadata": {
+    "commands": [
+      [
+        "cc",
+        "-Iinclude",
+        "-std=c11",
+        "-O3",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-ffp-contract=off",
+        "-fPIC",
+        "-DTI_ENABLE_BLAS",
+        "-DACCELERATE_NEW_LAPACK",
+        "-c",
+        "src/tiny_infer.c",
+        "-o",
+        "build/real_tiny_infer.o"
+      ],
+      [
+        "cc",
+        "-Iinclude",
+        "-std=c11",
+        "-O3",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-ffp-contract=off",
+        "-fPIC",
+        "-DTI_ENABLE_BLAS",
+        "-DACCELERATE_NEW_LAPACK",
+        "-c",
+        "src/blas_backend.c",
+        "-o",
+        "build/real_blas_backend.o"
+      ],
+      [
+        "cc",
+        "-shared",
+        "build/real_tiny_infer.o",
+        "build/real_blas_backend.o",
+        "-framework",
+        "Accelerate",
+        "-lm",
+        "-o",
+        "build/real_engine.so"
+      ],
+      [
+        "cc",
+        "-Iinclude",
+        "-std=c11",
+        "-O3",
+        "-DTI_ENABLE_BLAS",
+        "-DACCELERATE_NEW_LAPACK",
+        "tests/test_engine.c",
+        "build/real_tiny_infer.o",
+        "build/real_blas_backend.o",
+        "-framework",
+        "Accelerate",
+        "-lm",
+        "-o",
+        "build/real_test_engine"
+      ]
+    ],
+    "compiler": "Apple clang version 21.0.0 (clang-2100.3.34.2)",
+    "objects": {
+      "build/real_tiny_infer.o": "b9f13555f2df881631719bcbda2fa98d82f797bd3d5720aa419af91f05ceab7d",
+      "build/real_blas_backend.o": "66ff6670b97474acfff3b2594c6b116fb8313e3b6e680b4f69a43f9bf6620bb7"
+    },
+    "library_sha256": "247826643b703eaa462bb4b492b384e55d6509b267599721d8402de1a8261489",
+    "sources": {
+      "src/tiny_infer.c": "16afde5e47ac1eb6da9e9abc81e1f667c745afd3caad60b429d5bef331b1f8a4",
+      "src/blas_backend.c": "fcde7325189bf4df0b8d3f77973d7aa43a4e3bb42460e3a0a8fa3f16b6b2fa1c",
+      "src/blas_backend.h": "7d386bc48579c894c3f12730b85144c5e237aa0dd0f3aff7d0465a7729f81995",
+      "include/tiny_infer.h": "6f38972278709e9f33fdda4b242aac7dbde742e149c876d50078129510741c22",
+      "tools/real_model.py": "9fe3935a86e51fe86ff14392214e7b3d535fb93a6db57aaf8554ce310bd0f819"
+    }
+  },
+  "platform": {
+    "system": "Darwin",
+    "release": "27.0.0",
+    "machine": "arm64",
+    "cpu": "Apple M5 Pro"
+  },
+  "runs": 6,
+  "samples": 12,
+  "summaries": {
+    "input_first": {
+      "median_ns": 4415.138888888889,
+      "process_medians_ns": [
+        4381.1577777777775,
+        4455.231111111111,
+        4527.592222222222,
+        4366.112222222222,
+        4449.120000000001,
+        4376.805555555556
+      ],
+      "min_process_median_ns": 4366.112222222222,
+      "max_process_median_ns": 4527.592222222222
+    },
+    "numpy_prepared_single": {
+      "median_ns": 3354.5600000000004,
+      "process_medians_ns": [
+        3343.24,
+        3374.77,
+        3400.231111111111,
+        3284.3055555555557,
+        3359.9533333333334,
+        3349.166666666667
+      ],
+      "min_process_median_ns": 3284.3055555555557,
+      "max_process_median_ns": 3400.231111111111
+    },
+    "output_first": {
+      "median_ns": 4745.9961111111115,
+      "process_medians_ns": [
+        4736.574444444444,
+        4755.926666666666,
+        4940.093333333333,
+        4714.12,
+        4755.417777777778,
+        4715.647777777778
+      ],
+      "min_process_median_ns": 4714.12,
+      "max_process_median_ns": 4940.093333333333
+    },
+    "sklearn_batch": {
+      "median_ns": 227.22166666666666,
+      "process_medians_ns": [
+        222.03777777777776,
+        243.70444444444445,
+        226.06444444444446,
+        228.37888888888887,
+        242.68555555555554,
+        217.54777777777778
+      ],
+      "min_process_median_ns": 217.54777777777778,
+      "max_process_median_ns": 243.70444444444445
+    },
+    "sklearn_single": {
+      "median_ns": 32553.88888888889,
+      "process_medians_ns": [
+        31865.045555555556,
+        32748.981111111112,
+        33292.869999999995,
+        32355.602222222224,
+        32816.71333333333,
+        32358.79666666667
+      ],
+      "min_process_median_ns": 31865.045555555556,
+      "max_process_median_ns": 33292.869999999995
+    },
+    "system_blas": {
+      "median_ns": 4241.018888888889,
+      "process_medians_ns": [
+        4198.888888888889,
+        4256.296666666667,
+        4438.981111111111,
+        4118.564444444444,
+        4276.666666666667,
+        4225.7411111111105
+      ],
+      "min_process_median_ns": 4118.564444444444,
+      "max_process_median_ns": 4438.981111111111
+    }
+  },
+  "files": {
+    "run-05.json": "4c8612a2654d1a9e2bdcdee5c87a02f28bf820176c97c8c6d09e2044cab11ea8",
+    "run-04.json": "04b9da882f2f3afd6f4da2ef2bfc67ca326791083a6a59adfc72676812cef9b0",
+    "correctness.json": "7109d69a425ab47a14032e8f76c4c3d75be2ea2a024bdcc3ba4eaea4195f8a5b",
+    "run-03.json": "71a81e9aa8fdea411cc29ecb86b2c012058a7a27bffdc00d0b48ad2eb8ce9fc7",
+    "run-02.json": "8e684ef48a79d9725cdd61e761d3085731aea3e759299a0cbef71fe51a262d0b",
+    "run-01.json": "d37c3b421039a5344c9708c15d0119cd407d4ef644c3fe9ea68e47178f6e91ec",
+    "run-00.json": "4e600415da2b74b7b74cffa6a3861906598259e3afcd37e713103e8aa64b8b8d"
+  }
+}

@@ -42,7 +42,7 @@ def verify(directory):
     rm.require(all(manifest['sources'][p] == sha for p, sha in build['sources'].items()), 'build source mismatch')
     data, x, y, clf = rm.restore(rm.MODEL)
     checks = json.loads((directory / 'correctness.json').read_text())
-    rm.require(checks['model_sha256'] == rm.digest(rm.MODEL) and
+    rm.require(checks['model_sha256'] == rm.digest(rm.MODEL) == manifest['sources']['models/digits/model.json'] and
                checks['dataset_sha256'] == data['dataset_sha256'] and
                checks['test_ids'] == data['test_ids'] and checks['labels'] == y.tolist(), 'model/dataset mismatch')
     if manifest['schema'] == 2:
