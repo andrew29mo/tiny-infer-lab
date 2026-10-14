@@ -1,0 +1,7 @@
+# Optional comparison environment, Python 3.12; not a core runtime requirement.
+-r requirements-real-model.txt
+emlearn==0.23.2
+onnx==1.23.2
+onnxruntime==1.31.0
+psutil==7.0.0
+setuptools==80.9.0

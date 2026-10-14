@@ -19,7 +19,8 @@ are scoped to the measured workload, hardware, provider, API and threading polic
 
 Requires a C11 compiler, Make, Python 3.9+ and Git for the test/publication tools. The default build has no external
 numerical dependency. Build tools support macOS and Linux. Optional trained-model
-tools use pinned numerical packages on Python 3.9–3.12; see their setup guides.
+tools use pinned numerical packages on Python 3.9–3.12; the optional provider
+comparison uses Python 3.12. See their setup guides.
 
 ```sh
 make demo
@@ -83,7 +84,16 @@ compare batch sizes 1, 8, 32, 128 and 450 with NumPy and sklearn using the same
 call/validation and wrapper overhead affect batching. The [batch review](docs/BATCH_REVIEW.md)
 adds anti-stale tail checks and untimed observations of actual native inputs/calls.
 
-## Latest reviewed measurements
+## Provider comparison
+
+An optional [same-model comparison](docs/PROVIDER_COMPARISON.md) adds emlearn and
+ONNX Runtime CPU alongside production C, NumPy and sklearn. It checks exact model
+parameter bits and all held-out outputs, and measures matched batches, isolated
+process RSS and deployment payloads separately. emlearn uses an explicit C-loop
+batch adapter; ONNX Runtime uses native dynamic batches. Their API/allocation
+differences and dependency-size exclusions are part of the reported scope.
+
+## Reviewed batch-control measurements
 
 The held-out digits model scores **438/450 (97.33%)** with complete class agreement
 across the tested C backends and sklearn. On Apple M5 Pro, the batch-450 comparison
@@ -182,7 +192,7 @@ results/published/ Selected raw measurements and provenance
 
 The [CI matrix](https://github.com/andrew29mo/tiny-infer-lab/actions/workflows/ci.yml)
 checks macOS and Linux with BLAS enabled and disabled, plus optional trained-model
-and batch validation with BLAS. The documented tables and README numeric claims
+and batch validation with BLAS, plus the optional six-provider comparison. The documented tables and README numeric claims
 are checked against archived reports; numerical/provenance verifiers validate
 those reports separately. CI timing is not a performance gate.
 

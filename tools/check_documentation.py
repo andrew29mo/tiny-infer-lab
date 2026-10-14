@@ -100,7 +100,7 @@ def check(root=ROOT):
     require(len(labels)==len(prob)==450 and all(v['correct']==correct for rows in checks['outputs'].values()
             for v in rows.values()),'accuracy evidence mismatch')
     readme=(root/'README.md').read_text()
-    current=section(readme,'Latest reviewed measurements')
+    current=section(readme,'Reviewed batch-control measurements')
     for claim in ['%d/450 (%.2f%%)'%(correct,100*correct/450),
                   '**%.2f×**'%paired['median'],m['source_revision'][:7],
                   '%.2f–%.2f×'%(paired['minimum'],paired['maximum'])]:

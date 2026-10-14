@@ -6,3 +6,5 @@ results/published/**/*.stderr.txt linguist-generated=true
 results/published/**/correctness.json linguist-generated=true
 results/published/**/run-*.json linguist-generated=true
 results/published/**/manifest.json linguist-generated=true
+results/published/**/memory.json linguist-generated=true
+results/published/**/deployment.json linguist-generated=true
