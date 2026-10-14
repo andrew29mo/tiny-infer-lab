@@ -154,8 +154,14 @@ checks macOS and Linux with BLAS enabled and disabled.
 
 See the [pre-publication review and corrected findings](docs/PREPUBLICATION_REVIEW.md).
 
-This repository is being prepared for public review and currently has no selected
-open-source license. Do not assume a license grant. See [contribution guidance](CONTRIBUTING.md).
+This repository is being prepared for public review. See
+[contribution guidance](CONTRIBUTING.md).
 The publication guard scans tracked files and reachable Git history for known
 credential/key patterns, personal home paths, local-only files and binaries;
 it is a targeted check, not an exhaustive security or secret audit.
+
+## License
+
+The project code and documentation are licensed under the [MIT License](LICENSE).
+Optional system BLAS libraries retain their own licenses; the MIT License does
+not relicense those dependencies. Selecting MIT does not change repository visibility.

@@ -16,5 +16,9 @@ For benchmark changes, retain the exact workload, build flags, thread policy,
 raw samples and independent numerical reference. Report regressions as well as
 improvements. Do not turn shared CI timing into a pass/fail speed threshold.
 
-The repository does not currently grant an open-source license. Contact the owner
-before contributing code that would require a licensing agreement.
+## Licensing contributions
+
+The project is licensed under the [MIT License](LICENSE). By submitting a
+contribution for inclusion, you agree to license it under MIT and confirm that
+you have the right to do so. Identify any third-party material and its original
+license; do not assume the project's license overrides dependency licenses.

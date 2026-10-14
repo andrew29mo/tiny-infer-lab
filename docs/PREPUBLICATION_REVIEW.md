@@ -1,8 +1,13 @@
 # Pre-publication review — 2026-10-14
 
 This review covers production code, tests, documentation, archived performance
-claims, tracked files and reachable Git history. The repository remains Private;
-no open-source license has been selected or granted.
+claims, tracked files and reachable Git history. At the time of the initial
+review, the repository was Private and no open-source license had been selected.
+
+Licensing update (2026-10-14): the owner subsequently approved the
+[MIT License](../LICENSE) for project code and documentation. README and
+contribution guidance now reflect that decision. Optional system BLAS libraries
+retain their own licenses. The repository remains Private.
 
 ## Findings corrected
 
@@ -71,5 +76,5 @@ The code does not claim trained-model accuracy, hardware-board validation or
 universal superiority over BLAS. The evidence verifier checks consistency and
 provenance; it is not cryptographic attestation that timings cannot be fabricated.
 
-Visibility and licensing remain explicit owner decisions. This review does not
-publish the repository or introduce a license.
+Public visibility remains an explicit owner decision. The subsequent MIT
+licensing update documented above does not publish the repository.
