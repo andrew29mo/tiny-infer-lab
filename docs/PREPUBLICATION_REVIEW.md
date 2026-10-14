@@ -28,7 +28,10 @@ Corrections in this pass:
   verifiers regenerate their references and recompute raw statistics.
 - Regression fixtures reject stale table values, a false 100% accuracy claim,
   the historical wrapper ratio substituted for the direct-control ratio, and a
-  wrong measured revision. Normal Python and `python -O` are both exercised.
+  wrong measured revision. The temporary fixture must pass unchanged before
+  corruptions are tested, preventing missing link targets from masking a false
+  pass; a broken-link corruption is also rejected. Normal Python and `python -O`
+  are both exercised.
 - Publication rules and ignore patterns additionally cover credential/config
   filenames, credential-bearing URLs, compiled objects/libraries, common archive
   snapshots and editor backups. These rules were tested with synthetic fixtures;

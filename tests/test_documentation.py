@@ -23,16 +23,20 @@ class DocumentationTests(unittest.TestCase):
                ('docs/RESULTS.md','| 128→256→32 | 15.990','| 128→256→32 | 1.000'),
                ('docs/REAL_MODEL.md','| 4.746 |','| 0.001 |'),
                ('docs/BATCH_INFERENCE.md','| 450 | 0.366 |','| 450 | 0.001 |'),
-               ('docs/BATCH_INFERENCE.md','source `1743574`','source `0000000`')]
+               ('docs/BATCH_INFERENCE.md','source `1743574`','source `0000000`'),
+               ('README.md','](LICENSE)','](MISSING_LICENSE)')]
         with tempfile.TemporaryDirectory() as temp:
             root=Path(temp)
-            for name in ['README.md','CONTRIBUTING.md']:
+            for name in ['README.md','CONTRIBUTING.md','LICENSE']:
                 shutil.copyfile(ROOT/name,root/name)
-            for folder in ['docs','models','.github']:
+            for folder in ['docs','models','.github','include']:
                 shutil.copytree(ROOT/folder,root/folder)
             # Reuse immutable evidence without repeatedly copying large JSON outputs.
             (root/'results').mkdir()
             (root/'results/published').symlink_to(ROOT/'results/published',target_is_directory=True)
+            # A valid copied fixture must pass first: otherwise any unrelated
+            # missing link could make every corrupt-claim case falsely pass.
+            with contextlib.redirect_stdout(io.StringIO()):check(root)
             for name,before,after in cases:
                 with self.subTest(name=name,claim=before):
                     path=root/name;original=path.read_text()
