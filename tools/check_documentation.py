@@ -145,7 +145,7 @@ def check(root=ROOT):
                         for n in ['onnxruntime','tiny_blas']]:
                 require(claim in current,'README provider claim mismatch: '+claim)
     # Relative documentation links, including issue/PR templates; external links are not fetched.
-    documents=[root/'README.md',root/'CONTRIBUTING.md',root/'results/published/README.md']
+    documents=[root/'README.md',root/'CONTRIBUTING.md',root/'SECURITY.md',root/'results/published/README.md']
     documents += list((root/'docs').rglob('*.md')) + list((root/'models').rglob('*.md'))
     documents += list((root/'.github').rglob('*.md'))
     for path in sorted(documents):

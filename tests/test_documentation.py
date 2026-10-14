@@ -32,7 +32,7 @@ class DocumentationTests(unittest.TestCase):
                ('README.md','](LICENSE)','](MISSING_LICENSE)')]
         with tempfile.TemporaryDirectory() as temp:
             root=Path(temp)
-            for name in ['README.md','CONTRIBUTING.md','LICENSE']:
+            for name in ['README.md','CONTRIBUTING.md','SECURITY.md','LICENSE']:
                 shutil.copyfile(ROOT/name,root/name)
             for folder in ['docs','models','.github','include']:
                 shutil.copytree(ROOT/folder,root/folder)
