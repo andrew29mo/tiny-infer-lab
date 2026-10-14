@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser()
 parser.add_argument("--cc", default="cc")
 parser.add_argument("--blas", type=int, default=0)
+parser.add_argument("--real-model", action="store_true")
 args = parser.parse_args()
 sys.path.insert(0, str(ROOT / "tools"))
 from workloads import native_flags
@@ -22,6 +23,18 @@ mutations = {
     "skip_second_layer": ("dense(h, m->w2, m->b2, y, hid, out, kernel);",
                           "for (size_t i = 0; i < out; ++i) y[i] = 0;"),
 }
+def reject(library, name):
+    if args.real_model:
+        script = "import sys;sys.path.insert(0, 'tools');import real_model as r;r.evaluate(sys.argv[1])"
+        for mode in ([], ['-O']):
+            result = subprocess.run([sys.executable] + mode + ['-c', script, str(library)],
+                                    cwd=ROOT, capture_output=True, text=True)
+            if result.returncode == 0 or not any(message in result.stderr for message in
+                    ['ValueError: logit mismatch', 'ValueError: probability mismatch', 'ValueError: class disagreement']):
+                raise SystemExit('Real-model check did not numerically reject ' + name + '\n' + result.stderr)
+        print('PASS: trained-model numerical checks reject ' + name + ' under normal Python and -O')
+
+
 for name, (before, after) in mutations.items():
     if source.count(before) != 1:
         raise SystemExit("Mutation target changed: " + name)
@@ -38,6 +51,7 @@ for name, (before, after) in mutations.items():
             if result.returncode == 0 or "AssertionError" not in result.stderr:
                 raise SystemExit("FAIL: oracle did not numerically reject " + name + "\n" + result.stderr)
         print("PASS: normal and -O oracle reject mutation " + name)
+        reject(lib, name)
 
 if args.blas:
     with tempfile.TemporaryDirectory(prefix="blas-mutation-", dir=ROOT / "build") as temp:
@@ -55,3 +69,4 @@ if args.blas:
             if result.returncode == 0 or "AssertionError" not in result.stderr:
                 raise SystemExit("BLAS numerical fault was not detected")
         print("PASS: normal and -O oracle reject wrong BLAS alpha")
+        reject(lib, "wrong BLAS alpha")

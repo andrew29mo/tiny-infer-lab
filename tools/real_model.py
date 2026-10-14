@@ -31,6 +31,37 @@ from test_reference import Model, load, oracle
 MODEL = ROOT / 'models/digits/model.json'
 SEED = 20261014
 ATOL, RTOL = 1e-5, 3e-5
+LEGACY_SOURCES = ['tools/real_model.py', 'tests/test_reference.py', 'src/tiny_infer.c',
+           'src/blas_backend.c', 'src/blas_backend.h', 'include/tiny_infer.h',
+           'Makefile', 'requirements-real-model.txt', 'models/digits/model.json',
+           'tools/verify_real_model.py', 'tests/test_real_model.py', 'tests/test_real_report.py']
+SOURCES = LEGACY_SOURCES + ['tests/test_mutations.py']
+BUILD_SOURCES = ['src/tiny_infer.c', 'src/blas_backend.c', 'src/blas_backend.h',
+                 'include/tiny_infer.h', 'tools/real_model.py']
+OBJECTS = ['build/real_tiny_infer.o', 'build/real_blas_backend.o']
+
+
+def classifier():
+    return MLPClassifier(hidden_layer_sizes=(32,), activation='relu', solver='adam',
+                         max_iter=1500, random_state=SEED, early_stopping=False,
+                         tol=1e-5, n_iter_no_change=30)
+
+
+def split_audit(x, train_ids, test_ids):
+    require(sorted(list(train_ids) + list(test_ids)) == list(range(len(x))),
+            'split overlap/missing samples')
+    train_images = {row.tobytes() for row in x[train_ids]}
+    require(not any(row.tobytes() in train_images for row in x[test_ids]),
+            'duplicate image across train/test')
+    return dict(train_count=len(train_ids), test_count=len(test_ids),
+                shared_indices=0, exact_duplicate_images=0,
+                preprocessing='fixed pixel / 16; no fitted statistics',
+                writer_independent=False)
+
+
+def softmax(a):
+    e = np.exp(a - a.max())
+    return e / e.sum()
 
 
 def require(ok, message):
@@ -59,9 +90,8 @@ def train(path):
     x, y, sha = dataset()
     train_ids, test_ids = train_test_split(np.arange(len(y)), test_size=0.25,
                                          random_state=SEED, stratify=y)
-    clf = MLPClassifier(hidden_layer_sizes=(32,), activation='relu', solver='adam',
-                        max_iter=1500, random_state=SEED, early_stopping=False,
-                        tol=1e-5, n_iter_no_change=30)
+    split_audit(x, train_ids, test_ids)
+    clf = classifier()
     # Configuration is fixed in advance. No test input/label is used in fit or selection.
     with threadpool_limits(limits=1), warnings.catch_warnings():
         warnings.simplefilter('error', ConvergenceWarning)
@@ -95,6 +125,11 @@ def restore(path):
                                                random_state=SEED, stratify=y)
     require(tr == expected_tr.tolist() and te == expected_te.tolist(), 'split differs from fixed policy')
     require(data['classes'] == list(range(10)), 'unexpected class mapping')
+    require(data['seed'] == SEED and data['preprocessing'] == 'float32(pixel / 16)',
+            'unexpected seed/preprocessing')
+    expected_parameters = json.loads(json.dumps(classifier().get_params()))
+    require(data['training_parameters'] == expected_parameters, 'unexpected training policy')
+    split_audit(x, tr, te)
     weights = [np.ascontiguousarray(a, dtype=np.float32) for a in data['weights']]
     biases = [np.ascontiguousarray(a, dtype=np.float32) for a in data['biases']]
     require([a.shape for a in weights + biases] == [(64, 32), (32, 10), (32,), (10,)],
@@ -135,12 +170,21 @@ class Engine:
         return self.out
 
     def probabilities(self, i, k):
-        a = self.logits(i, k)
-        e = np.exp(a - a.max())
-        return e / e.sum()
+        return softmax(self.logits(i, k))
+
+    def predict_proba(self, row, k):
+        # Public single-image adapter: conversion/shape/pointer creation are timed.
+        # C checks input finiteness; model and scratch buffers are reused.
+        row = np.asarray(row, dtype=np.float32, order='C')
+        require(row.shape == (1, 64), 'expected one image with 64 features')
+        require(self.lib.ti_forward(C.byref(self.model), pointer(row), 64,
+                    self.hp, 32, self.op, 10, k) == 0, 'C forward')
+        return softmax(self.out).reshape(1, 10)
 
 
 def validate_outputs(logits, probabilities, reference_logits, reference_probs):
+    require(np.shape(logits) == np.shape(reference_logits) == (450, 10) and
+            np.shape(probabilities) == np.shape(reference_probs) == (450, 10), 'output shape mismatch')
     require(np.isfinite(logits).all() and np.isfinite(probabilities).all(), 'nonfinite outputs')
     require(np.allclose(logits, reference_logits, atol=ATOL, rtol=RTOL), 'logit mismatch')
     require(np.allclose(probabilities, reference_probs, atol=ATOL, rtol=RTOL), 'probability mismatch')
@@ -165,7 +209,7 @@ def evaluate(library, model=MODEL):
     metrics, outputs = {}, {}
     for k, name in enumerate(engine.names):
         logits = np.array([engine.logits(i, k).copy() for i in range(len(x))])
-        probabilities = np.array([engine.probabilities(i, k) for i in range(len(x))])
+        probabilities = np.array([engine.predict_proba(x[i:i + 1], k)[0] for i in range(len(x))])
         validate_outputs(logits, probabilities, reference_logits, reference_probs)
         pred = probabilities.argmax(1)
         confusion = np.zeros((10, 10), dtype=int)
@@ -179,6 +223,7 @@ def evaluate(library, model=MODEL):
     return engine, clf, x, dict(metrics=metrics, sklearn_accuracy=accuracy,
              model_sha256=digest(model), dataset_sha256=data['dataset_sha256'],
              test_ids=data['test_ids'], labels=y.tolist(),
+             split_audit=split_audit(dataset()[0], data['train_ids'], data['test_ids']),
              reference_probabilities=reference_probs.tolist(),
              oracle_logits=reference_logits.tolist(), outputs=outputs)
 
@@ -187,10 +232,21 @@ def worker(args):
     with threadpool_limits(limits=1):
         engine, clf, x, checks = evaluate(args.library, args.model)
         rows = [row.reshape(1, -1) for row in x]
-        calls = {name: (lambda i, k=k: engine.probabilities(i, k))
+        calls = {name: (lambda i, k=k: engine.predict_proba(rows[i], k)[0])
                  for k, name in enumerate(engine.names)}
         calls['sklearn_single'] = lambda i: clf.predict_proba(rows[i])[0]
         calls['sklearn_batch'] = lambda i: clf.predict_proba(x)
+        # Diagnostic with the same prepared-input/reused-scratch contract as C kernels.
+        h, y = np.empty(32, np.float32), np.empty(10, np.float32)
+        prepared = [row for row in x]
+        def numpy_prepared(i):
+            np.dot(prepared[i], clf.coefs_[0], out=h)
+            np.add(h, clf.intercepts_[0], out=h)
+            np.maximum(h, 0, out=h)
+            np.dot(h, clf.coefs_[1], out=y)
+            np.add(y, clf.intercepts_[1], out=y)
+            return softmax(y)
+        calls['numpy_prepared_single'] = numpy_prepared
         # Batch is a context measurement, not part of single-image speed ratios.
         orders = list(itertools.permutations(engine.names + ['sklearn_single']))
         raw = []
@@ -201,24 +257,24 @@ def worker(args):
         for sample in range(args.samples):
             order = list(orders[(args.run * args.samples + sample) % len(orders)])
             order.insert((sample + args.run) % (len(order) + 1), 'sklearn_batch')
+            order.insert((sample * 2 + args.run) % (len(order) + 1), 'numpy_prepared_single')
             for name in order:
+                start = time.perf_counter_ns()
                 if name == 'sklearn_batch':
-                    start = time.perf_counter_ns()
                     answer = calls[name](0)
-                    elapsed = time.perf_counter_ns() - start
                 else:
                     # Keep every full prediction; verify all of them outside timing.
                     answer = np.empty((len(x), 10), dtype=np.float32)
-                    start = time.perf_counter_ns()
                     for i in range(len(x)):
                         answer[i] = calls[name](i)
-                    elapsed = time.perf_counter_ns() - start
-                require(np.allclose(answer, reference, atol=ATOL, rtol=RTOL), 'timed output mismatch')
+                elapsed = time.perf_counter_ns() - start
+                require(answer.shape == reference.shape and np.allclose(answer, reference, atol=ATOL, rtol=RTOL)
+                        and np.array_equal(answer.argmax(1), reference.argmax(1)), 'timed output mismatch')
                 raw.append(dict(sample=sample, backend=name, elapsed_ns=elapsed,
                                 predictions=len(x), ns_per_prediction=elapsed / len(x)))
         pools = [{k: v for k, v in pool.items() if k != 'filepath'} for pool in threadpool_info()]
         require(all(p['num_threads'] == 1 for p in pools), 'uncontrolled numerical threads')
-        save(args.output, dict(schema=1, run=args.run, checks=checks, raw=raw,
+        save(args.output, dict(schema=2, run=args.run, checks=checks, raw=raw,
                               versions=versions(), threadpools=pools,
                               c_blas=engine.lib.ti_blas_name().decode(),
                               c_single_thread=bool(engine.lib.ti_blas_is_single_threaded())))
@@ -235,13 +291,19 @@ def cpu_name():
 
 def benchmark(args):
     require(1 <= args.runs <= 24 and 1 <= args.samples <= 100, 'invalid run/sample count')
-    sources = ['tools/real_model.py', 'tests/test_reference.py', 'src/tiny_infer.c',
-               'src/blas_backend.c', 'src/blas_backend.h', 'include/tiny_infer.h',
-               'Makefile', 'requirements-real-model.txt', 'models/digits/model.json',
-               'tools/verify_real_model.py', 'tests/test_real_model.py', 'tests/test_real_report.py']
+    sources = SOURCES
     before = {p: digest(ROOT / p) for p in sources}
     build_info = json.loads((ROOT / 'build/real-model-build.json').read_text())
-    require(build_info['library_sha256'] == digest(args.library), 'stale build library')
+    library_hash = digest(args.library)
+    build_hash = digest(ROOT / 'build/real-model-build.json')
+    require(set(build_info['sources']) == set(BUILD_SOURCES) and
+            set(build_info['objects']) == set(OBJECTS), 'incomplete build evidence')
+    require(all(digest(ROOT / p) == sha for p, sha in build_info['objects'].items()), 'stale build object')
+    require(build_info['library_sha256'] == library_hash, 'stale build library')
+    revision = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
+    for name, sha in before.items():
+        blob = subprocess.check_output(['git', 'show', revision + ':' + name], cwd=ROOT)
+        require(hashlib.sha256(blob).hexdigest() == sha, 'commit measured sources before benchmarking')
     require(all(digest(ROOT / p) == sha for p, sha in build_info['sources'].items()), 'stale build source')
     require(digest(args.model) == before['models/digits/model.json'], 'benchmark requires tracked model')
     args.output.mkdir(parents=True, exist_ok=False)
@@ -254,6 +316,10 @@ def benchmark(args):
                         '--samples', str(args.samples)], check=True, cwd=ROOT)
         records.append(json.loads(path.read_text()))
     require(before == {p: digest(ROOT / p) for p in sources}, 'source changed during run')
+    require(library_hash == digest(args.library) and
+            build_hash == digest(ROOT / 'build/real-model-build.json') and
+            all(digest(ROOT / p) == sha for p, sha in build_info['objects'].items()),
+            'build/library changed during run')
     require(all(r['checks'] == records[0]['checks'] for r in records), 'process check mismatch')
     save(args.output / 'correctness.json', records[0]['checks'])
     for run, record in enumerate(records):
@@ -267,8 +333,8 @@ def benchmark(args):
                                process_medians_ns=process_medians,
                                min_process_median_ns=min(process_medians),
                                max_process_median_ns=max(process_medians))
-    save(args.output / 'manifest.json', dict(schema=1, created_utc=dt.datetime.now(dt.timezone.utc).isoformat(),
-         source_revision=subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip(),
+    save(args.output / 'manifest.json', dict(schema=2, protocol='single-image-array-api-v2', created_utc=dt.datetime.now(dt.timezone.utc).isoformat(),
+         source_revision=revision,
          sources=before, library_sha256=digest(args.library),
          build_metadata=json.loads((ROOT / 'build/real-model-build.json').read_text()),
          platform=dict(system=platform.system(), release=platform.release(), machine=platform.machine(),
@@ -281,6 +347,7 @@ def benchmark(args):
 def build(args):
     from workloads import native_flags
     flags, libs = native_flags(args.blas)
+    build_sources = {p: digest(ROOT / p) for p in BUILD_SOURCES}
     objects = ['build/real_tiny_infer.o', 'build/real_blas_backend.o']
     commands = []
     for source, obj in zip(['src/tiny_infer.c', 'src/blas_backend.c'], objects):
@@ -292,13 +359,16 @@ def build(args):
     (ROOT / 'build').mkdir(exist_ok=True)
     for command in commands:
         subprocess.run(command, cwd=ROOT, check=True)
+    object_hashes = {p: digest(ROOT / p) for p in objects}
+    library_hash = digest(args.library)
     subprocess.run(['build/real_test_engine'], cwd=ROOT, check=True)
     subprocess.run([sys.executable, 'tests/test_reference.py', str(args.library)], cwd=ROOT, check=True)
+    require(build_sources == {p: digest(ROOT / p) for p in BUILD_SOURCES} and
+            object_hashes == {p: digest(ROOT / p) for p in objects} and
+            library_hash == digest(args.library), 'source/build changed during build tests')
     save(ROOT / 'build/real-model-build.json', dict(commands=commands,
          compiler=subprocess.check_output(['cc', '--version'], text=True).splitlines()[0],
-         objects={p: digest(ROOT / p) for p in objects}, library_sha256=digest(args.library),
-         sources={p: digest(ROOT / p) for p in ['src/tiny_infer.c', 'src/blas_backend.c',
-                   'src/blas_backend.h', 'include/tiny_infer.h', 'tools/real_model.py']}))
+         objects=object_hashes, library_sha256=library_hash, sources=build_sources))
 
 
 def main():

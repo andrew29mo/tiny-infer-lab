@@ -67,6 +67,7 @@ jobs:
           python tools/real_model.py build --blas 1
           python tests/test_real_model.py build/real_engine.so
           python -O tests/test_real_model.py build/real_engine.so
+          python tests/test_mutations.py --blas 1 --real-model
       - name: Archived real-model evidence
         run: |
           python tests/test_real_report.py
