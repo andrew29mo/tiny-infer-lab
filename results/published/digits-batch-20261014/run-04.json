@@ -1,0 +1,6041 @@
+{
+  "schema": 1,
+  "run": 4,
+  "raw": [
+    {
+      "sample": 0,
+      "batch_size": 450,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 101667,
+      "ns_per_prediction": 225.92666666666668
+    },
+    {
+      "sample": 0,
+      "batch_size": 450,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 348625,
+      "ns_per_prediction": 774.7222222222222
+    },
+    {
+      "sample": 0,
+      "batch_size": 450,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1989833,
+      "ns_per_prediction": 4421.851111111111
+    },
+    {
+      "sample": 0,
+      "batch_size": 450,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 172667,
+      "ns_per_prediction": 383.70444444444445
+    },
+    {
+      "sample": 0,
+      "batch_size": 450,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 60834,
+      "ns_per_prediction": 135.18666666666667
+    },
+    {
+      "sample": 0,
+      "batch_size": 450,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 60958,
+      "ns_per_prediction": 135.4622222222222
+    },
+    {
+      "sample": 0,
+      "batch_size": 1,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 14634166,
+      "ns_per_prediction": 32520.36888888889
+    },
+    {
+      "sample": 0,
+      "batch_size": 1,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 2616459,
+      "ns_per_prediction": 5814.3533333333335
+    },
+    {
+      "sample": 0,
+      "batch_size": 1,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 11838041,
+      "ns_per_prediction": 26306.757777777777
+    },
+    {
+      "sample": 0,
+      "batch_size": 1,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2511291,
+      "ns_per_prediction": 5580.6466666666665
+    },
+    {
+      "sample": 0,
+      "batch_size": 1,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2244667,
+      "ns_per_prediction": 4988.148888888889
+    },
+    {
+      "sample": 0,
+      "batch_size": 1,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2466125,
+      "ns_per_prediction": 5480.277777777777
+    },
+    {
+      "sample": 0,
+      "batch_size": 8,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 1919125,
+      "ns_per_prediction": 4264.722222222223
+    },
+    {
+      "sample": 0,
+      "batch_size": 8,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 384625,
+      "ns_per_prediction": 854.7222222222222
+    },
+    {
+      "sample": 0,
+      "batch_size": 8,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 648875,
+      "ns_per_prediction": 1441.9444444444443
+    },
+    {
+      "sample": 0,
+      "batch_size": 8,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 430667,
+      "ns_per_prediction": 957.0377777777778
+    },
+    {
+      "sample": 0,
+      "batch_size": 8,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 445417,
+      "ns_per_prediction": 989.8155555555555
+    },
+    {
+      "sample": 0,
+      "batch_size": 8,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2039625,
+      "ns_per_prediction": 4532.5
+    },
+    {
+      "sample": 0,
+      "batch_size": 32,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1995208,
+      "ns_per_prediction": 4433.795555555555
+    },
+    {
+      "sample": 0,
+      "batch_size": 32,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 578375,
+      "ns_per_prediction": 1285.2777777777778
+    },
+    {
+      "sample": 0,
+      "batch_size": 32,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 148208,
+      "ns_per_prediction": 329.3511111111111
+    },
+    {
+      "sample": 0,
+      "batch_size": 32,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 204541,
+      "ns_per_prediction": 454.53555555555556
+    },
+    {
+      "sample": 0,
+      "batch_size": 32,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 231083,
+      "ns_per_prediction": 513.5177777777777
+    },
+    {
+      "sample": 0,
+      "batch_size": 32,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 424584,
+      "ns_per_prediction": 943.52
+    },
+    {
+      "sample": 0,
+      "batch_size": 128,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 203875,
+      "ns_per_prediction": 453.05555555555554
+    },
+    {
+      "sample": 0,
+      "batch_size": 128,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1965875,
+      "ns_per_prediction": 4368.611111111111
+    },
+    {
+      "sample": 0,
+      "batch_size": 128,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 92750,
+      "ns_per_prediction": 206.11111111111111
+    },
+    {
+      "sample": 0,
+      "batch_size": 128,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 97000,
+      "ns_per_prediction": 215.55555555555554
+    },
+    {
+      "sample": 0,
+      "batch_size": 128,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 360875,
+      "ns_per_prediction": 801.9444444444445
+    },
+    {
+      "sample": 0,
+      "batch_size": 128,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 170917,
+      "ns_per_prediction": 379.81555555555553
+    },
+    {
+      "sample": 1,
+      "batch_size": 1,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 14299958,
+      "ns_per_prediction": 31777.684444444443
+    },
+    {
+      "sample": 1,
+      "batch_size": 1,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 2685666,
+      "ns_per_prediction": 5968.1466666666665
+    },
+    {
+      "sample": 1,
+      "batch_size": 1,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2756417,
+      "ns_per_prediction": 6125.3711111111115
+    },
+    {
+      "sample": 1,
+      "batch_size": 1,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2465833,
+      "ns_per_prediction": 5479.6288888888885
+    },
+    {
+      "sample": 1,
+      "batch_size": 1,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2593375,
+      "ns_per_prediction": 5763.055555555556
+    },
+    {
+      "sample": 1,
+      "batch_size": 1,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2188875,
+      "ns_per_prediction": 4864.166666666667
+    },
+    {
+      "sample": 1,
+      "batch_size": 8,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1925792,
+      "ns_per_prediction": 4279.537777777778
+    },
+    {
+      "sample": 1,
+      "batch_size": 8,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 1897041,
+      "ns_per_prediction": 4215.6466666666665
+    },
+    {
+      "sample": 1,
+      "batch_size": 8,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 384459,
+      "ns_per_prediction": 854.3533333333334
+    },
+    {
+      "sample": 1,
+      "batch_size": 8,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 406958,
+      "ns_per_prediction": 904.3511111111111
+    },
+    {
+      "sample": 1,
+      "batch_size": 8,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 479250,
+      "ns_per_prediction": 1065.0
+    },
+    {
+      "sample": 1,
+      "batch_size": 8,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 641917,
+      "ns_per_prediction": 1426.4822222222222
+    },
+    {
+      "sample": 1,
+      "batch_size": 32,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 594666,
+      "ns_per_prediction": 1321.48
+    },
+    {
+      "sample": 1,
+      "batch_size": 32,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2028542,
+      "ns_per_prediction": 4507.8711111111115
+    },
+    {
+      "sample": 1,
+      "batch_size": 32,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 147167,
+      "ns_per_prediction": 327.03777777777776
+    },
+    {
+      "sample": 1,
+      "batch_size": 32,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 196083,
+      "ns_per_prediction": 435.74
+    },
+    {
+      "sample": 1,
+      "batch_size": 32,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 426917,
+      "ns_per_prediction": 948.7044444444444
+    },
+    {
+      "sample": 1,
+      "batch_size": 32,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 231333,
+      "ns_per_prediction": 514.0733333333334
+    },
+    {
+      "sample": 1,
+      "batch_size": 128,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 211875,
+      "ns_per_prediction": 470.8333333333333
+    },
+    {
+      "sample": 1,
+      "batch_size": 128,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 367625,
+      "ns_per_prediction": 816.9444444444445
+    },
+    {
+      "sample": 1,
+      "batch_size": 128,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1945625,
+      "ns_per_prediction": 4323.611111111111
+    },
+    {
+      "sample": 1,
+      "batch_size": 128,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 173250,
+      "ns_per_prediction": 385.0
+    },
+    {
+      "sample": 1,
+      "batch_size": 128,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 90416,
+      "ns_per_prediction": 200.92444444444445
+    },
+    {
+      "sample": 1,
+      "batch_size": 128,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 93667,
+      "ns_per_prediction": 208.14888888888888
+    },
+    {
+      "sample": 1,
+      "batch_size": 450,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 96792,
+      "ns_per_prediction": 215.09333333333333
+    },
+    {
+      "sample": 1,
+      "batch_size": 450,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 347667,
+      "ns_per_prediction": 772.5933333333334
+    },
+    {
+      "sample": 1,
+      "batch_size": 450,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 158000,
+      "ns_per_prediction": 351.1111111111111
+    },
+    {
+      "sample": 1,
+      "batch_size": 450,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2039958,
+      "ns_per_prediction": 4533.24
+    },
+    {
+      "sample": 1,
+      "batch_size": 450,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 65209,
+      "ns_per_prediction": 144.9088888888889
+    },
+    {
+      "sample": 1,
+      "batch_size": 450,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 56542,
+      "ns_per_prediction": 125.64888888888889
+    },
+    {
+      "sample": 2,
+      "batch_size": 8,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 1904750,
+      "ns_per_prediction": 4232.777777777777
+    },
+    {
+      "sample": 2,
+      "batch_size": 8,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2064083,
+      "ns_per_prediction": 4586.851111111111
+    },
+    {
+      "sample": 2,
+      "batch_size": 8,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 385292,
+      "ns_per_prediction": 856.2044444444444
+    },
+    {
+      "sample": 2,
+      "batch_size": 8,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 414125,
+      "ns_per_prediction": 920.2777777777778
+    },
+    {
+      "sample": 2,
+      "batch_size": 8,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 643625,
+      "ns_per_prediction": 1430.2777777777778
+    },
+    {
+      "sample": 2,
+      "batch_size": 8,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 450917,
+      "ns_per_prediction": 1002.0377777777778
+    },
+    {
+      "sample": 2,
+      "batch_size": 32,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 576125,
+      "ns_per_prediction": 1280.2777777777778
+    },
+    {
+      "sample": 2,
+      "batch_size": 32,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 427500,
+      "ns_per_prediction": 950.0
+    },
+    {
+      "sample": 2,
+      "batch_size": 32,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2043833,
+      "ns_per_prediction": 4541.851111111111
+    },
+    {
+      "sample": 2,
+      "batch_size": 32,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 232917,
+      "ns_per_prediction": 517.5933333333334
+    },
+    {
+      "sample": 2,
+      "batch_size": 32,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 142459,
+      "ns_per_prediction": 316.5755555555556
+    },
+    {
+      "sample": 2,
+      "batch_size": 32,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 188958,
+      "ns_per_prediction": 419.9066666666667
+    },
+    {
+      "sample": 2,
+      "batch_size": 128,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 209375,
+      "ns_per_prediction": 465.27777777777777
+    },
+    {
+      "sample": 2,
+      "batch_size": 128,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 370209,
+      "ns_per_prediction": 822.6866666666666
+    },
+    {
+      "sample": 2,
+      "batch_size": 128,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 172708,
+      "ns_per_prediction": 383.79555555555555
+    },
+    {
+      "sample": 2,
+      "batch_size": 128,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2015916,
+      "ns_per_prediction": 4479.8133333333335
+    },
+    {
+      "sample": 2,
+      "batch_size": 128,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 113875,
+      "ns_per_prediction": 253.05555555555554
+    },
+    {
+      "sample": 2,
+      "batch_size": 128,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 91875,
+      "ns_per_prediction": 204.16666666666666
+    },
+    {
+      "sample": 2,
+      "batch_size": 450,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 102542,
+      "ns_per_prediction": 227.8711111111111
+    },
+    {
+      "sample": 2,
+      "batch_size": 450,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 315417,
+      "ns_per_prediction": 700.9266666666666
+    },
+    {
+      "sample": 2,
+      "batch_size": 450,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 55666,
+      "ns_per_prediction": 123.70222222222222
+    },
+    {
+      "sample": 2,
+      "batch_size": 450,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 164916,
+      "ns_per_prediction": 366.48
+    },
+    {
+      "sample": 2,
+      "batch_size": 450,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1951083,
+      "ns_per_prediction": 4335.74
+    },
+    {
+      "sample": 2,
+      "batch_size": 450,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 62167,
+      "ns_per_prediction": 138.14888888888888
+    },
+    {
+      "sample": 2,
+      "batch_size": 1,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2180584,
+      "ns_per_prediction": 4845.742222222222
+    },
+    {
+      "sample": 2,
+      "batch_size": 1,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 14257542,
+      "ns_per_prediction": 31683.426666666666
+    },
+    {
+      "sample": 2,
+      "batch_size": 1,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 2626208,
+      "ns_per_prediction": 5836.017777777778
+    },
+    {
+      "sample": 2,
+      "batch_size": 1,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2401834,
+      "ns_per_prediction": 5337.408888888889
+    },
+    {
+      "sample": 2,
+      "batch_size": 1,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2480458,
+      "ns_per_prediction": 5512.1288888888885
+    },
+    {
+      "sample": 2,
+      "batch_size": 1,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2751000,
+      "ns_per_prediction": 6113.333333333333
+    },
+    {
+      "sample": 3,
+      "batch_size": 32,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 589125,
+      "ns_per_prediction": 1309.1666666666667
+    },
+    {
+      "sample": 3,
+      "batch_size": 32,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 429208,
+      "ns_per_prediction": 953.7955555555556
+    },
+    {
+      "sample": 3,
+      "batch_size": 32,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 232042,
+      "ns_per_prediction": 515.6488888888889
+    },
+    {
+      "sample": 3,
+      "batch_size": 32,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1972750,
+      "ns_per_prediction": 4383.888888888889
+    },
+    {
+      "sample": 3,
+      "batch_size": 32,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 196541,
+      "ns_per_prediction": 436.7577777777778
+    },
+    {
+      "sample": 3,
+      "batch_size": 32,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 142958,
+      "ns_per_prediction": 317.68444444444447
+    },
+    {
+      "sample": 3,
+      "batch_size": 128,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 202375,
+      "ns_per_prediction": 449.72222222222223
+    },
+    {
+      "sample": 3,
+      "batch_size": 128,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 368208,
+      "ns_per_prediction": 818.24
+    },
+    {
+      "sample": 3,
+      "batch_size": 128,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 89417,
+      "ns_per_prediction": 198.70444444444445
+    },
+    {
+      "sample": 3,
+      "batch_size": 128,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 170959,
+      "ns_per_prediction": 379.9088888888889
+    },
+    {
+      "sample": 3,
+      "batch_size": 128,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1986541,
+      "ns_per_prediction": 4414.535555555555
+    },
+    {
+      "sample": 3,
+      "batch_size": 128,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 92833,
+      "ns_per_prediction": 206.29555555555555
+    },
+    {
+      "sample": 3,
+      "batch_size": 450,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 96959,
+      "ns_per_prediction": 215.46444444444444
+    },
+    {
+      "sample": 3,
+      "batch_size": 450,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 345417,
+      "ns_per_prediction": 767.5933333333334
+    },
+    {
+      "sample": 3,
+      "batch_size": 450,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 55542,
+      "ns_per_prediction": 123.42666666666666
+    },
+    {
+      "sample": 3,
+      "batch_size": 450,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 63750,
+      "ns_per_prediction": 141.66666666666666
+    },
+    {
+      "sample": 3,
+      "batch_size": 450,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 153375,
+      "ns_per_prediction": 340.8333333333333
+    },
+    {
+      "sample": 3,
+      "batch_size": 450,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1981583,
+      "ns_per_prediction": 4403.517777777778
+    },
+    {
+      "sample": 3,
+      "batch_size": 1,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 14211958,
+      "ns_per_prediction": 31582.12888888889
+    },
+    {
+      "sample": 3,
+      "batch_size": 1,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2171917,
+      "ns_per_prediction": 4826.482222222222
+    },
+    {
+      "sample": 3,
+      "batch_size": 1,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 2617584,
+      "ns_per_prediction": 5816.8533333333335
+    },
+    {
+      "sample": 3,
+      "batch_size": 1,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2491208,
+      "ns_per_prediction": 5536.017777777778
+    },
+    {
+      "sample": 3,
+      "batch_size": 1,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2622000,
+      "ns_per_prediction": 5826.666666666667
+    },
+    {
+      "sample": 3,
+      "batch_size": 1,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2488208,
+      "ns_per_prediction": 5529.351111111111
+    },
+    {
+      "sample": 3,
+      "batch_size": 8,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 1870125,
+      "ns_per_prediction": 4155.833333333333
+    },
+    {
+      "sample": 3,
+      "batch_size": 8,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 672500,
+      "ns_per_prediction": 1494.4444444444443
+    },
+    {
+      "sample": 3,
+      "batch_size": 8,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1999375,
+      "ns_per_prediction": 4443.055555555556
+    },
+    {
+      "sample": 3,
+      "batch_size": 8,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 448542,
+      "ns_per_prediction": 996.76
+    },
+    {
+      "sample": 3,
+      "batch_size": 8,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 378791,
+      "ns_per_prediction": 841.7577777777777
+    },
+    {
+      "sample": 3,
+      "batch_size": 8,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 409375,
+      "ns_per_prediction": 909.7222222222222
+    },
+    {
+      "sample": 4,
+      "batch_size": 128,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 205541,
+      "ns_per_prediction": 456.7577777777778
+    },
+    {
+      "sample": 4,
+      "batch_size": 128,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 367833,
+      "ns_per_prediction": 817.4066666666666
+    },
+    {
+      "sample": 4,
+      "batch_size": 128,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 88709,
+      "ns_per_prediction": 197.13111111111112
+    },
+    {
+      "sample": 4,
+      "batch_size": 128,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 96250,
+      "ns_per_prediction": 213.88888888888889
+    },
+    {
+      "sample": 4,
+      "batch_size": 128,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 177125,
+      "ns_per_prediction": 393.6111111111111
+    },
+    {
+      "sample": 4,
+      "batch_size": 128,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1923666,
+      "ns_per_prediction": 4274.8133333333335
+    },
+    {
+      "sample": 4,
+      "batch_size": 450,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1956416,
+      "ns_per_prediction": 4347.591111111111
+    },
+    {
+      "sample": 4,
+      "batch_size": 450,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 93500,
+      "ns_per_prediction": 207.77777777777777
+    },
+    {
+      "sample": 4,
+      "batch_size": 450,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 361958,
+      "ns_per_prediction": 804.3511111111111
+    },
+    {
+      "sample": 4,
+      "batch_size": 450,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 60208,
+      "ns_per_prediction": 133.79555555555555
+    },
+    {
+      "sample": 4,
+      "batch_size": 450,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 163541,
+      "ns_per_prediction": 363.4244444444444
+    },
+    {
+      "sample": 4,
+      "batch_size": 450,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 54792,
+      "ns_per_prediction": 121.76
+    },
+    {
+      "sample": 4,
+      "batch_size": 1,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 14033375,
+      "ns_per_prediction": 31185.277777777777
+    },
+    {
+      "sample": 4,
+      "batch_size": 1,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2695250,
+      "ns_per_prediction": 5989.444444444444
+    },
+    {
+      "sample": 4,
+      "batch_size": 1,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2135542,
+      "ns_per_prediction": 4745.648888888889
+    },
+    {
+      "sample": 4,
+      "batch_size": 1,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2533667,
+      "ns_per_prediction": 5630.3711111111115
+    },
+    {
+      "sample": 4,
+      "batch_size": 1,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 2558958,
+      "ns_per_prediction": 5686.573333333334
+    },
+    {
+      "sample": 4,
+      "batch_size": 1,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2434667,
+      "ns_per_prediction": 5410.3711111111115
+    },
+    {
+      "sample": 4,
+      "batch_size": 8,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 1897500,
+      "ns_per_prediction": 4216.666666666667
+    },
+    {
+      "sample": 4,
+      "batch_size": 8,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 678708,
+      "ns_per_prediction": 1508.24
+    },
+    {
+      "sample": 4,
+      "batch_size": 8,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 491333,
+      "ns_per_prediction": 1091.851111111111
+    },
+    {
+      "sample": 4,
+      "batch_size": 8,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2051125,
+      "ns_per_prediction": 4558.055555555556
+    },
+    {
+      "sample": 4,
+      "batch_size": 8,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 417750,
+      "ns_per_prediction": 928.3333333333334
+    },
+    {
+      "sample": 4,
+      "batch_size": 8,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 378167,
+      "ns_per_prediction": 840.3711111111111
+    },
+    {
+      "sample": 4,
+      "batch_size": 32,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 572584,
+      "ns_per_prediction": 1272.408888888889
+    },
+    {
+      "sample": 4,
+      "batch_size": 32,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 429833,
+      "ns_per_prediction": 955.1844444444445
+    },
+    {
+      "sample": 4,
+      "batch_size": 32,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 141792,
+      "ns_per_prediction": 315.0933333333333
+    },
+    {
+      "sample": 4,
+      "batch_size": 32,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 235583,
+      "ns_per_prediction": 523.5177777777777
+    },
+    {
+      "sample": 4,
+      "batch_size": 32,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1914250,
+      "ns_per_prediction": 4253.888888888889
+    },
+    {
+      "sample": 4,
+      "batch_size": 32,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 192792,
+      "ns_per_prediction": 428.4266666666667
+    },
+    {
+      "sample": 5,
+      "batch_size": 450,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 94167,
+      "ns_per_prediction": 209.26
+    },
+    {
+      "sample": 5,
+      "batch_size": 450,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1909375,
+      "ns_per_prediction": 4243.055555555556
+    },
+    {
+      "sample": 5,
+      "batch_size": 450,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 355708,
+      "ns_per_prediction": 790.4622222222222
+    },
+    {
+      "sample": 5,
+      "batch_size": 450,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 64375,
+      "ns_per_prediction": 143.05555555555554
+    },
+    {
+      "sample": 5,
+      "batch_size": 450,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 55458,
+      "ns_per_prediction": 123.24
+    },
+    {
+      "sample": 5,
+      "batch_size": 450,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 155375,
+      "ns_per_prediction": 345.27777777777777
+    },
+    {
+      "sample": 5,
+      "batch_size": 1,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 14256458,
+      "ns_per_prediction": 31681.01777777778
+    },
+    {
+      "sample": 5,
+      "batch_size": 1,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2645959,
+      "ns_per_prediction": 5879.908888888889
+    },
+    {
+      "sample": 5,
+      "batch_size": 1,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2506333,
+      "ns_per_prediction": 5569.6288888888885
+    },
+    {
+      "sample": 5,
+      "batch_size": 1,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2157709,
+      "ns_per_prediction": 4794.908888888889
+    },
+    {
+      "sample": 5,
+      "batch_size": 1,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2485916,
+      "ns_per_prediction": 5524.257777777778
+    },
+    {
+      "sample": 5,
+      "batch_size": 1,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 2556958,
+      "ns_per_prediction": 5682.1288888888885
+    },
+    {
+      "sample": 5,
+      "batch_size": 8,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 1868958,
+      "ns_per_prediction": 4153.24
+    },
+    {
+      "sample": 5,
+      "batch_size": 8,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 658667,
+      "ns_per_prediction": 1463.7044444444443
+    },
+    {
+      "sample": 5,
+      "batch_size": 8,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 392958,
+      "ns_per_prediction": 873.24
+    },
+    {
+      "sample": 5,
+      "batch_size": 8,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 458208,
+      "ns_per_prediction": 1018.24
+    },
+    {
+      "sample": 5,
+      "batch_size": 8,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2035625,
+      "ns_per_prediction": 4523.611111111111
+    },
+    {
+      "sample": 5,
+      "batch_size": 8,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 473458,
+      "ns_per_prediction": 1052.128888888889
+    },
+    {
+      "sample": 5,
+      "batch_size": 32,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 550833,
+      "ns_per_prediction": 1224.0733333333333
+    },
+    {
+      "sample": 5,
+      "batch_size": 32,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 427459,
+      "ns_per_prediction": 949.9088888888889
+    },
+    {
+      "sample": 5,
+      "batch_size": 32,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 141083,
+      "ns_per_prediction": 313.5177777777778
+    },
+    {
+      "sample": 5,
+      "batch_size": 32,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 192666,
+      "ns_per_prediction": 428.14666666666665
+    },
+    {
+      "sample": 5,
+      "batch_size": 32,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 228958,
+      "ns_per_prediction": 508.79555555555555
+    },
+    {
+      "sample": 5,
+      "batch_size": 32,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1964166,
+      "ns_per_prediction": 4364.8133333333335
+    },
+    {
+      "sample": 5,
+      "batch_size": 128,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1928458,
+      "ns_per_prediction": 4285.462222222222
+    },
+    {
+      "sample": 5,
+      "batch_size": 128,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 207292,
+      "ns_per_prediction": 460.6488888888889
+    },
+    {
+      "sample": 5,
+      "batch_size": 128,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 369167,
+      "ns_per_prediction": 820.3711111111111
+    },
+    {
+      "sample": 5,
+      "batch_size": 128,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 93959,
+      "ns_per_prediction": 208.79777777777778
+    },
+    {
+      "sample": 5,
+      "batch_size": 128,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 171708,
+      "ns_per_prediction": 381.5733333333333
+    },
+    {
+      "sample": 5,
+      "batch_size": 128,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 89167,
+      "ns_per_prediction": 198.14888888888888
+    },
+    {
+      "sample": 6,
+      "batch_size": 1,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 14119917,
+      "ns_per_prediction": 31377.593333333334
+    },
+    {
+      "sample": 6,
+      "batch_size": 1,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2643458,
+      "ns_per_prediction": 5874.351111111111
+    },
+    {
+      "sample": 6,
+      "batch_size": 1,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 2554666,
+      "ns_per_prediction": 5677.035555555555
+    },
+    {
+      "sample": 6,
+      "batch_size": 1,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2507250,
+      "ns_per_prediction": 5571.666666666667
+    },
+    {
+      "sample": 6,
+      "batch_size": 1,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2207958,
+      "ns_per_prediction": 4906.573333333334
+    },
+    {
+      "sample": 6,
+      "batch_size": 1,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2408125,
+      "ns_per_prediction": 5351.388888888889
+    },
+    {
+      "sample": 6,
+      "batch_size": 8,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 1850542,
+      "ns_per_prediction": 4112.315555555556
+    },
+    {
+      "sample": 6,
+      "batch_size": 8,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 666375,
+      "ns_per_prediction": 1480.8333333333333
+    },
+    {
+      "sample": 6,
+      "batch_size": 8,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 422167,
+      "ns_per_prediction": 938.1488888888889
+    },
+    {
+      "sample": 6,
+      "batch_size": 8,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 412292,
+      "ns_per_prediction": 916.2044444444444
+    },
+    {
+      "sample": 6,
+      "batch_size": 8,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 457792,
+      "ns_per_prediction": 1017.3155555555555
+    },
+    {
+      "sample": 6,
+      "batch_size": 8,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2028542,
+      "ns_per_prediction": 4507.8711111111115
+    },
+    {
+      "sample": 6,
+      "batch_size": 32,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2001875,
+      "ns_per_prediction": 4448.611111111111
+    },
+    {
+      "sample": 6,
+      "batch_size": 32,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 555750,
+      "ns_per_prediction": 1235.0
+    },
+    {
+      "sample": 6,
+      "batch_size": 32,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 429042,
+      "ns_per_prediction": 953.4266666666666
+    },
+    {
+      "sample": 6,
+      "batch_size": 32,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 220542,
+      "ns_per_prediction": 490.0933333333333
+    },
+    {
+      "sample": 6,
+      "batch_size": 32,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 228375,
+      "ns_per_prediction": 507.5
+    },
+    {
+      "sample": 6,
+      "batch_size": 32,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 142000,
+      "ns_per_prediction": 315.55555555555554
+    },
+    {
+      "sample": 6,
+      "batch_size": 128,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 196875,
+      "ns_per_prediction": 437.5
+    },
+    {
+      "sample": 6,
+      "batch_size": 128,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1944125,
+      "ns_per_prediction": 4320.277777777777
+    },
+    {
+      "sample": 6,
+      "batch_size": 128,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 367125,
+      "ns_per_prediction": 815.8333333333334
+    },
+    {
+      "sample": 6,
+      "batch_size": 128,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 97125,
+      "ns_per_prediction": 215.83333333333334
+    },
+    {
+      "sample": 6,
+      "batch_size": 128,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 89875,
+      "ns_per_prediction": 199.72222222222223
+    },
+    {
+      "sample": 6,
+      "batch_size": 128,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 166083,
+      "ns_per_prediction": 369.0733333333333
+    },
+    {
+      "sample": 6,
+      "batch_size": 450,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 92334,
+      "ns_per_prediction": 205.18666666666667
+    },
+    {
+      "sample": 6,
+      "batch_size": 450,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 62667,
+      "ns_per_prediction": 139.26
+    },
+    {
+      "sample": 6,
+      "batch_size": 450,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1933333,
+      "ns_per_prediction": 4296.295555555555
+    },
+    {
+      "sample": 6,
+      "batch_size": 450,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 161125,
+      "ns_per_prediction": 358.05555555555554
+    },
+    {
+      "sample": 6,
+      "batch_size": 450,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 59042,
+      "ns_per_prediction": 131.20444444444445
+    },
+    {
+      "sample": 6,
+      "batch_size": 450,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 343750,
+      "ns_per_prediction": 763.8888888888889
+    },
+    {
+      "sample": 7,
+      "batch_size": 8,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2017834,
+      "ns_per_prediction": 4484.075555555555
+    },
+    {
+      "sample": 7,
+      "batch_size": 8,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 1842625,
+      "ns_per_prediction": 4094.722222222222
+    },
+    {
+      "sample": 7,
+      "batch_size": 8,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 651209,
+      "ns_per_prediction": 1447.131111111111
+    },
+    {
+      "sample": 7,
+      "batch_size": 8,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 405834,
+      "ns_per_prediction": 901.8533333333334
+    },
+    {
+      "sample": 7,
+      "batch_size": 8,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 475583,
+      "ns_per_prediction": 1056.851111111111
+    },
+    {
+      "sample": 7,
+      "batch_size": 8,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 384333,
+      "ns_per_prediction": 854.0733333333334
+    },
+    {
+      "sample": 7,
+      "batch_size": 32,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 572084,
+      "ns_per_prediction": 1271.2977777777778
+    },
+    {
+      "sample": 7,
+      "batch_size": 32,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1997208,
+      "ns_per_prediction": 4438.24
+    },
+    {
+      "sample": 7,
+      "batch_size": 32,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 438042,
+      "ns_per_prediction": 973.4266666666666
+    },
+    {
+      "sample": 7,
+      "batch_size": 32,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 183125,
+      "ns_per_prediction": 406.94444444444446
+    },
+    {
+      "sample": 7,
+      "batch_size": 32,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 141667,
+      "ns_per_prediction": 314.81555555555553
+    },
+    {
+      "sample": 7,
+      "batch_size": 32,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 237792,
+      "ns_per_prediction": 528.4266666666666
+    },
+    {
+      "sample": 7,
+      "batch_size": 128,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 206458,
+      "ns_per_prediction": 458.79555555555555
+    },
+    {
+      "sample": 7,
+      "batch_size": 128,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 97167,
+      "ns_per_prediction": 215.92666666666668
+    },
+    {
+      "sample": 7,
+      "batch_size": 128,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1990458,
+      "ns_per_prediction": 4423.24
+    },
+    {
+      "sample": 7,
+      "batch_size": 128,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 200208,
+      "ns_per_prediction": 444.9066666666667
+    },
+    {
+      "sample": 7,
+      "batch_size": 128,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 89792,
+      "ns_per_prediction": 199.5377777777778
+    },
+    {
+      "sample": 7,
+      "batch_size": 128,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 363750,
+      "ns_per_prediction": 808.3333333333334
+    },
+    {
+      "sample": 7,
+      "batch_size": 450,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 95292,
+      "ns_per_prediction": 211.76
+    },
+    {
+      "sample": 7,
+      "batch_size": 450,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 64250,
+      "ns_per_prediction": 142.77777777777777
+    },
+    {
+      "sample": 7,
+      "batch_size": 450,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 162458,
+      "ns_per_prediction": 361.0177777777778
+    },
+    {
+      "sample": 7,
+      "batch_size": 450,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1895916,
+      "ns_per_prediction": 4213.1466666666665
+    },
+    {
+      "sample": 7,
+      "batch_size": 450,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 345958,
+      "ns_per_prediction": 768.7955555555556
+    },
+    {
+      "sample": 7,
+      "batch_size": 450,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 55209,
+      "ns_per_prediction": 122.68666666666667
+    },
+    {
+      "sample": 7,
+      "batch_size": 1,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 13809083,
+      "ns_per_prediction": 30686.85111111111
+    },
+    {
+      "sample": 7,
+      "batch_size": 1,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2740292,
+      "ns_per_prediction": 6089.537777777778
+    },
+    {
+      "sample": 7,
+      "batch_size": 1,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 2537000,
+      "ns_per_prediction": 5637.777777777777
+    },
+    {
+      "sample": 7,
+      "batch_size": 1,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2459125,
+      "ns_per_prediction": 5464.722222222223
+    },
+    {
+      "sample": 7,
+      "batch_size": 1,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2540750,
+      "ns_per_prediction": 5646.111111111111
+    },
+    {
+      "sample": 7,
+      "batch_size": 1,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2192917,
+      "ns_per_prediction": 4873.148888888889
+    },
+    {
+      "sample": 8,
+      "batch_size": 32,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 558792,
+      "ns_per_prediction": 1241.76
+    },
+    {
+      "sample": 8,
+      "batch_size": 32,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 193750,
+      "ns_per_prediction": 430.55555555555554
+    },
+    {
+      "sample": 8,
+      "batch_size": 32,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1939459,
+      "ns_per_prediction": 4309.908888888889
+    },
+    {
+      "sample": 8,
+      "batch_size": 32,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 231959,
+      "ns_per_prediction": 515.4644444444444
+    },
+    {
+      "sample": 8,
+      "batch_size": 32,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 140917,
+      "ns_per_prediction": 313.1488888888889
+    },
+    {
+      "sample": 8,
+      "batch_size": 32,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 441208,
+      "ns_per_prediction": 980.4622222222222
+    },
+    {
+      "sample": 8,
+      "batch_size": 128,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 202458,
+      "ns_per_prediction": 449.9066666666667
+    },
+    {
+      "sample": 8,
+      "batch_size": 128,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 98125,
+      "ns_per_prediction": 218.05555555555554
+    },
+    {
+      "sample": 8,
+      "batch_size": 128,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 170375,
+      "ns_per_prediction": 378.6111111111111
+    },
+    {
+      "sample": 8,
+      "batch_size": 128,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1925542,
+      "ns_per_prediction": 4278.982222222222
+    },
+    {
+      "sample": 8,
+      "batch_size": 128,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 371208,
+      "ns_per_prediction": 824.9066666666666
+    },
+    {
+      "sample": 8,
+      "batch_size": 128,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 89000,
+      "ns_per_prediction": 197.77777777777777
+    },
+    {
+      "sample": 8,
+      "batch_size": 450,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 91458,
+      "ns_per_prediction": 203.24
+    },
+    {
+      "sample": 8,
+      "batch_size": 450,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 63375,
+      "ns_per_prediction": 140.83333333333334
+    },
+    {
+      "sample": 8,
+      "batch_size": 450,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 55042,
+      "ns_per_prediction": 122.31555555555556
+    },
+    {
+      "sample": 8,
+      "batch_size": 450,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 153833,
+      "ns_per_prediction": 341.8511111111111
+    },
+    {
+      "sample": 8,
+      "batch_size": 450,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1993125,
+      "ns_per_prediction": 4429.166666666667
+    },
+    {
+      "sample": 8,
+      "batch_size": 450,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 344792,
+      "ns_per_prediction": 766.2044444444444
+    },
+    {
+      "sample": 8,
+      "batch_size": 1,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2107709,
+      "ns_per_prediction": 4683.797777777778
+    },
+    {
+      "sample": 8,
+      "batch_size": 1,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 14047625,
+      "ns_per_prediction": 31216.944444444445
+    },
+    {
+      "sample": 8,
+      "batch_size": 1,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2731042,
+      "ns_per_prediction": 6068.982222222222
+    },
+    {
+      "sample": 8,
+      "batch_size": 1,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2424000,
+      "ns_per_prediction": 5386.666666666667
+    },
+    {
+      "sample": 8,
+      "batch_size": 1,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2447334,
+      "ns_per_prediction": 5438.52
+    },
+    {
+      "sample": 8,
+      "batch_size": 1,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 2549083,
+      "ns_per_prediction": 5664.6288888888885
+    },
+    {
+      "sample": 8,
+      "batch_size": 8,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 1887750,
+      "ns_per_prediction": 4195.0
+    },
+    {
+      "sample": 8,
+      "batch_size": 8,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2012666,
+      "ns_per_prediction": 4472.591111111111
+    },
+    {
+      "sample": 8,
+      "batch_size": 8,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 646125,
+      "ns_per_prediction": 1435.8333333333333
+    },
+    {
+      "sample": 8,
+      "batch_size": 8,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 432709,
+      "ns_per_prediction": 961.5755555555555
+    },
+    {
+      "sample": 8,
+      "batch_size": 8,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 380292,
+      "ns_per_prediction": 845.0933333333334
+    },
+    {
+      "sample": 8,
+      "batch_size": 8,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 451666,
+      "ns_per_prediction": 1003.7022222222222
+    },
+    {
+      "sample": 9,
+      "batch_size": 128,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 204084,
+      "ns_per_prediction": 453.52
+    },
+    {
+      "sample": 9,
+      "batch_size": 128,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 100917,
+      "ns_per_prediction": 224.26
+    },
+    {
+      "sample": 9,
+      "batch_size": 128,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 89042,
+      "ns_per_prediction": 197.8711111111111
+    },
+    {
+      "sample": 9,
+      "batch_size": 128,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 169250,
+      "ns_per_prediction": 376.1111111111111
+    },
+    {
+      "sample": 9,
+      "batch_size": 128,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1931042,
+      "ns_per_prediction": 4291.204444444445
+    },
+    {
+      "sample": 9,
+      "batch_size": 128,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 371875,
+      "ns_per_prediction": 826.3888888888889
+    },
+    {
+      "sample": 9,
+      "batch_size": 450,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 99333,
+      "ns_per_prediction": 220.74
+    },
+    {
+      "sample": 9,
+      "batch_size": 450,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 60792,
+      "ns_per_prediction": 135.09333333333333
+    },
+    {
+      "sample": 9,
+      "batch_size": 450,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 60792,
+      "ns_per_prediction": 135.09333333333333
+    },
+    {
+      "sample": 9,
+      "batch_size": 450,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 350958,
+      "ns_per_prediction": 779.9066666666666
+    },
+    {
+      "sample": 9,
+      "batch_size": 450,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 156208,
+      "ns_per_prediction": 347.12888888888887
+    },
+    {
+      "sample": 9,
+      "batch_size": 450,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1975958,
+      "ns_per_prediction": 4391.017777777778
+    },
+    {
+      "sample": 9,
+      "batch_size": 1,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 14020416,
+      "ns_per_prediction": 31156.48
+    },
+    {
+      "sample": 9,
+      "batch_size": 1,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2128583,
+      "ns_per_prediction": 4730.184444444444
+    },
+    {
+      "sample": 9,
+      "batch_size": 1,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2749166,
+      "ns_per_prediction": 6109.257777777778
+    },
+    {
+      "sample": 9,
+      "batch_size": 1,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2535333,
+      "ns_per_prediction": 5634.073333333334
+    },
+    {
+      "sample": 9,
+      "batch_size": 1,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 2593583,
+      "ns_per_prediction": 5763.517777777778
+    },
+    {
+      "sample": 9,
+      "batch_size": 1,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2493917,
+      "ns_per_prediction": 5542.037777777778
+    },
+    {
+      "sample": 9,
+      "batch_size": 8,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 1894833,
+      "ns_per_prediction": 4210.74
+    },
+    {
+      "sample": 9,
+      "batch_size": 8,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 429875,
+      "ns_per_prediction": 955.2777777777778
+    },
+    {
+      "sample": 9,
+      "batch_size": 8,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2073792,
+      "ns_per_prediction": 4608.426666666666
+    },
+    {
+      "sample": 9,
+      "batch_size": 8,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 486792,
+      "ns_per_prediction": 1081.76
+    },
+    {
+      "sample": 9,
+      "batch_size": 8,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 395917,
+      "ns_per_prediction": 879.8155555555555
+    },
+    {
+      "sample": 9,
+      "batch_size": 8,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 707000,
+      "ns_per_prediction": 1571.111111111111
+    },
+    {
+      "sample": 9,
+      "batch_size": 32,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 636500,
+      "ns_per_prediction": 1414.4444444444443
+    },
+    {
+      "sample": 9,
+      "batch_size": 32,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 181625,
+      "ns_per_prediction": 403.6111111111111
+    },
+    {
+      "sample": 9,
+      "batch_size": 32,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 256875,
+      "ns_per_prediction": 570.8333333333334
+    },
+    {
+      "sample": 9,
+      "batch_size": 32,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1975083,
+      "ns_per_prediction": 4389.073333333334
+    },
+    {
+      "sample": 9,
+      "batch_size": 32,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 425417,
+      "ns_per_prediction": 945.3711111111111
+    },
+    {
+      "sample": 9,
+      "batch_size": 32,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 143417,
+      "ns_per_prediction": 318.70444444444445
+    },
+    {
+      "sample": 10,
+      "batch_size": 450,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1921458,
+      "ns_per_prediction": 4269.906666666667
+    },
+    {
+      "sample": 10,
+      "batch_size": 450,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 100375,
+      "ns_per_prediction": 223.05555555555554
+    },
+    {
+      "sample": 10,
+      "batch_size": 450,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 66042,
+      "ns_per_prediction": 146.76
+    },
+    {
+      "sample": 10,
+      "batch_size": 450,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 375292,
+      "ns_per_prediction": 833.9822222222223
+    },
+    {
+      "sample": 10,
+      "batch_size": 450,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 171459,
+      "ns_per_prediction": 381.02
+    },
+    {
+      "sample": 10,
+      "batch_size": 450,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 56125,
+      "ns_per_prediction": 124.72222222222223
+    },
+    {
+      "sample": 10,
+      "batch_size": 1,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 14003042,
+      "ns_per_prediction": 31117.87111111111
+    },
+    {
+      "sample": 10,
+      "batch_size": 1,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2409958,
+      "ns_per_prediction": 5355.462222222222
+    },
+    {
+      "sample": 10,
+      "batch_size": 1,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2119833,
+      "ns_per_prediction": 4710.74
+    },
+    {
+      "sample": 10,
+      "batch_size": 1,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2539042,
+      "ns_per_prediction": 5642.315555555556
+    },
+    {
+      "sample": 10,
+      "batch_size": 1,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 2646292,
+      "ns_per_prediction": 5880.648888888889
+    },
+    {
+      "sample": 10,
+      "batch_size": 1,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2794917,
+      "ns_per_prediction": 6210.926666666666
+    },
+    {
+      "sample": 10,
+      "batch_size": 8,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 1948166,
+      "ns_per_prediction": 4329.257777777778
+    },
+    {
+      "sample": 10,
+      "batch_size": 8,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 431042,
+      "ns_per_prediction": 957.8711111111111
+    },
+    {
+      "sample": 10,
+      "batch_size": 8,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 465041,
+      "ns_per_prediction": 1033.4244444444444
+    },
+    {
+      "sample": 10,
+      "batch_size": 8,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2103291,
+      "ns_per_prediction": 4673.98
+    },
+    {
+      "sample": 10,
+      "batch_size": 8,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 651875,
+      "ns_per_prediction": 1448.611111111111
+    },
+    {
+      "sample": 10,
+      "batch_size": 8,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 413584,
+      "ns_per_prediction": 919.0755555555555
+    },
+    {
+      "sample": 10,
+      "batch_size": 32,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 584500,
+      "ns_per_prediction": 1298.888888888889
+    },
+    {
+      "sample": 10,
+      "batch_size": 32,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 183500,
+      "ns_per_prediction": 407.77777777777777
+    },
+    {
+      "sample": 10,
+      "batch_size": 32,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 172667,
+      "ns_per_prediction": 383.70444444444445
+    },
+    {
+      "sample": 10,
+      "batch_size": 32,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 265125,
+      "ns_per_prediction": 589.1666666666666
+    },
+    {
+      "sample": 10,
+      "batch_size": 32,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2005875,
+      "ns_per_prediction": 4457.5
+    },
+    {
+      "sample": 10,
+      "batch_size": 32,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 425958,
+      "ns_per_prediction": 946.5733333333334
+    },
+    {
+      "sample": 10,
+      "batch_size": 128,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 211875,
+      "ns_per_prediction": 470.8333333333333
+    },
+    {
+      "sample": 10,
+      "batch_size": 128,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 101167,
+      "ns_per_prediction": 224.81555555555556
+    },
+    {
+      "sample": 10,
+      "batch_size": 128,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 90917,
+      "ns_per_prediction": 202.0377777777778
+    },
+    {
+      "sample": 10,
+      "batch_size": 128,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 362250,
+      "ns_per_prediction": 805.0
+    },
+    {
+      "sample": 10,
+      "batch_size": 128,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 170083,
+      "ns_per_prediction": 377.96222222222224
+    },
+    {
+      "sample": 10,
+      "batch_size": 128,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1981875,
+      "ns_per_prediction": 4404.166666666667
+    },
+    {
+      "sample": 11,
+      "batch_size": 1,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 14340708,
+      "ns_per_prediction": 31868.24
+    },
+    {
+      "sample": 11,
+      "batch_size": 1,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2477667,
+      "ns_per_prediction": 5505.926666666666
+    },
+    {
+      "sample": 11,
+      "batch_size": 1,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2606708,
+      "ns_per_prediction": 5792.684444444444
+    },
+    {
+      "sample": 11,
+      "batch_size": 1,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2190125,
+      "ns_per_prediction": 4866.944444444444
+    },
+    {
+      "sample": 11,
+      "batch_size": 1,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2707042,
+      "ns_per_prediction": 6015.648888888889
+    },
+    {
+      "sample": 11,
+      "batch_size": 1,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 2613750,
+      "ns_per_prediction": 5808.333333333333
+    },
+    {
+      "sample": 11,
+      "batch_size": 8,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 1875791,
+      "ns_per_prediction": 4168.424444444445
+    },
+    {
+      "sample": 11,
+      "batch_size": 8,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 415833,
+      "ns_per_prediction": 924.0733333333334
+    },
+    {
+      "sample": 11,
+      "batch_size": 8,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 377958,
+      "ns_per_prediction": 839.9066666666666
+    },
+    {
+      "sample": 11,
+      "batch_size": 8,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 489334,
+      "ns_per_prediction": 1087.408888888889
+    },
+    {
+      "sample": 11,
+      "batch_size": 8,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2051209,
+      "ns_per_prediction": 4558.242222222222
+    },
+    {
+      "sample": 11,
+      "batch_size": 8,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 678458,
+      "ns_per_prediction": 1507.6844444444444
+    },
+    {
+      "sample": 11,
+      "batch_size": 32,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 556125,
+      "ns_per_prediction": 1235.8333333333333
+    },
+    {
+      "sample": 11,
+      "batch_size": 32,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 201792,
+      "ns_per_prediction": 448.4266666666667
+    },
+    {
+      "sample": 11,
+      "batch_size": 32,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 143000,
+      "ns_per_prediction": 317.77777777777777
+    },
+    {
+      "sample": 11,
+      "batch_size": 32,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 431750,
+      "ns_per_prediction": 959.4444444444445
+    },
+    {
+      "sample": 11,
+      "batch_size": 32,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 263500,
+      "ns_per_prediction": 585.5555555555555
+    },
+    {
+      "sample": 11,
+      "batch_size": 32,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1966917,
+      "ns_per_prediction": 4370.926666666666
+    },
+    {
+      "sample": 11,
+      "batch_size": 128,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1923000,
+      "ns_per_prediction": 4273.333333333333
+    },
+    {
+      "sample": 11,
+      "batch_size": 128,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 211083,
+      "ns_per_prediction": 469.0733333333333
+    },
+    {
+      "sample": 11,
+      "batch_size": 128,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 100334,
+      "ns_per_prediction": 222.96444444444444
+    },
+    {
+      "sample": 11,
+      "batch_size": 128,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 363833,
+      "ns_per_prediction": 808.5177777777777
+    },
+    {
+      "sample": 11,
+      "batch_size": 128,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 170958,
+      "ns_per_prediction": 379.9066666666667
+    },
+    {
+      "sample": 11,
+      "batch_size": 128,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 88625,
+      "ns_per_prediction": 196.94444444444446
+    },
+    {
+      "sample": 11,
+      "batch_size": 450,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 91292,
+      "ns_per_prediction": 202.8711111111111
+    },
+    {
+      "sample": 11,
+      "batch_size": 450,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2012959,
+      "ns_per_prediction": 4473.242222222222
+    },
+    {
+      "sample": 11,
+      "batch_size": 450,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 64250,
+      "ns_per_prediction": 142.77777777777777
+    },
+    {
+      "sample": 11,
+      "batch_size": 450,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 382750,
+      "ns_per_prediction": 850.5555555555555
+    },
+    {
+      "sample": 11,
+      "batch_size": 450,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 64875,
+      "ns_per_prediction": 144.16666666666666
+    },
+    {
+      "sample": 11,
+      "batch_size": 450,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 157542,
+      "ns_per_prediction": 350.0933333333333
+    },
+    {
+      "sample": 12,
+      "batch_size": 8,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 1888416,
+      "ns_per_prediction": 4196.48
+    },
+    {
+      "sample": 12,
+      "batch_size": 8,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 427125,
+      "ns_per_prediction": 949.1666666666666
+    },
+    {
+      "sample": 12,
+      "batch_size": 8,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 380709,
+      "ns_per_prediction": 846.02
+    },
+    {
+      "sample": 12,
+      "batch_size": 8,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 644500,
+      "ns_per_prediction": 1432.2222222222222
+    },
+    {
+      "sample": 12,
+      "batch_size": 8,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 449875,
+      "ns_per_prediction": 999.7222222222222
+    },
+    {
+      "sample": 12,
+      "batch_size": 8,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1985083,
+      "ns_per_prediction": 4411.295555555555
+    },
+    {
+      "sample": 12,
+      "batch_size": 32,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1997333,
+      "ns_per_prediction": 4438.517777777778
+    },
+    {
+      "sample": 12,
+      "batch_size": 32,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 579667,
+      "ns_per_prediction": 1288.148888888889
+    },
+    {
+      "sample": 12,
+      "batch_size": 32,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 180500,
+      "ns_per_prediction": 401.1111111111111
+    },
+    {
+      "sample": 12,
+      "batch_size": 32,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 466625,
+      "ns_per_prediction": 1036.9444444444443
+    },
+    {
+      "sample": 12,
+      "batch_size": 32,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 248833,
+      "ns_per_prediction": 552.9622222222222
+    },
+    {
+      "sample": 12,
+      "batch_size": 32,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 142208,
+      "ns_per_prediction": 316.0177777777778
+    },
+    {
+      "sample": 12,
+      "batch_size": 128,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 207667,
+      "ns_per_prediction": 461.4822222222222
+    },
+    {
+      "sample": 12,
+      "batch_size": 128,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2031458,
+      "ns_per_prediction": 4514.351111111111
+    },
+    {
+      "sample": 12,
+      "batch_size": 128,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 101041,
+      "ns_per_prediction": 224.53555555555556
+    },
+    {
+      "sample": 12,
+      "batch_size": 128,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 373959,
+      "ns_per_prediction": 831.02
+    },
+    {
+      "sample": 12,
+      "batch_size": 128,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 91541,
+      "ns_per_prediction": 203.42444444444445
+    },
+    {
+      "sample": 12,
+      "batch_size": 128,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 174875,
+      "ns_per_prediction": 388.6111111111111
+    },
+    {
+      "sample": 12,
+      "batch_size": 450,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 63250,
+      "ns_per_prediction": 140.55555555555554
+    },
+    {
+      "sample": 12,
+      "batch_size": 450,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 169958,
+      "ns_per_prediction": 377.68444444444447
+    },
+    {
+      "sample": 12,
+      "batch_size": 450,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2010833,
+      "ns_per_prediction": 4468.517777777778
+    },
+    {
+      "sample": 12,
+      "batch_size": 450,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 59291,
+      "ns_per_prediction": 131.7577777777778
+    },
+    {
+      "sample": 12,
+      "batch_size": 450,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 364167,
+      "ns_per_prediction": 809.26
+    },
+    {
+      "sample": 12,
+      "batch_size": 450,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 97375,
+      "ns_per_prediction": 216.38888888888889
+    },
+    {
+      "sample": 12,
+      "batch_size": 1,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 14243875,
+      "ns_per_prediction": 31653.055555555555
+    },
+    {
+      "sample": 12,
+      "batch_size": 1,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2433542,
+      "ns_per_prediction": 5407.8711111111115
+    },
+    {
+      "sample": 12,
+      "batch_size": 1,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 2645209,
+      "ns_per_prediction": 5878.242222222222
+    },
+    {
+      "sample": 12,
+      "batch_size": 1,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2571166,
+      "ns_per_prediction": 5713.702222222222
+    },
+    {
+      "sample": 12,
+      "batch_size": 1,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2234875,
+      "ns_per_prediction": 4966.388888888889
+    },
+    {
+      "sample": 12,
+      "batch_size": 1,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2763000,
+      "ns_per_prediction": 6140.0
+    },
+    {
+      "sample": 13,
+      "batch_size": 32,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 571750,
+      "ns_per_prediction": 1270.5555555555557
+    },
+    {
+      "sample": 13,
+      "batch_size": 32,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1937125,
+      "ns_per_prediction": 4304.722222222223
+    },
+    {
+      "sample": 13,
+      "batch_size": 32,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 201000,
+      "ns_per_prediction": 446.6666666666667
+    },
+    {
+      "sample": 13,
+      "batch_size": 32,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 422125,
+      "ns_per_prediction": 938.0555555555555
+    },
+    {
+      "sample": 13,
+      "batch_size": 32,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 143333,
+      "ns_per_prediction": 318.5177777777778
+    },
+    {
+      "sample": 13,
+      "batch_size": 32,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 236083,
+      "ns_per_prediction": 524.6288888888889
+    },
+    {
+      "sample": 13,
+      "batch_size": 128,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 92375,
+      "ns_per_prediction": 205.27777777777777
+    },
+    {
+      "sample": 13,
+      "batch_size": 128,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 168042,
+      "ns_per_prediction": 373.4266666666667
+    },
+    {
+      "sample": 13,
+      "batch_size": 128,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1944208,
+      "ns_per_prediction": 4320.462222222222
+    },
+    {
+      "sample": 13,
+      "batch_size": 128,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 90333,
+      "ns_per_prediction": 200.74
+    },
+    {
+      "sample": 13,
+      "batch_size": 128,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 382041,
+      "ns_per_prediction": 848.98
+    },
+    {
+      "sample": 13,
+      "batch_size": 128,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 203042,
+      "ns_per_prediction": 451.20444444444445
+    },
+    {
+      "sample": 13,
+      "batch_size": 450,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 66042,
+      "ns_per_prediction": 146.76
+    },
+    {
+      "sample": 13,
+      "batch_size": 450,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 168500,
+      "ns_per_prediction": 374.44444444444446
+    },
+    {
+      "sample": 13,
+      "batch_size": 450,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 54417,
+      "ns_per_prediction": 120.92666666666666
+    },
+    {
+      "sample": 13,
+      "batch_size": 450,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2001083,
+      "ns_per_prediction": 4446.851111111111
+    },
+    {
+      "sample": 13,
+      "batch_size": 450,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 99667,
+      "ns_per_prediction": 221.48222222222222
+    },
+    {
+      "sample": 13,
+      "batch_size": 450,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 355833,
+      "ns_per_prediction": 790.74
+    },
+    {
+      "sample": 13,
+      "batch_size": 1,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 14287542,
+      "ns_per_prediction": 31750.093333333334
+    },
+    {
+      "sample": 13,
+      "batch_size": 1,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2599166,
+      "ns_per_prediction": 5775.924444444445
+    },
+    {
+      "sample": 13,
+      "batch_size": 1,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 2551583,
+      "ns_per_prediction": 5670.184444444444
+    },
+    {
+      "sample": 13,
+      "batch_size": 1,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2688959,
+      "ns_per_prediction": 5975.464444444445
+    },
+    {
+      "sample": 13,
+      "batch_size": 1,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2583625,
+      "ns_per_prediction": 5741.388888888889
+    },
+    {
+      "sample": 13,
+      "batch_size": 1,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2202208,
+      "ns_per_prediction": 4893.795555555555
+    },
+    {
+      "sample": 13,
+      "batch_size": 8,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1977208,
+      "ns_per_prediction": 4393.795555555555
+    },
+    {
+      "sample": 13,
+      "batch_size": 8,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 1896125,
+      "ns_per_prediction": 4213.611111111111
+    },
+    {
+      "sample": 13,
+      "batch_size": 8,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 461833,
+      "ns_per_prediction": 1026.2955555555557
+    },
+    {
+      "sample": 13,
+      "batch_size": 8,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 664541,
+      "ns_per_prediction": 1476.7577777777778
+    },
+    {
+      "sample": 13,
+      "batch_size": 8,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 449541,
+      "ns_per_prediction": 998.98
+    },
+    {
+      "sample": 13,
+      "batch_size": 8,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 401750,
+      "ns_per_prediction": 892.7777777777778
+    },
+    {
+      "sample": 14,
+      "batch_size": 128,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 103750,
+      "ns_per_prediction": 230.55555555555554
+    },
+    {
+      "sample": 14,
+      "batch_size": 128,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 178875,
+      "ns_per_prediction": 397.5
+    },
+    {
+      "sample": 14,
+      "batch_size": 128,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 90125,
+      "ns_per_prediction": 200.27777777777777
+    },
+    {
+      "sample": 14,
+      "batch_size": 128,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1988291,
+      "ns_per_prediction": 4418.424444444445
+    },
+    {
+      "sample": 14,
+      "batch_size": 128,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 238417,
+      "ns_per_prediction": 529.8155555555555
+    },
+    {
+      "sample": 14,
+      "batch_size": 128,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 378500,
+      "ns_per_prediction": 841.1111111111111
+    },
+    {
+      "sample": 14,
+      "batch_size": 450,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 61083,
+      "ns_per_prediction": 135.74
+    },
+    {
+      "sample": 14,
+      "batch_size": 450,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 153167,
+      "ns_per_prediction": 340.37111111111113
+    },
+    {
+      "sample": 14,
+      "batch_size": 450,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 386084,
+      "ns_per_prediction": 857.9644444444444
+    },
+    {
+      "sample": 14,
+      "batch_size": 450,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 56291,
+      "ns_per_prediction": 125.0911111111111
+    },
+    {
+      "sample": 14,
+      "batch_size": 450,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1929791,
+      "ns_per_prediction": 4288.424444444445
+    },
+    {
+      "sample": 14,
+      "batch_size": 450,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 94834,
+      "ns_per_prediction": 210.7422222222222
+    },
+    {
+      "sample": 14,
+      "batch_size": 1,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2189125,
+      "ns_per_prediction": 4864.722222222223
+    },
+    {
+      "sample": 14,
+      "batch_size": 1,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 14153375,
+      "ns_per_prediction": 31451.944444444445
+    },
+    {
+      "sample": 14,
+      "batch_size": 1,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2575417,
+      "ns_per_prediction": 5723.148888888889
+    },
+    {
+      "sample": 14,
+      "batch_size": 1,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2670500,
+      "ns_per_prediction": 5934.444444444444
+    },
+    {
+      "sample": 14,
+      "batch_size": 1,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2574375,
+      "ns_per_prediction": 5720.833333333333
+    },
+    {
+      "sample": 14,
+      "batch_size": 1,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 2677125,
+      "ns_per_prediction": 5949.166666666667
+    },
+    {
+      "sample": 14,
+      "batch_size": 8,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 1972750,
+      "ns_per_prediction": 4383.888888888889
+    },
+    {
+      "sample": 14,
+      "batch_size": 8,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1957000,
+      "ns_per_prediction": 4348.888888888889
+    },
+    {
+      "sample": 14,
+      "batch_size": 8,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 435916,
+      "ns_per_prediction": 968.7022222222222
+    },
+    {
+      "sample": 14,
+      "batch_size": 8,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 645250,
+      "ns_per_prediction": 1433.888888888889
+    },
+    {
+      "sample": 14,
+      "batch_size": 8,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 380875,
+      "ns_per_prediction": 846.3888888888889
+    },
+    {
+      "sample": 14,
+      "batch_size": 8,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 451750,
+      "ns_per_prediction": 1003.8888888888889
+    },
+    {
+      "sample": 14,
+      "batch_size": 32,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 193417,
+      "ns_per_prediction": 429.81555555555553
+    },
+    {
+      "sample": 14,
+      "batch_size": 32,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 235542,
+      "ns_per_prediction": 523.4266666666666
+    },
+    {
+      "sample": 14,
+      "batch_size": 32,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1975542,
+      "ns_per_prediction": 4390.093333333333
+    },
+    {
+      "sample": 14,
+      "batch_size": 32,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 148583,
+      "ns_per_prediction": 330.18444444444447
+    },
+    {
+      "sample": 14,
+      "batch_size": 32,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 442333,
+      "ns_per_prediction": 982.9622222222222
+    },
+    {
+      "sample": 14,
+      "batch_size": 32,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 565625,
+      "ns_per_prediction": 1256.9444444444443
+    },
+    {
+      "sample": 15,
+      "batch_size": 450,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 68000,
+      "ns_per_prediction": 151.11111111111111
+    },
+    {
+      "sample": 15,
+      "batch_size": 450,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 172958,
+      "ns_per_prediction": 384.3511111111111
+    },
+    {
+      "sample": 15,
+      "batch_size": 450,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 351875,
+      "ns_per_prediction": 781.9444444444445
+    },
+    {
+      "sample": 15,
+      "batch_size": 450,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 123417,
+      "ns_per_prediction": 274.26
+    },
+    {
+      "sample": 15,
+      "batch_size": 450,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 60666,
+      "ns_per_prediction": 134.81333333333333
+    },
+    {
+      "sample": 15,
+      "batch_size": 450,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1968916,
+      "ns_per_prediction": 4375.368888888889
+    },
+    {
+      "sample": 15,
+      "batch_size": 1,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 14156000,
+      "ns_per_prediction": 31457.777777777777
+    },
+    {
+      "sample": 15,
+      "batch_size": 1,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2197333,
+      "ns_per_prediction": 4882.962222222222
+    },
+    {
+      "sample": 15,
+      "batch_size": 1,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2528041,
+      "ns_per_prediction": 5617.868888888889
+    },
+    {
+      "sample": 15,
+      "batch_size": 1,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2693375,
+      "ns_per_prediction": 5985.277777777777
+    },
+    {
+      "sample": 15,
+      "batch_size": 1,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 2546292,
+      "ns_per_prediction": 5658.426666666666
+    },
+    {
+      "sample": 15,
+      "batch_size": 1,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2506292,
+      "ns_per_prediction": 5569.537777777778
+    },
+    {
+      "sample": 15,
+      "batch_size": 8,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 438042,
+      "ns_per_prediction": 973.4266666666666
+    },
+    {
+      "sample": 15,
+      "batch_size": 8,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 457333,
+      "ns_per_prediction": 1016.2955555555556
+    },
+    {
+      "sample": 15,
+      "batch_size": 8,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1967208,
+      "ns_per_prediction": 4371.573333333334
+    },
+    {
+      "sample": 15,
+      "batch_size": 8,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 383708,
+      "ns_per_prediction": 852.6844444444445
+    },
+    {
+      "sample": 15,
+      "batch_size": 8,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 667375,
+      "ns_per_prediction": 1483.0555555555557
+    },
+    {
+      "sample": 15,
+      "batch_size": 8,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 1847083,
+      "ns_per_prediction": 4104.6288888888885
+    },
+    {
+      "sample": 15,
+      "batch_size": 32,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 199333,
+      "ns_per_prediction": 442.96222222222224
+    },
+    {
+      "sample": 15,
+      "batch_size": 32,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 230500,
+      "ns_per_prediction": 512.2222222222222
+    },
+    {
+      "sample": 15,
+      "batch_size": 32,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 140125,
+      "ns_per_prediction": 311.3888888888889
+    },
+    {
+      "sample": 15,
+      "batch_size": 32,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1952500,
+      "ns_per_prediction": 4338.888888888889
+    },
+    {
+      "sample": 15,
+      "batch_size": 32,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 594041,
+      "ns_per_prediction": 1320.091111111111
+    },
+    {
+      "sample": 15,
+      "batch_size": 32,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 441833,
+      "ns_per_prediction": 981.8511111111111
+    },
+    {
+      "sample": 15,
+      "batch_size": 128,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 95916,
+      "ns_per_prediction": 213.14666666666668
+    },
+    {
+      "sample": 15,
+      "batch_size": 128,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 167250,
+      "ns_per_prediction": 371.6666666666667
+    },
+    {
+      "sample": 15,
+      "batch_size": 128,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 372958,
+      "ns_per_prediction": 828.7955555555556
+    },
+    {
+      "sample": 15,
+      "batch_size": 128,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 91417,
+      "ns_per_prediction": 203.14888888888888
+    },
+    {
+      "sample": 15,
+      "batch_size": 128,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1983166,
+      "ns_per_prediction": 4407.035555555555
+    },
+    {
+      "sample": 15,
+      "batch_size": 128,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 208167,
+      "ns_per_prediction": 462.5933333333333
+    },
+    {
+      "sample": 16,
+      "batch_size": 1,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2441541,
+      "ns_per_prediction": 5425.6466666666665
+    },
+    {
+      "sample": 16,
+      "batch_size": 1,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2548542,
+      "ns_per_prediction": 5663.426666666666
+    },
+    {
+      "sample": 16,
+      "batch_size": 1,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2205458,
+      "ns_per_prediction": 4901.017777777778
+    },
+    {
+      "sample": 16,
+      "batch_size": 1,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 2647375,
+      "ns_per_prediction": 5883.055555555556
+    },
+    {
+      "sample": 16,
+      "batch_size": 1,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2717416,
+      "ns_per_prediction": 6038.702222222222
+    },
+    {
+      "sample": 16,
+      "batch_size": 1,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 14033875,
+      "ns_per_prediction": 31186.38888888889
+    },
+    {
+      "sample": 16,
+      "batch_size": 8,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 429750,
+      "ns_per_prediction": 955.0
+    },
+    {
+      "sample": 16,
+      "batch_size": 8,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 460375,
+      "ns_per_prediction": 1023.0555555555555
+    },
+    {
+      "sample": 16,
+      "batch_size": 8,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 395625,
+      "ns_per_prediction": 879.1666666666666
+    },
+    {
+      "sample": 16,
+      "batch_size": 8,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2005208,
+      "ns_per_prediction": 4456.017777777778
+    },
+    {
+      "sample": 16,
+      "batch_size": 8,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 1840500,
+      "ns_per_prediction": 4090.0
+    },
+    {
+      "sample": 16,
+      "batch_size": 8,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 648125,
+      "ns_per_prediction": 1440.2777777777778
+    },
+    {
+      "sample": 16,
+      "batch_size": 32,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 193542,
+      "ns_per_prediction": 430.0933333333333
+    },
+    {
+      "sample": 16,
+      "batch_size": 32,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 226542,
+      "ns_per_prediction": 503.4266666666667
+    },
+    {
+      "sample": 16,
+      "batch_size": 32,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 421834,
+      "ns_per_prediction": 937.4088888888889
+    },
+    {
+      "sample": 16,
+      "batch_size": 32,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 141666,
+      "ns_per_prediction": 314.81333333333333
+    },
+    {
+      "sample": 16,
+      "batch_size": 32,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1975208,
+      "ns_per_prediction": 4389.351111111111
+    },
+    {
+      "sample": 16,
+      "batch_size": 32,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 556083,
+      "ns_per_prediction": 1235.74
+    },
+    {
+      "sample": 16,
+      "batch_size": 128,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 102250,
+      "ns_per_prediction": 227.22222222222223
+    },
+    {
+      "sample": 16,
+      "batch_size": 128,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 167125,
+      "ns_per_prediction": 371.3888888888889
+    },
+    {
+      "sample": 16,
+      "batch_size": 128,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 370166,
+      "ns_per_prediction": 822.5911111111111
+    },
+    {
+      "sample": 16,
+      "batch_size": 128,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 195667,
+      "ns_per_prediction": 434.81555555555553
+    },
+    {
+      "sample": 16,
+      "batch_size": 128,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 90375,
+      "ns_per_prediction": 200.83333333333334
+    },
+    {
+      "sample": 16,
+      "batch_size": 128,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1999458,
+      "ns_per_prediction": 4443.24
+    },
+    {
+      "sample": 16,
+      "batch_size": 450,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1899916,
+      "ns_per_prediction": 4222.035555555555
+    },
+    {
+      "sample": 16,
+      "batch_size": 450,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 66791,
+      "ns_per_prediction": 148.42444444444445
+    },
+    {
+      "sample": 16,
+      "batch_size": 450,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 153833,
+      "ns_per_prediction": 341.8511111111111
+    },
+    {
+      "sample": 16,
+      "batch_size": 450,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 95583,
+      "ns_per_prediction": 212.40666666666667
+    },
+    {
+      "sample": 16,
+      "batch_size": 450,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 56208,
+      "ns_per_prediction": 124.90666666666667
+    },
+    {
+      "sample": 16,
+      "batch_size": 450,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 354042,
+      "ns_per_prediction": 786.76
+    },
+    {
+      "sample": 17,
+      "batch_size": 8,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 411417,
+      "ns_per_prediction": 914.26
+    },
+    {
+      "sample": 17,
+      "batch_size": 8,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 456167,
+      "ns_per_prediction": 1013.7044444444444
+    },
+    {
+      "sample": 17,
+      "batch_size": 8,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 634292,
+      "ns_per_prediction": 1409.5377777777778
+    },
+    {
+      "sample": 17,
+      "batch_size": 8,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 375458,
+      "ns_per_prediction": 834.3511111111111
+    },
+    {
+      "sample": 17,
+      "batch_size": 8,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2025917,
+      "ns_per_prediction": 4502.037777777778
+    },
+    {
+      "sample": 17,
+      "batch_size": 8,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 1944542,
+      "ns_per_prediction": 4321.204444444445
+    },
+    {
+      "sample": 17,
+      "batch_size": 32,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 228292,
+      "ns_per_prediction": 507.31555555555553
+    },
+    {
+      "sample": 17,
+      "batch_size": 32,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 231417,
+      "ns_per_prediction": 514.26
+    },
+    {
+      "sample": 17,
+      "batch_size": 32,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 424959,
+      "ns_per_prediction": 944.3533333333334
+    },
+    {
+      "sample": 17,
+      "batch_size": 32,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 559583,
+      "ns_per_prediction": 1243.5177777777778
+    },
+    {
+      "sample": 17,
+      "batch_size": 32,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 142708,
+      "ns_per_prediction": 317.12888888888887
+    },
+    {
+      "sample": 17,
+      "batch_size": 32,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1927625,
+      "ns_per_prediction": 4283.611111111111
+    },
+    {
+      "sample": 17,
+      "batch_size": 128,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1926208,
+      "ns_per_prediction": 4280.462222222222
+    },
+    {
+      "sample": 17,
+      "batch_size": 128,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 99375,
+      "ns_per_prediction": 220.83333333333334
+    },
+    {
+      "sample": 17,
+      "batch_size": 128,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 169375,
+      "ns_per_prediction": 376.3888888888889
+    },
+    {
+      "sample": 17,
+      "batch_size": 128,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 211000,
+      "ns_per_prediction": 468.8888888888889
+    },
+    {
+      "sample": 17,
+      "batch_size": 128,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 90292,
+      "ns_per_prediction": 200.64888888888888
+    },
+    {
+      "sample": 17,
+      "batch_size": 128,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 364166,
+      "ns_per_prediction": 809.2577777777777
+    },
+    {
+      "sample": 17,
+      "batch_size": 450,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 63000,
+      "ns_per_prediction": 140.0
+    },
+    {
+      "sample": 17,
+      "batch_size": 450,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1979791,
+      "ns_per_prediction": 4399.535555555555
+    },
+    {
+      "sample": 17,
+      "batch_size": 450,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 158167,
+      "ns_per_prediction": 351.4822222222222
+    },
+    {
+      "sample": 17,
+      "batch_size": 450,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 94375,
+      "ns_per_prediction": 209.72222222222223
+    },
+    {
+      "sample": 17,
+      "batch_size": 450,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 354042,
+      "ns_per_prediction": 786.76
+    },
+    {
+      "sample": 17,
+      "batch_size": 450,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 57583,
+      "ns_per_prediction": 127.96222222222222
+    },
+    {
+      "sample": 17,
+      "batch_size": 1,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2492459,
+      "ns_per_prediction": 5538.797777777778
+    },
+    {
+      "sample": 17,
+      "batch_size": 1,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2558500,
+      "ns_per_prediction": 5685.555555555556
+    },
+    {
+      "sample": 17,
+      "batch_size": 1,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 2648166,
+      "ns_per_prediction": 5884.8133333333335
+    },
+    {
+      "sample": 17,
+      "batch_size": 1,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2239292,
+      "ns_per_prediction": 4976.204444444445
+    },
+    {
+      "sample": 17,
+      "batch_size": 1,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 14137167,
+      "ns_per_prediction": 31415.926666666666
+    },
+    {
+      "sample": 17,
+      "batch_size": 1,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2673583,
+      "ns_per_prediction": 5941.295555555555
+    },
+    {
+      "sample": 18,
+      "batch_size": 32,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1982667,
+      "ns_per_prediction": 4405.926666666666
+    },
+    {
+      "sample": 18,
+      "batch_size": 32,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 196167,
+      "ns_per_prediction": 435.9266666666667
+    },
+    {
+      "sample": 18,
+      "batch_size": 32,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 242542,
+      "ns_per_prediction": 538.9822222222223
+    },
+    {
+      "sample": 18,
+      "batch_size": 32,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 581208,
+      "ns_per_prediction": 1291.5733333333333
+    },
+    {
+      "sample": 18,
+      "batch_size": 32,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 142417,
+      "ns_per_prediction": 316.4822222222222
+    },
+    {
+      "sample": 18,
+      "batch_size": 32,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 468042,
+      "ns_per_prediction": 1040.0933333333332
+    },
+    {
+      "sample": 18,
+      "batch_size": 128,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 96666,
+      "ns_per_prediction": 214.81333333333333
+    },
+    {
+      "sample": 18,
+      "batch_size": 128,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1899541,
+      "ns_per_prediction": 4221.202222222222
+    },
+    {
+      "sample": 18,
+      "batch_size": 128,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 172791,
+      "ns_per_prediction": 383.98
+    },
+    {
+      "sample": 18,
+      "batch_size": 128,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 201042,
+      "ns_per_prediction": 446.76
+    },
+    {
+      "sample": 18,
+      "batch_size": 128,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 365416,
+      "ns_per_prediction": 812.0355555555556
+    },
+    {
+      "sample": 18,
+      "batch_size": 128,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 88542,
+      "ns_per_prediction": 196.76
+    },
+    {
+      "sample": 18,
+      "batch_size": 450,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 62875,
+      "ns_per_prediction": 139.72222222222223
+    },
+    {
+      "sample": 18,
+      "batch_size": 450,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 55166,
+      "ns_per_prediction": 122.5911111111111
+    },
+    {
+      "sample": 18,
+      "batch_size": 450,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1930416,
+      "ns_per_prediction": 4289.8133333333335
+    },
+    {
+      "sample": 18,
+      "batch_size": 450,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 157000,
+      "ns_per_prediction": 348.8888888888889
+    },
+    {
+      "sample": 18,
+      "batch_size": 450,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 341333,
+      "ns_per_prediction": 758.5177777777777
+    },
+    {
+      "sample": 18,
+      "batch_size": 450,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 99041,
+      "ns_per_prediction": 220.0911111111111
+    },
+    {
+      "sample": 18,
+      "batch_size": 1,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2462250,
+      "ns_per_prediction": 5471.666666666667
+    },
+    {
+      "sample": 18,
+      "batch_size": 1,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2547375,
+      "ns_per_prediction": 5660.833333333333
+    },
+    {
+      "sample": 18,
+      "batch_size": 1,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2663500,
+      "ns_per_prediction": 5918.888888888889
+    },
+    {
+      "sample": 18,
+      "batch_size": 1,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 2576959,
+      "ns_per_prediction": 5726.575555555555
+    },
+    {
+      "sample": 18,
+      "batch_size": 1,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2197417,
+      "ns_per_prediction": 4883.148888888889
+    },
+    {
+      "sample": 18,
+      "batch_size": 1,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 14178750,
+      "ns_per_prediction": 31508.333333333332
+    },
+    {
+      "sample": 18,
+      "batch_size": 8,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 416166,
+      "ns_per_prediction": 924.8133333333334
+    },
+    {
+      "sample": 18,
+      "batch_size": 8,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 447375,
+      "ns_per_prediction": 994.1666666666666
+    },
+    {
+      "sample": 18,
+      "batch_size": 8,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 666250,
+      "ns_per_prediction": 1480.5555555555557
+    },
+    {
+      "sample": 18,
+      "batch_size": 8,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 1813500,
+      "ns_per_prediction": 4030.0
+    },
+    {
+      "sample": 18,
+      "batch_size": 8,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 381250,
+      "ns_per_prediction": 847.2222222222222
+    },
+    {
+      "sample": 18,
+      "batch_size": 8,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1991375,
+      "ns_per_prediction": 4425.277777777777
+    },
+    {
+      "sample": 19,
+      "batch_size": 128,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 102667,
+      "ns_per_prediction": 228.14888888888888
+    },
+    {
+      "sample": 19,
+      "batch_size": 128,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 88792,
+      "ns_per_prediction": 197.31555555555556
+    },
+    {
+      "sample": 19,
+      "batch_size": 128,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1996875,
+      "ns_per_prediction": 4437.5
+    },
+    {
+      "sample": 19,
+      "batch_size": 128,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 198250,
+      "ns_per_prediction": 440.55555555555554
+    },
+    {
+      "sample": 19,
+      "batch_size": 128,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": 4,
+      "elapsed_ns": 360583,
+      "ns_per_prediction": 801.2955555555556
+    },
+    {
+      "sample": 19,
+      "batch_size": 128,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 4,
+      "c_forward_calls": null,
+      "elapsed_ns": 200041,
+      "ns_per_prediction": 444.53555555555556
+    },
+    {
+      "sample": 19,
+      "batch_size": 450,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 66167,
+      "ns_per_prediction": 147.0377777777778
+    },
+    {
+      "sample": 19,
+      "batch_size": 450,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 55500,
+      "ns_per_prediction": 123.33333333333333
+    },
+    {
+      "sample": 19,
+      "batch_size": 450,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 155875,
+      "ns_per_prediction": 346.3888888888889
+    },
+    {
+      "sample": 19,
+      "batch_size": 450,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1921708,
+      "ns_per_prediction": 4270.462222222222
+    },
+    {
+      "sample": 19,
+      "batch_size": 450,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": null,
+      "elapsed_ns": 92042,
+      "ns_per_prediction": 204.5377777777778
+    },
+    {
+      "sample": 19,
+      "batch_size": 450,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 1,
+      "c_forward_calls": 1,
+      "elapsed_ns": 344416,
+      "ns_per_prediction": 765.3688888888889
+    },
+    {
+      "sample": 19,
+      "batch_size": 1,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2419208,
+      "ns_per_prediction": 5376.017777777778
+    },
+    {
+      "sample": 19,
+      "batch_size": 1,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2531750,
+      "ns_per_prediction": 5626.111111111111
+    },
+    {
+      "sample": 19,
+      "batch_size": 1,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2715083,
+      "ns_per_prediction": 6033.517777777778
+    },
+    {
+      "sample": 19,
+      "batch_size": 1,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 13866250,
+      "ns_per_prediction": 30813.88888888889
+    },
+    {
+      "sample": 19,
+      "batch_size": 1,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": null,
+      "elapsed_ns": 2597375,
+      "ns_per_prediction": 5771.944444444444
+    },
+    {
+      "sample": 19,
+      "batch_size": 1,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 450,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2214250,
+      "ns_per_prediction": 4920.555555555556
+    },
+    {
+      "sample": 19,
+      "batch_size": 8,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 450,
+      "elapsed_ns": 1964625,
+      "ns_per_prediction": 4365.833333333333
+    },
+    {
+      "sample": 19,
+      "batch_size": 8,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 415292,
+      "ns_per_prediction": 922.8711111111111
+    },
+    {
+      "sample": 19,
+      "batch_size": 8,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 458125,
+      "ns_per_prediction": 1018.0555555555555
+    },
+    {
+      "sample": 19,
+      "batch_size": 8,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 1903417,
+      "ns_per_prediction": 4229.815555555556
+    },
+    {
+      "sample": 19,
+      "batch_size": 8,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": null,
+      "elapsed_ns": 396208,
+      "ns_per_prediction": 880.4622222222222
+    },
+    {
+      "sample": 19,
+      "batch_size": 8,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 57,
+      "c_forward_calls": 57,
+      "elapsed_ns": 672958,
+      "ns_per_prediction": 1495.4622222222222
+    },
+    {
+      "sample": 19,
+      "batch_size": 32,
+      "backend": "system_blas",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 196958,
+      "ns_per_prediction": 437.68444444444447
+    },
+    {
+      "sample": 19,
+      "batch_size": 32,
+      "backend": "c_single_loop_input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 450,
+      "elapsed_ns": 2034000,
+      "ns_per_prediction": 4520.0
+    },
+    {
+      "sample": 19,
+      "batch_size": 32,
+      "backend": "input_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 242500,
+      "ns_per_prediction": 538.8888888888889
+    },
+    {
+      "sample": 19,
+      "batch_size": 32,
+      "backend": "sklearn_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 600709,
+      "ns_per_prediction": 1334.908888888889
+    },
+    {
+      "sample": 19,
+      "batch_size": 32,
+      "backend": "output_first",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": 15,
+      "elapsed_ns": 434167,
+      "ns_per_prediction": 964.8155555555555
+    },
+    {
+      "sample": 19,
+      "batch_size": 32,
+      "backend": "numpy_batch",
+      "predictions": 450,
+      "adapter_calls": 15,
+      "c_forward_calls": null,
+      "elapsed_ns": 140500,
+      "ns_per_prediction": 312.22222222222223
+    }
+  ],
+  "versions": {
+    "python": "3.9.6",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "sklearn": "1.6.1"
+  },
+  "threadpools": [
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 1,
+      "prefix": "libopenblas",
+      "version": "0.3.23.dev",
+      "threading_layer": "pthreads",
+      "architecture": "armv8"
+    },
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 1,
+      "prefix": "libopenblas",
+      "version": "0.3.27",
+      "threading_layer": "pthreads",
+      "architecture": "neoversen1"
+    },
+    {
+      "user_api": "openmp",
+      "internal_api": "openmp",
+      "num_threads": 1,
+      "prefix": "libomp",
+      "version": null
+    }
+  ],
+  "c_blas": "Apple Accelerate CBLAS",
+  "c_single_thread": true
+}

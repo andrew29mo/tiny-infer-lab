@@ -1,5 +1,6 @@
 #include "tiny_infer.h"
 #include <float.h>
+#include <limits.h>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -39,6 +40,8 @@ int main(void) {
     }
     CHECK(ti_forward_batch(&m,x,3,6,h+1,6,y+1,3,(ti_kernel)99)==TI_INVALID);
     CHECK(ti_forward_batch(NULL,x,3,6,h+1,6,y+1,3,TI_INPUT_FIRST)==TI_INVALID);
+    if (ti_blas_available())
+        CHECK(ti_forward_batch(&m,x,(size_t)INT_MAX+1,6,h+1,6,y+1,3,TI_SYSTEM_BLAS)==TI_OVERFLOW);
     if (!ti_blas_available())
         CHECK(ti_forward_batch(&m,x,3,6,h+1,6,y+1,3,TI_SYSTEM_BLAS)==TI_UNSUPPORTED);
     w1[0]=-FLT_MAX; x[4]=FLT_MAX;

@@ -1,5 +1,7 @@
 """Report adversarial fixtures bypass hashes to challenge actual semantics."""
 import json
+from collections import Counter
+import math
 from pathlib import Path
 import shutil
 import sys
@@ -15,6 +17,19 @@ BASELINE=rm.ROOT/'results/published/digits-batch-20261014'
 class ReportTests(unittest.TestCase):
     def test_baseline(self):
         with threadpool_limits(limits=1):verify(BASELINE)
+
+    def test_primary_orders_are_balanced_in_actual_samples(self):
+        m=json.loads((BASELINE/'manifest.json').read_text())
+        for batch in m['batches']:
+            counts=Counter()
+            for i in range(m['runs']):
+                rows=json.loads((BASELINE/('run-%02d.json'%i)).read_text())['raw']
+                for sample in range(m['samples']):
+                    order=tuple(row['backend'] for row in rows if row['sample']==sample and
+                                row['batch_size']==batch and row['backend']!='c_single_loop_input_first')
+                    counts[order]+=1
+            self.assertEqual(len(counts),math.factorial(5))
+            self.assertEqual(set(counts.values()),{1})
 
     def test_corruption_rejected(self):
         defects=['tail','missing_batch','last_row','calls','timing','order','summary','source','threads','reference']

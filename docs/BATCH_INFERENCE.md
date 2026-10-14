@@ -101,4 +101,36 @@ inputs and one host do not establish universal superiority or cold-start latency
 
 ## Results
 
-The first complete matched-batch baseline will be recorded here after validation.
+Measured on Apple M5 Pro, source `32921e6`, with six fresh processes
+and 20 sweeps per backend/batch size/process. Values below are microseconds
+per image (median of process medians), including the common tail partitions.
+
+| Requested batch | C input_first | C system BLAS | NumPy reused buffers | sklearn | C single loop |
+| ---: | ---: | ---: | ---: | ---: | ---: |
+| 1 | 5.666 | 5.515 | 5.806 | 31.775 | 4.843 |
+| 8 | 1.051 | 0.948 | 0.869 | 4.257 | 4.470 |
+| 32 | 0.531 | 0.430 | 0.324 | 1.272 | 4.383 |
+| 128 | 0.396 | 0.219 | 0.186 | 0.472 | 4.348 |
+| 450 | 0.355 | 0.144 | 0.126 | 0.215 | 4.341 |
+
+The same handwritten `input_first` calculation improves by approximately **12.24×**
+at batch 450 relative to the simultaneously measured C single-image loop.
+C forward calls fall from 450 per sweep to one. The improvement includes
+amortized ctypes calls, slicing/collection and repeated validation; it is
+not a measurement of ctypes cost alone. Batch 1 is slower than the single
+adapter due to its matrix-shaped wrapper/softmax overhead. Batching is not
+automatically beneficial for an isolated image.
+
+Native SGEMM gains further matrix-matrix efficiency. NumPy remains faster
+than C system BLAS at the larger tested sizes on this host. This does not
+establish universal backend superiority; providers and validation differ.
+
+All selected batch sizes and backends score **438/450 = 97.33%**, with 100%
+class agreement with sklearn. Worst saved C/NumPy logit absolute error is
+`1.32437828e-05`; worst saved probability absolute error is `1.01327896e-06`.
+Elementwise combined tolerance passes; absolute maximum alone is not the acceptance rule.
+
+[Manifest, full process ranges and summaries](../results/published/digits-batch-20261014/manifest.json),
+[all numerical outputs](../results/published/digits-batch-20261014/correctness.json)
+and six `run-*.json` files preserve the evidence. The strided `output_first`
+backend is also recorded there, including regressions; it is not omitted from testing.
