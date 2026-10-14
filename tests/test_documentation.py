@@ -24,10 +24,11 @@ class DocumentationTests(unittest.TestCase):
                ('docs/REAL_MODEL.md','| 4.746 |','| 0.001 |'),
                ('docs/BATCH_INFERENCE.md','| 450 | 0.366 |','| 450 | 0.001 |'),
                ('docs/BATCH_INFERENCE.md','source `1743574`','source `0000000`'),
-               ('docs/PROVIDER_COMPARISON.md','| 450 | 0.365 |','| 450 | 0.001 |'),
+               ('docs/PROVIDER_COMPARISON.md','| 450 | 0.369 |','| 450 | 0.001 |'),
                ('docs/PROVIDER_COMPARISON.md','| onnxruntime | 9944 | 80192288 |',
                    '| onnxruntime | 9944 | 0 |'),
-               ('README.md','**60.375 MiB**','**0.375 MiB**'),
+               ('README.md','**60.344 MiB**','**0.344 MiB**'),
+               ('docs/PROVIDER_COMPARISON_ORIGINAL.md','| 450 | 0.365 |','| 450 | 0.001 |'),
                ('README.md','](LICENSE)','](MISSING_LICENSE)')]
         with tempfile.TemporaryDirectory() as temp:
             root=Path(temp)

@@ -105,6 +105,17 @@ it does not relabel earlier timings as new-provider measurements.
 The repository remains Private. Remote CI and visibility are verified separately
 after the final evidence commit; this entry does not attest to an unobserved run.
 
+## Provider follow-up review — 2026-10-14
+
+The [provider review](PROVIDER_REVIEW.md) documents independently reproduced
+Softmax-axis and balanced deployment-total validation gaps, and the original
+post-validation RSS phase. Reviewed v2 evidence at `c7ff4ea` adds strict graph
+identity, actual input observations in each timing process, phased RSS and raw
+per-file deployment records. Native libraries, model and input artifacts remain
+byte-identical to the original provider measurement. All fourteen numerical tables
+retain their own source/protocol attribution; no historical timings were relabeled.
+Repository visibility and remote CI are checked separately after upload.
+
 ## Initial findings corrected
 
 1. **An empty evidence report could pass verification.** The verifier now rejects
