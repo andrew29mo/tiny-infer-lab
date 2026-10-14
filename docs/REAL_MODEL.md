@@ -86,4 +86,32 @@ consistency/provenance checking, not cryptographic proof of honest timing.
 
 ## Measured baseline
 
-Raw evidence and the measured per-API table are added after the first complete run.
+Measured on Apple M5 Pro, single-thread numerical providers, source revision
+`e1228bf`. Median of six process medians; each process uses 12 complete sweeps.
+All values below are microseconds per image, including the API work described above.
+
+| API | Median µs/image | Process median range |
+| --- | ---: | ---: |
+| C `output_first` + ctypes + softmax | 3.228 | 3.205–3.267 |
+| C `input_first` + ctypes + softmax | 2.878 | 2.818–2.939 |
+| C system BLAS + ctypes + softmax | 2.714 | 2.661–2.753 |
+| sklearn `predict_proba`, one image per call | 32.271 | 31.821–32.849 |
+| sklearn `predict_proba`, 450 images per call (amortized) | 0.216 | 0.205–0.223 |
+
+The single-image C adapter has lower overhead for this small model. sklearn batch
+throughput is substantially higher than looping over the single-image C API.
+These observations do not establish that the C numerical kernel outperforms
+sklearn's BLAS, nor do they compare equal batch APIs.
+
+All backends score 438/450 (97.33%) with 100% class agreement. Maximum absolute
+logit error against the float64 oracle is approximately `1.04e-5` for handwritten
+kernels and `1.32e-5` for system BLAS; the combined absolute/relative tolerance
+passes elementwise. Maximum probability error against sklearn is approximately
+`1.02e-6` (handwritten), and zero on this host's system BLAS path. Zero here does
+not imply bitwise equality on other providers.
+
+[Manifest and timing summaries](../results/published/digits-20261014/manifest.json),
+[all numerical outputs/confusion matrices](../results/published/digits-20261014/correctness.json),
+and six `run-*.json` files retain the raw measurements. Report corruption tests
+recompute references and summaries and reject altered probabilities, accuracy,
+missing samples and inconsistent timings even after file hashes are updated.

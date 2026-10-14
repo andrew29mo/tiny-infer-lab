@@ -70,10 +70,11 @@ that no unknown secret format exists. GitHub identity plus benchmark hardware,
 OS and timestamps are intentional provenance. Local experiments remain excluded
 from Git. No private data was found requiring a history rewrite.
 
-Performance evidence remains one warm synthetic suite on one host, with batch-mean
+The initial review covered one warm synthetic suite on one host, with batch-mean
 latencies and process ranges rather than per-call tails or confidence intervals.
-The code does not claim trained-model accuracy, hardware-board validation or
-universal superiority over BLAS. The evidence verifier checks consistency and
+A subsequent [real-model extension](REAL_MODEL.md) separately validates a trained
+digits classifier. Neither suite claims hardware-board validation or universal
+superiority over BLAS. The evidence verifier checks consistency and
 provenance; it is not cryptographic attestation that timings cannot be fabricated.
 
 Public visibility remains an explicit owner decision. The subsequent MIT

@@ -30,6 +30,9 @@ def verify(directory):
     reference = clf.predict_proba(x)
     rm.require(np.allclose(reference, checks['reference_probabilities'], atol=rm.ATOL, rtol=rm.RTOL),
                'stored sklearn reference mismatch')
+    # Historical error magnitudes use the recorded reference; regenerated vendor
+    # float32 results may differ by a few ULPs across platforms/providers.
+    reference = np.array(checks['reference_probabilities'])
     w1, w2 = [a.ravel().tolist() for a in clf.coefs_]
     b1, b2 = [a.tolist() for a in clf.intercepts_]
     logits = np.array([rm.oracle(row.tolist(), w1, b1, w2, b2, 32, 10) for row in x])

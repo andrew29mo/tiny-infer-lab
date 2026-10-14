@@ -1,0 +1,184 @@
+{
+  "schema": 1,
+  "created_utc": "2026-10-14T05:41:17.952018+00:00",
+  "source_revision": "e1228bf02a220899a93a41cbae0831b64ca5b595",
+  "sources": {
+    "tools/real_model.py": "081be1255da095cd1edca0db6d6ade5f5e82fba14bf808cc714de85c49f16cea",
+    "tests/test_reference.py": "11a0f0583292f66a4a0ccef815ad11369cb7c7bcac0c1010b430bc1681e6b0e0",
+    "src/tiny_infer.c": "16afde5e47ac1eb6da9e9abc81e1f667c745afd3caad60b429d5bef331b1f8a4",
+    "src/blas_backend.c": "fcde7325189bf4df0b8d3f77973d7aa43a4e3bb42460e3a0a8fa3f16b6b2fa1c",
+    "src/blas_backend.h": "7d386bc48579c894c3f12730b85144c5e237aa0dd0f3aff7d0465a7729f81995",
+    "include/tiny_infer.h": "6f38972278709e9f33fdda4b242aac7dbde742e149c876d50078129510741c22",
+    "Makefile": "cbae0f1737e59eff2dda3d04a5b449df3dbdbb4291541a6fecb32548f73d92ae",
+    "requirements-real-model.txt": "95fa829941cb048ce16f5f406f6b38631ee87c03082db25ab070c8fd623603e2",
+    "models/digits/model.json": "c9a23808427cfe2f8b13002d8154442d5a3f21d66f4116fd1268f9b9054f08e8",
+    "tools/verify_real_model.py": "6fea2d56fb1d2cd07fd263d65a145ba28bfc7aa1e2d6d8c1410821cb51bbb086",
+    "tests/test_real_model.py": "c3e986aafe1179ed42cc8a735d48ad625c622229f7abdfe960b49f4d6da86f7f",
+    "tests/test_real_report.py": "8c9bddba7c119d9950a92d9f3416da5fd62ccb35b1ae31c0b962106ab518c632"
+  },
+  "library_sha256": "247826643b703eaa462bb4b492b384e55d6509b267599721d8402de1a8261489",
+  "build_metadata": {
+    "commands": [
+      [
+        "cc",
+        "-Iinclude",
+        "-std=c11",
+        "-O3",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-ffp-contract=off",
+        "-fPIC",
+        "-DTI_ENABLE_BLAS",
+        "-DACCELERATE_NEW_LAPACK",
+        "-c",
+        "src/tiny_infer.c",
+        "-o",
+        "build/real_tiny_infer.o"
+      ],
+      [
+        "cc",
+        "-Iinclude",
+        "-std=c11",
+        "-O3",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-ffp-contract=off",
+        "-fPIC",
+        "-DTI_ENABLE_BLAS",
+        "-DACCELERATE_NEW_LAPACK",
+        "-c",
+        "src/blas_backend.c",
+        "-o",
+        "build/real_blas_backend.o"
+      ],
+      [
+        "cc",
+        "-shared",
+        "build/real_tiny_infer.o",
+        "build/real_blas_backend.o",
+        "-framework",
+        "Accelerate",
+        "-lm",
+        "-o",
+        "build/real_engine.so"
+      ],
+      [
+        "cc",
+        "-Iinclude",
+        "-std=c11",
+        "-O3",
+        "-DTI_ENABLE_BLAS",
+        "-DACCELERATE_NEW_LAPACK",
+        "tests/test_engine.c",
+        "build/real_tiny_infer.o",
+        "build/real_blas_backend.o",
+        "-framework",
+        "Accelerate",
+        "-lm",
+        "-o",
+        "build/real_test_engine"
+      ]
+    ],
+    "compiler": "Apple clang version 21.0.0 (clang-2100.3.34.2)",
+    "objects": {
+      "build/real_tiny_infer.o": "b9f13555f2df881631719bcbda2fa98d82f797bd3d5720aa419af91f05ceab7d",
+      "build/real_blas_backend.o": "66ff6670b97474acfff3b2594c6b116fb8313e3b6e680b4f69a43f9bf6620bb7"
+    },
+    "library_sha256": "247826643b703eaa462bb4b492b384e55d6509b267599721d8402de1a8261489",
+    "sources": {
+      "src/tiny_infer.c": "16afde5e47ac1eb6da9e9abc81e1f667c745afd3caad60b429d5bef331b1f8a4",
+      "src/blas_backend.c": "fcde7325189bf4df0b8d3f77973d7aa43a4e3bb42460e3a0a8fa3f16b6b2fa1c",
+      "src/blas_backend.h": "7d386bc48579c894c3f12730b85144c5e237aa0dd0f3aff7d0465a7729f81995",
+      "include/tiny_infer.h": "6f38972278709e9f33fdda4b242aac7dbde742e149c876d50078129510741c22",
+      "tools/real_model.py": "081be1255da095cd1edca0db6d6ade5f5e82fba14bf808cc714de85c49f16cea"
+    }
+  },
+  "platform": {
+    "system": "Darwin",
+    "release": "27.0.0",
+    "machine": "arm64",
+    "cpu": "Apple M5 Pro"
+  },
+  "runs": 6,
+  "samples": 12,
+  "summaries": {
+    "input_first": {
+      "median_ns": 2878.1949999999997,
+      "process_medians_ns": [
+        2938.9355555555558,
+        2817.9155555555553,
+        2880.6022222222223,
+        2896.0655555555554,
+        2875.7877777777776,
+        2868.0555555555557
+      ],
+      "min_process_median_ns": 2817.9155555555553,
+      "max_process_median_ns": 2938.9355555555558
+    },
+    "output_first": {
+      "median_ns": 3227.755,
+      "process_medians_ns": [
+        3204.8611111111113,
+        3204.63,
+        3233.89,
+        3259.4444444444443,
+        3267.13,
+        3221.62
+      ],
+      "min_process_median_ns": 3204.63,
+      "max_process_median_ns": 3267.13
+    },
+    "sklearn_batch": {
+      "median_ns": 216.20333333333332,
+      "process_medians_ns": [
+        222.91666666666669,
+        216.20333333333332,
+        204.72222222222223,
+        221.0188888888889,
+        211.48222222222222,
+        216.20333333333332
+      ],
+      "min_process_median_ns": 204.72222222222223,
+      "max_process_median_ns": 222.91666666666669
+    },
+    "sklearn_single": {
+      "median_ns": 32271.088333333333,
+      "process_medians_ns": [
+        32849.258888888886,
+        32251.48222222222,
+        31821.065555555557,
+        32413.056666666667,
+        32177.731111111112,
+        32290.694444444445
+      ],
+      "min_process_median_ns": 31821.065555555557,
+      "max_process_median_ns": 32849.258888888886
+    },
+    "system_blas": {
+      "median_ns": 2714.2355555555555,
+      "process_medians_ns": [
+        2744.9533333333334,
+        2660.7411111111114,
+        2693.333333333333,
+        2753.1944444444443,
+        2735.137777777778,
+        2671.481111111111
+      ],
+      "min_process_median_ns": 2660.7411111111114,
+      "max_process_median_ns": 2753.1944444444443
+    }
+  },
+  "files": {
+    "run-05.json": "61bbc882c9383f3d2ba0d7440628e21bef39d1b02373740333698ee5423b205d",
+    "run-04.json": "0e215ae2e810751806e274123ace73cd83d47648b795db7514f5afab20fb3507",
+    "correctness.json": "0a3564c3f3980155e4bf7c34ae11ff0a583dcee3d31e7b7f139870a19dad8a3e",
+    "run-03.json": "06dd0e12cca4b2b8fcf855b1434139f88dc17abdaf124f723e1fba34890da0d9",
+    "run-02.json": "1a710b80d4c1f2e86daef359abb6a6cdef44d732e469c0d833d3c8f227511e1c",
+    "run-01.json": "98d833e64f9a7e95f134e208c245d29d8a339e5860c4e41c437f63abf11d16a4",
+    "run-00.json": "92b81b7cb7e3b5ea2ddd47a50d5de48d6ff527b20467a378cce47d0281a1a37b"
+  }
+}
