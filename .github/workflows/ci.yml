@@ -18,6 +18,8 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0 # Historical benchmark source snapshots must be available.
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version: '3.12'
@@ -28,6 +30,8 @@ jobs:
         run: make BLAS=${{ matrix.blas }} demo test sanitize mutation
       - name: Build option regression
         run: make build-check
+      - name: Publication history and archived measurement audit
+        run: make publication-check
       - name: Benchmark smoke test (not a performance gate)
         run: python3 tools/run_benchmark.py --blas ${{ matrix.blas }} --runs 1 --samples 6 --repetitions 1024 --shapes 8x16x4,31x17x9
       - name: Retain raw smoke-test measurements

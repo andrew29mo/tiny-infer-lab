@@ -23,7 +23,8 @@ Times are microseconds per inference, computed from batch averages.
 | 1024→1024→256 | 1286.855 | 73.873 | 12.172 | 17.42× | 6.07× |
 | 1024→64→1024 | 72.188 | 9.175 | 2.481 | 7.87× | 3.70× |
 
-A BLAS/input_first speedup below one means input_first was faster. The smallest
+The ratio is `input_first latency / BLAS latency`; below one means input_first
+was faster. The smallest
 case is only about 7% apart in this run; this is a local overhead-sensitive
 comparison, not a universal crossover threshold.
 
@@ -56,6 +57,10 @@ These observed min/max ranges are not confidence intervals.
 | 1024x64x1024 | 7.682–7.997 | 3.687–3.725 |
 
 ## Reproduce and inspect
+
+Use a full Git clone so the measured source revision is available. The stored
+results remain an immutable measurement of `2d95f10`; later validation or
+documentation changes do not turn them into a new benchmark of a newer revision.
 
 ```sh
 make BLAS=1 test sanitize mutation

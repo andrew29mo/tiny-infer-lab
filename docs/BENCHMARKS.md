@@ -29,6 +29,8 @@ There is no silent fallback to the handwritten kernels. A confirmed threading
 policy is not a trace of every internal vendor instruction or helper activity.
 The handwritten engine allocates no heap; no equivalent claim is made about
 vendor BLAS internals, especially during first use.
+Accelerate's threading policy applies to the calling thread; OpenBLAS thread
+configuration is process-wide. Configure it before concurrent work begins.
 
 ## Workloads
 
@@ -74,6 +76,14 @@ This bound is a tested acceptance criterion, not a proof for all possible inputs
 7. Retain per-process CSV, combined per-shape CSV, source/object/executable hashes,
    compiler commands, provider linkage, queried thread policy, reference outputs,
    per-process statistics and order-specific matched ratios.
+
+The publication verifier requires complete manifests, workloads and process
+counts; it regenerates deterministic oracle outputs, validates recorded commands,
+timer metadata and memory footprints, and recomputes statistics from CSV. Clean
+historical runs use their recorded Git source blobs for hash checks, so a full
+Git history is required. Uncommitted runs can only check the matching current
+source files. Source hashes and consistency checks do not attest that timing
+data could never be fabricated; inspect provenance and reproduce the experiment.
 
 Median/p95/p99 summarize **batch-average latency**, not individual-call tail
 latency. Ratios of pooled medians differ from medians of matched ratios. A ratio

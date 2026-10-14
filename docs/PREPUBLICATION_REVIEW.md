@@ -1,0 +1,75 @@
+# Pre-publication review — 2026-10-14
+
+This review covers production code, tests, documentation, archived performance
+claims, tracked files and reachable Git history. The repository remains Private;
+no open-source license has been selected or granted.
+
+## Findings corrected
+
+1. **An empty evidence report could pass verification.** The verifier now rejects
+   missing schemas/manifests/workloads, omitted or duplicate runs, inconsistent
+   shapes/backends, incorrect command/timer/memory metadata and incomplete raw
+   data. Stored reference outputs are regenerated from the deterministic inputs
+   instead of being trusted as authoritative answers.
+2. **Archived source checks depended on the current working tree.** Historical
+   clean reports are now checked against the recorded Git source blobs. Full
+   history is fetched in CI. Uncommitted reports can only validate their matching
+   current files. Archived timings remain attributed to their measured revision.
+3. **The public allocation contract was too broad.** The header now limits the
+   no-heap claim to handwritten kernels and explicitly excludes vendor BLAS
+   internals. It documents valid-pointer/count obligations, immutable model state,
+   buffer separation and the scope of BLAS threading configuration.
+4. **Optional metadata tools could unexpectedly abort a benchmark.** A missing
+   optional executable now produces unavailable metadata. Reports describe actual
+   C flags rather than unconditionally claiming contraction is off for every
+   user-supplied flag set. Disabled BLAS is labeled as disabled.
+5. **Publication checks were manual and future local files lacked ignore rules.**
+   A repeatable guard now scans tracked files and every historical file path in
+   reachable commits, including deleted files whose blobs were reused elsewhere.
+   Known credential/key files and local working agreements/account settings are
+   ignored. The guard does not print matched secret values.
+
+## Validation
+
+- C hand-derived/non-square results, boundary/error paths and buffer guards.
+- 106 shapes per enabled backend, normal Python and `python -O`.
+- ASan/UBSan on production C; vendor BLAS internals are not instrumented.
+- Four handwritten-kernel mutations and the optional BLAS scaling mutation are
+  rejected numerically under both Python modes.
+- Synthetic publication regression fixtures reject empty/incomplete reports,
+  forged or non-finite reference outputs, missing processes, incorrect metadata
+  and source mismatches. A deleted local-only path is detected even when its
+  content is reused by a harmless file in a later commit.
+- New two-backend and three-backend smoke runs verify the updated runner and
+  persisted-report checks. These smoke timings are not added to the baseline.
+- The archived six-shape data was checked against its original source snapshot,
+  regenerated references, all saved final-output vectors and recomputed per-run
+  and pooled statistics. Maximum saved-output absolute error is approximately
+  `7.5314e-7`. Shape-dependent speedup claims and the ratio direction were checked.
+- Reviewed C engine and BLAS-adapter objects, built with the archived flags, are
+  byte-identical to the archived object hashes. This review does not relabel or
+  replace the historical performance measurements.
+- Relative documentation links resolve. Git author identities use GitHub noreply
+  addresses. The reviewed tree/history contained no matching personal home paths,
+  known token/private-key formats, local agreements/review logs or compiled binaries.
+
+The [CI matrix](https://github.com/andrew29mo/tiny-infer-lab/actions/workflows/ci.yml)
+checks macOS/Linux with BLAS enabled and disabled, including the historical
+measurement and publication guard. Its timings are not performance gates.
+
+## Scope and remaining decisions
+
+The privacy guard covers known patterns and tracked/reachable repository content;
+it is not an exhaustive secret detector, an audit of unrelated accounts, or proof
+that no unknown secret format exists. GitHub identity plus benchmark hardware,
+OS and timestamps are intentional provenance. Local experiments remain excluded
+from Git. No private data was found requiring a history rewrite.
+
+Performance evidence remains one warm synthetic suite on one host, with batch-mean
+latencies and process ranges rather than per-call tails or confidence intervals.
+The code does not claim trained-model accuracy, hardware-board validation or
+universal superiority over BLAS. The evidence verifier checks consistency and
+provenance; it is not cryptographic attestation that timings cannot be fabricated.
+
+Visibility and licensing remain explicit owner decisions. This review does not
+publish the repository or introduce a license.

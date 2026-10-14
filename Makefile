@@ -17,7 +17,7 @@ ifeq ($(BLAS),1)
   endif
 endif
 
-.PHONY: all demo test sanitize mutation build-check bench clean FORCE
+.PHONY: all demo test sanitize mutation build-check publication-check bench clean FORCE
 all: $(BUILD)/test_engine $(BUILD)/libtiny_infer.so $(BUILD)/benchmark $(BUILD)/demo
 $(BUILD):
 	mkdir -p $@
@@ -42,6 +42,8 @@ test: $(BUILD)/test_engine $(BUILD)/libtiny_infer.so
 	$(PYTHON) tests/check_no_heap.py $(BUILD)/tiny_infer.o
 	$(PYTHON) tests/test_reporting.py
 	$(PYTHON) -O tests/test_reporting.py
+	$(PYTHON) tests/test_publication.py
+	$(PYTHON) -O tests/test_publication.py
 sanitize: | $(BUILD)
 	$(CC) $(CPPFLAGS) -std=c11 -O1 -g -Wall -Wextra -Wpedantic -Werror -ffp-contract=off -fsanitize=address,undefined -fno-omit-frame-pointer tests/test_engine.c $(ENGINE) $(LDLIBS) -lm -o $(BUILD)/test_sanitize
 	UBSAN_OPTIONS=halt_on_error=1 ./$(BUILD)/test_sanitize
@@ -49,6 +51,9 @@ mutation: | $(BUILD)
 	$(PYTHON) tests/test_mutations.py --cc "$(CC)" --blas $(BLAS)
 build-check:
 	$(PYTHON) tests/check_build_flags.py --cc "$(CC)"
+publication-check:
+	$(PYTHON) tools/check_publication.py
+	$(PYTHON) tools/verify_report.py results/published/apple-m5-pro-20261014
 bench:
 	$(PYTHON) tools/run_benchmark.py --cc "$(CC)" --cflags "$(CFLAGS)" --blas $(BLAS)
 clean:

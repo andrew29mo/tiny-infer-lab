@@ -5,3 +5,18 @@ __pycache__/
 # Local experiments/review notes stay local; publish only selected evidence.
 /results/*
 !/results/published/
+# Personal working agreements, account settings and credentials stay local.
+/AGENTS.md
+/.codex/
+/.agents/
+/.aws/
+/.ssh/
+/codex-notes/
+/backups/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx

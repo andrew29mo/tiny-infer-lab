@@ -10,7 +10,8 @@ typedef enum {
 } ti_status;
 typedef enum { TI_OUTPUT_FIRST = 0, TI_INPUT_FIRST = 1, TI_SYSTEM_BLAS = 2 } ti_kernel;
 
-/* Configure BLAS once on the calling thread, outside timed inference. */
+/* Configure BLAS before inference, outside timing. Accelerate policy applies
+ * to the calling thread; OpenBLAS thread configuration is process-wide. */
 int ti_blas_available(void);
 ti_status ti_blas_configure(void);
 int ti_blas_is_single_threaded(void);
@@ -31,7 +32,11 @@ ti_status ti_model_init(ti_model *model, size_t input_dim, size_t hidden_dim,
                        const float *b2, size_t b2_count);
 
 /* Single vector: y = ReLU(x W1 + b1) W2 + b2.
- * No heap allocation. Workspace and output must be disjoint from one another,
+ * Model must be initialized by ti_model_init and not modified by the caller.
+ * Counts must describe valid live float arrays; raw pointer validity cannot
+ * be established by this C API. Buffers must not overlap the model object.
+ * The handwritten kernels allocate no heap; vendor BLAS internals may allocate.
+ * Workspace and output must be disjoint from one another,
  * input, and all weights. On failure workspace/output can be partially written.
  * Concurrent calls require separate workspace/output; weights can be shared. */
 ti_status ti_forward(const ti_model *model, const float *input, size_t input_count,

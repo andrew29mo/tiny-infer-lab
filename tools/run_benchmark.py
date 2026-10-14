@@ -11,14 +11,13 @@ import os
 from pathlib import Path
 import platform
 import shlex
-import statistics
 import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tests"))
 from test_reference import Model, load, oracle
-from benchmark_stats import percentile, summarize, validate_samples
+from benchmark_stats import summarize, validate_samples
 from workloads import DEFAULT_SHAPES, KERNELS, arrays, compile_commands, parse_shapes, shape_name
 
 
@@ -27,7 +26,10 @@ def sha(path):
 
 
 def optional(command):
-    result = subprocess.run(command, capture_output=True, text=True)
+    try:
+        result = subprocess.run(command, capture_output=True, text=True)
+    except OSError:
+        return None
     return result.stdout.strip() if result.returncode == 0 else None
 
 
@@ -111,7 +113,7 @@ def main():
         "preflight_checks": logs,
         "blas": {"requested": bool(args.blas), "provider": lib.ti_blas_name().decode(),
                  "single_thread_confirmed": bool(lib.ti_blas_is_single_threaded()),
-                 "control": "BLASSetThreading/BLASGetThreading" if sys.platform == "darwin" else "OpenBLAS set/get_num_threads",
+                 "control": ("BLASSetThreading/BLASGetThreading" if sys.platform == "darwin" else "OpenBLAS set/get_num_threads") if args.blas else "disabled",
                  "linked_libraries": linked,
                  "internal_allocations": "not asserted; vendor BLAS may initialize/cache internally"},
         "method": {"runs_per_shape": args.runs, "samples_per_kernel_per_run": args.samples,
@@ -126,7 +128,8 @@ def main():
                    "validation": "all final output elements per batch plus accumulated checksum against independent oracle",
                    "percentiles": "nearest-rank distribution of batch-average latency; not per-call tail latency",
                    "weights": "same row-major buffers; BLAS sgemv transpose view, no prepacking or format conversion",
-                   "floating_point": "C contraction off; vendor BLAS may use FMA/reassociation; numerical tolerance, not bitwise equality",
+                   "c_compiler_flags": shlex.split(args.cflags),
+                   "floating_point": "Default C flags disable contraction; actual flags are recorded; vendor BLAS may use FMA/reassociation. Numerical tolerance, not bitwise equality.",
                    "limitations": "warm fixed synthetic data; no affinity/frequency control; process ranges are not confidence intervals"},
         "workloads": [],
     }

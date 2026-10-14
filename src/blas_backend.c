@@ -40,7 +40,7 @@ void ti_blas_dense(const float *x, const float *w, const float *b, float *y,
                    size_t in, size_t out) {
 #if defined(TI_ENABLE_BLAS)
     /* Same row-major weights as the C kernels: y = W^T x + bias.
-     * beta=1 includes the bias copy in the timed computation. No packing. */
+     * beta=1 includes the bias copy in timing. No application-side packing. */
     for (size_t j = 0; j < out; ++j) y[j] = b[j];
     cblas_sgemv(CblasRowMajor, CblasTrans, (int)in, (int)out,
                 1.0f, w, (int)out, x, 1, 1.0f, y, 1);

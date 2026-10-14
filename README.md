@@ -16,12 +16,13 @@ are scoped to the measured shapes, hardware, provider and threading policy.
 
 ## Quick start
 
-Requires a C11 compiler, Make and Python 3.9+. The default build has no external
+Requires a C11 compiler, Make, Python 3.9+ and Git for the test/publication tools. The default build has no external
 numerical dependency. Build tools support macOS and Linux.
 
 ```sh
 make demo
 make test sanitize mutation build-check
+make publication-check
 make bench
 ```
 
@@ -51,7 +52,8 @@ BLAS provider. No Python numerical package or model download is required.
 | `system_blas` | Native single-thread CBLAS `sgemv`, enabled with `BLAS=1` |
 
 Every backend uses the same input validation, bias, ReLU and finite-result checks.
-BLAS sees the same row-major weight buffers without packing or conversion.
+BLAS sees the same row-major buffers without application-side packing or conversion;
+vendor internals remain opaque.
 Thread configuration is set and queried before measurement. Vendor BLAS can use
 FMA or a different accumulation order; results must meet the same elementwise
 numerical tolerance, not bitwise equality.
@@ -62,7 +64,7 @@ a speedup on one shape is not advertised as a general engine speedup.
 
 ## Measured result
 
-On the Apple M5 Pro baseline, the loop-order gain ranges from **1.64× to 17.42×**
+On the archived Apple M5 Pro baseline (source revision `2d95f10`), the loop-order gain ranges from **1.64× to 17.42×**
 across six shapes; it is **5.50×** on the original 128→256→32 case. System BLAS
 is faster than input_first in **five of six** cases, including **1.84×** on the
 original case. The tiny 8→16→4 case slightly favors input_first.
@@ -91,6 +93,11 @@ Each run retains source/object/binary hashes, compiler/link commands, OS/CPU,
 queried BLAS thread policy, exact reference outputs, raw CSV and per-process
 statistics. The C tests, reference-test shared library and benchmark link the
 **same production objects**. The runner rejects source changes during a run.
+Archived reports are verified against their recorded Git source revision, not
+silently relabeled as a measurement of the current checkout. Use a full Git clone
+for `make publication-check`; a shallow clone must fetch the measured history.
+The verifier rejects incomplete suites/manifests and regenerates reference
+answers before checking all saved measurements and statistics.
 
 Six process rounds and all six backend permutations reduce fixed order bias;
 network order rotates too. All backends perform the same repetition count per
@@ -117,9 +124,13 @@ checks, never speed gates. See the [complete protocol](docs/BENCHMARKS.md).
   second layer, and wrong BLAS scaling when enabled.
 - Report corruption tests, including errors that cancel in the checksum, all
   three-backend permutations, and compiler-option rebuild regression.
+- Publication regressions reject empty reports, omitted process runs, forged
+  reference outputs, inconsistent metadata and missing raw-data hashes.
 
 The handwritten engine performs no heap allocation; caller-owned weights and
-workspace must remain valid. We check known allocator references in its object.
+workspace must remain valid and supplied counts must be truthful. Raw pointer
+validity cannot be established by this C API. We check known allocator references
+in the handwritten engine object.
 Vendor BLAS may allocate or cache internally; its first use is not presented as
 allocation-free. The library's public buffer and concurrency contracts are in
 [`include/tiny_infer.h`](include/tiny_infer.h).
@@ -141,5 +152,10 @@ checks macOS and Linux with BLAS enabled and disabled.
 
 ## Project status
 
+See the [pre-publication review and corrected findings](docs/PREPUBLICATION_REVIEW.md).
+
 This repository is being prepared for public review and currently has no selected
 open-source license. Do not assume a license grant. See [contribution guidance](CONTRIBUTING.md).
+The publication guard scans tracked files and reachable Git history for known
+credential/key patterns, personal home paths, local-only files and binaries;
+it is a targeted check, not an exhaustive security or secret audit.
