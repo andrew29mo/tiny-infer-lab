@@ -4,15 +4,16 @@ A small C inference engine and a reproducible CPU benchmark suite. It compares
 loop layouts and native system BLAS across network sizes, with independent
 numerical checks before accepting measurements.
 
-The workload is a synthetic two-layer float32 network:
+The synthetic benchmark workload is a two-layer float32 network:
 
 ```text
 hidden = ReLU(input × W1 + bias1)
 output = hidden × W2 + bias2
 ```
 
-This is an engineering experiment, not a trained AI model. Performance conclusions
-are scoped to the measured shapes, hardware, provider and threading policy.
+The synthetic suite uses generated weights. A separate [trained digits classifier](docs/REAL_MODEL.md)
+validates held-out accuracy and inference against scikit-learn. Performance conclusions
+are scoped to the measured workload, hardware, provider, API and threading policy.
 
 ## Quick start
 
@@ -61,6 +62,14 @@ numerical tolerance, not bitwise equality.
 The default suite covers **8→16→4, 31→17→9, 128→256→32, 256→512→64,
 1024→1024→256, and 1024→64→1024**. Results are reported separately per shape;
 a speedup on one shape is not advertised as a general engine speedup.
+
+## Real-model validation
+
+An optional 64→32→10 handwritten-digit classifier uses a fixed held-out split,
+trained weights and scikit-learn as a reference, plus an independent float64 oracle.
+It compares all enabled C backends on every test image and measures single-image
+Python APIs separately from sklearn batch throughput. See [setup, protocol and results](docs/REAL_MODEL.md).
+The default engine build and synthetic tests still require no numerical Python packages.
 
 ## Measured result
 
@@ -164,4 +173,5 @@ it is a targeted check, not an exhaustive security or secret audit.
 
 The project code and documentation are licensed under the [MIT License](LICENSE).
 Optional system BLAS libraries retain their own licenses; the MIT License does
-not relicense those dependencies. Selecting MIT does not change repository visibility.
+not relicense those dependencies. The real-model dataset retains its
+[CC BY 4.0 terms and attribution](models/digits/README.md). Selecting MIT does not change repository visibility.

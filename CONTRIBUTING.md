@@ -22,3 +22,9 @@ The project is licensed under the [MIT License](LICENSE). By submitting a
 contribution for inclusion, you agree to license it under MIT and confirm that
 you have the right to do so. Identify any third-party material and its original
 license; do not assume the project's license overrides dependency licenses.
+
+For the optional trained-model integration, install `requirements-real-model.txt`
+in an isolated environment and follow [the real-model checks](docs/REAL_MODEL.md).
+Keep model accuracy separate from engine numerical agreement and API timing.
+Never tune model parameters on the held-out test set or turn shared CI timing
+into a performance threshold. Preserve dataset attribution and dependency licenses.
