@@ -48,6 +48,8 @@ test: $(BUILD)/test_batch $(BUILD)/test_engine $(BUILD)/libtiny_infer.so
 	$(PYTHON) tests/test_reporting.py
 	$(PYTHON) -O tests/test_reporting.py
 	$(PYTHON) tests/test_publication.py
+	$(PYTHON) tests/test_documentation.py
+	$(PYTHON) -O tests/test_documentation.py
 	$(PYTHON) -O tests/test_publication.py
 sanitize: | $(BUILD)
 	$(CC) $(CPPFLAGS) -std=c11 -O1 -g -Wall -Wextra -Wpedantic -Werror -ffp-contract=off -fsanitize=address,undefined -fno-omit-frame-pointer tests/test_engine.c $(ENGINE) $(LDLIBS) -lm -o $(BUILD)/test_sanitize
@@ -60,6 +62,7 @@ build-check:
 	$(PYTHON) tests/check_build_flags.py --cc "$(CC)"
 publication-check:
 	$(PYTHON) tools/check_publication.py
+	$(PYTHON) tools/check_documentation.py
 	$(PYTHON) tools/verify_report.py results/published/apple-m5-pro-20261014
 bench:
 	$(PYTHON) tools/run_benchmark.py --cc "$(CC)" --cflags "$(CFLAGS)" --blas $(BLAS)

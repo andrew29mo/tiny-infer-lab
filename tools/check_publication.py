@@ -12,10 +12,16 @@ RULES = {
     "personal home path": re.compile(rb"/(?:Users|home)/[^/\s\"']+/"),
     "GitHub token": re.compile(rb"(?:gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{30,})"),
     "AWS access key": re.compile(rb"(?:AKIA|ASIA)[A-Z0-9]{16}"),
+    "URL credential": re.compile(rb"https?://[^\s/:]+:[^\s/@]+@"),
     "private key": re.compile(rb"-----BEGIN (?:[A-Z0-9 ]+ )?PRIVATE KEY-----"),
 }
 FORBIDDEN_PARTS = {".aws", ".ssh", ".codex", ".agents", "__pycache__", "codex-notes", "backups"}
-BINARY_MAGIC = (b"\x7fELF", b"\xcf\xfa\xed\xfe", b"\xfe\xed\xfa\xcf", b"\xca\xfe\xba\xbe")
+FORBIDDEN_NAMES = {'.netrc', '_netrc', '.npmrc', '.pypirc', '.git-credentials', '.gitconfig',
+                   '.ds_store', 'id_rsa', 'id_dsa', 'id_ecdsa', 'id_ed25519',
+                   'credentials.json', 'token.json', 'application_default_credentials.json'}
+BUILD_SUFFIXES = {'.o', '.obj', '.a', '.so', '.dylib', '.dll', '.exe', '.class', '.wasm',
+                  '.zip', '.tar', '.tgz', '.7z'}
+BINARY_MAGIC = (b'MZ', b'!<arch>\n', b'\x00asm', b"\x7fELF", b"\xcf\xfa\xed\xfe", b"\xfe\xed\xfa\xcf", b"\xca\xfe\xba\xbe")
 
 
 def findings(name, data):
@@ -23,6 +29,8 @@ def findings(name, data):
     issues = []
     if (any(part in FORBIDDEN_PARTS for part in path.parts) or path.name == "AGENTS.md"
             or path.parts[0] == "build" or (path.name.startswith(".env") and path.name != ".env.example")
+            or path.name.lower() in FORBIDDEN_NAMES or path.suffix.lower() in BUILD_SUFFIXES
+            or path.name.lower().endswith((".bak", ".swp", "~"))
             or path.suffix.lower() in {".pem", ".key", ".p12", ".pfx", ".pyc"}
             or (path.parts[0] == "results" and (len(path.parts) < 2 or path.parts[1] != "published"))):
         issues.append("local-only or credential file")

@@ -115,7 +115,12 @@ class PublicationChecks(unittest.TestCase):
                     ("results/local/log.txt", b"local"), ("src/a.c", ("/" + "Users/example/file").encode()),
                     ("notes.txt", ("gh" + "p_" + "x" * 36).encode()),
                     ("id.pem", ("-----BEGIN " + "PRIVATE KEY-----").encode()),
-                    ("a", b"\x7fELFcontent")]
+                    ("a", b"\x7fELFcontent"), (".netrc", b"machine example"),
+                    ("config/.npmrc", b"local"), ("credentials.json", b"{}"),
+                    ("id_ed25519", b"local"), ("obj/engine.o", b"artifact"),
+                    ("snapshot.zip", b"archive"), ("README.md.bak", b"copy"),
+                    ("payload", b"MZcontent"), ("lib", b"!<arch>\ncontent"),
+                    ("notes.txt", ("https" + "://name" + ":value" + "@example.invalid").encode())]
         for name, data in examples:
             self.assertTrue(findings(name, data), name)
         self.assertFalse(findings("src/a.c", b"int value = 0;"))

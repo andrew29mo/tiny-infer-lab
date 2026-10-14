@@ -18,7 +18,8 @@ are scoped to the measured workload, hardware, provider, API and threading polic
 ## Quick start
 
 Requires a C11 compiler, Make, Python 3.9+ and Git for the test/publication tools. The default build has no external
-numerical dependency. Build tools support macOS and Linux.
+numerical dependency. Build tools support macOS and Linux. Optional trained-model
+tools use pinned numerical packages on Python 3.9–3.12; see their setup guides.
 
 ```sh
 make demo
@@ -50,7 +51,7 @@ BLAS provider. No Python numerical package or model download is required.
 | --- | --- |
 | `output_first` | Accumulate each output column through the inputs |
 | `input_first` | Visit each input row and update contiguous outputs |
-| `system_blas` | Native single-thread CBLAS `sgemv`, enabled with `BLAS=1` |
+| `system_blas` | Native single-thread CBLAS: `sgemv` for vectors, `sgemm` for batches; `BLAS=1` |
 
 Every backend uses the same input validation, bias, ReLU and finite-result checks.
 BLAS sees the same row-major buffers without application-side packing or conversion;
@@ -82,7 +83,18 @@ compare batch sizes 1, 8, 32, 128 and 450 with NumPy and sklearn using the same
 call/validation and wrapper overhead affect batching. The [batch review](docs/BATCH_REVIEW.md)
 adds anti-stale tail checks and untimed observations of actual native inputs/calls.
 
-## Measured result
+## Latest reviewed measurements
+
+The held-out digits model scores **438/450 (97.33%)** with complete class agreement
+across the tested C backends and sklearn. On Apple M5 Pro, the batch-450 comparison
+(source `1743574`) measures **11.90×** versus the direct single-image control,
+with process ratios 11.53–12.27×. This is an end-to-end wrapper comparison that
+includes validation, collection and softmax; it does not isolate the Python/C
+crossing or native-kernel speed. NumPy remains faster than C BLAS at the larger
+tested batch sizes. See [all reviewed and historical tables](docs/BATCH_INFERENCE.md).
+The separate [single-image comparison](docs/REAL_MODEL.md) has its own API scope.
+
+## Archived synthetic measurements
 
 On the archived Apple M5 Pro baseline (source revision `2d95f10`), the loop-order gain ranges from **1.64× to 17.42×**
 across six shapes; it is **5.50×** on the original 128→256→32 case. System BLAS
@@ -163,17 +175,21 @@ src/              Engine and optional BLAS adapter
 examples/         Runnable inference demo
 tests/            Production-object, reference, mutation and reporting checks
 tools/            Deterministic workloads, timed executable and suite runner
-docs/             Measurement protocol
+docs/             Measurement protocol and review evidence
+models/           Trained JSON weights, split provenance and dataset attribution
 results/published/ Selected raw measurements and provenance
 ```
 
 The [CI matrix](https://github.com/andrew29mo/tiny-infer-lab/actions/workflows/ci.yml)
-checks macOS and Linux with BLAS enabled and disabled.
+checks macOS and Linux with BLAS enabled and disabled, plus optional trained-model
+and batch validation with BLAS. The documented tables and README numeric claims
+are checked against archived reports; numerical/provenance verifiers validate
+those reports separately. CI timing is not a performance gate.
 
 ## Project status
 
 See the [pre-publication review and corrected findings](docs/PREPUBLICATION_REVIEW.md)
-and the [real-model review](docs/REAL_MODEL_REVIEW.md).
+and the [real-model](docs/REAL_MODEL_REVIEW.md) and [batch](docs/BATCH_REVIEW.md) reviews.
 
 This repository is being prepared for public review. See
 [contribution guidance](CONTRIBUTING.md).

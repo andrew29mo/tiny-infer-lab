@@ -9,7 +9,67 @@ Licensing update (2026-10-14): the owner subsequently approved the
 contribution guidance now reflect that decision. Optional system BLAS libraries
 retain their own licenses. The repository remains Private.
 
-## Findings corrected
+## Final review of the expanded project — 2026-10-14
+
+The final pass started from `c2938f3` and includes the synthetic suite, original
+and reviewed single-image model reports, original and reviewed batch reports,
+all public documentation, tracked content and reachable Git history. The earlier
+findings/validation below describe the initial synthetic-only review, not a claim
+that newer engine objects are identical to the initial synthetic objects.
+
+Corrections in this pass:
+
+- README now separates latest reviewed digits/batch results from the archived
+  synthetic measurements, identifies SGEMV versus SGEMM and documents the optional
+  Python dependency range. No timing data or measured source revision is changed.
+- `tools/check_documentation.py` checks all six published numerical tables,
+  per-process ranges, headline accuracy and ratios, source attribution and local
+  documentation links against archived reports. Separate numerical/provenance
+  verifiers regenerate their references and recompute raw statistics.
+- Regression fixtures reject stale table values, a false 100% accuracy claim,
+  the historical wrapper ratio substituted for the direct-control ratio, and a
+  wrong measured revision. Normal Python and `python -O` are both exercised.
+- Publication rules and ignore patterns additionally cover credential/config
+  filenames, credential-bearing URLs, compiled objects/libraries, common archive
+  snapshots and editor backups. These rules were tested with synthetic fixtures;
+  no real credential or unwanted artifact was found requiring removal or history
+  rewriting. Generated numerical JSON is marked as generated for readable source
+  review, while the raw evidence remains available in Git.
+
+Reviewed evidence and boundaries:
+
+- Native C, batch/reference, allocation-symbol, sanitizer and compiled-fault tests
+  exercise production sources/objects. Optional model checks cover training
+  isolation, 450 held-out predictions, all configured batch tails, stale-output
+  rejection, observed native call inputs and independent float64 references.
+- All five archived measurement families are verified: one synthetic report,
+  two single-image model reports and two batch reports. Historical timings retain
+  their original source hashes and API contracts. No new speed measurement is
+  needed for this documentation/publication-only change.
+- Current primary batch evidence remains a paired within-process **11.90×**
+  direct-control comparison, with **11.53–12.27×** observed process range. Original
+  **12.24×** is kept as a historical block-wrapper comparison. Neither isolates
+  the ctypes boundary or numerical kernel. NumPy's larger-batch advantage and
+  the batch-1 regression remain visible. Accuracy is **438/450 (97.33%)** on one
+  published split, with no writer-independent or production-OCR claim.
+- Tracked names/content, reachable historical blobs and commit metadata were
+  inspected. Supplemental scans found no credential assignments or temporary
+  host paths. Git identities consistently use the owner's GitHub noreply address.
+  GitHub owner/copyright identity and benchmark CPU/OS/timestamps are deliberate
+  attribution/provenance, not scrubbed evidence. Local build environments, logs,
+  personal agreements and trial measurements remain ignored.
+- MIT is present and linked consistently. Dataset attribution retains CC BY 4.0;
+  system BLAS and optional reference packages retain their own licenses. No
+  third-party package source or local environment is vendored into the repository.
+
+This is a bounded publication review, not a guarantee against unknown secret
+formats or fabricated measurements. Timing evidence covers one host/model suite
+and warm workloads; CI correctness checks do not certify universal performance.
+The repository remains **Private**, and no publication/access-grant operation is
+part of this review. The post-push CI run is checked separately at completion;
+a document entry is not itself proof that remote checks passed.
+
+## Initial findings corrected
 
 1. **An empty evidence report could pass verification.** The verifier now rejects
    missing schemas/manifests/workloads, omitted or duplicate runs, inconsistent
