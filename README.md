@@ -211,7 +211,7 @@ and the [real-model](docs/REAL_MODEL_REVIEW.md) and [batch](docs/BATCH_REVIEW.md
 The [provider-comparison review](docs/PROVIDER_REVIEW.md) documents graph identity,
 actual input observations, phase-separated RSS and file-level deployment evidence.
 
-This repository is being prepared for public review. See
+This is an experimental engineering project for public review. See
 [contribution guidance](CONTRIBUTING.md).
 The publication guard scans tracked files and reachable Git history for known
 credential/key patterns, personal home paths, local-only files and binaries;
