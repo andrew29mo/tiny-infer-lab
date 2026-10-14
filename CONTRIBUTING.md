@@ -33,3 +33,9 @@ Batch changes must preserve the [batch API contract and timing scope](docs/BATCH
 Run native batch guard/sanitizer tests, the independent batch oracle and the
 real-model batch/fault tests. Keep all tail rows and use identical partitions
 for C, NumPy and sklearn; record the concurrently measured single-image baseline.
+
+Provider-comparison changes additionally use Python 3.12 and
+`requirements-comparison.txt`. Run `tools/compare_providers.py prepare`, then
+`tests/test_providers.py` and `tests/test_provider_report.py` under normal Python
+and `python -O`. Preserve [model identity, RSS and deployment accounting](docs/PROVIDER_COMPARISON.md);
+do not omit runtime dependencies or compare unlike probability/logit interfaces.

@@ -1,5 +1,10 @@
 # Selected benchmark evidence
 
+- [Same-model six-provider comparison, 2026-10-14](providers-20261014/manifest.json):
+  production C, emlearn C-loop batch adapter, ONNX Runtime CPU, NumPy and sklearn;
+  five batch sizes, six timing processes and 90 isolated RSS probes. See the
+  [protocol, correctness, memory and deployment-size results](../../docs/PROVIDER_COMPARISON.md).
+
 - [Apple M5 Pro, 2026-10-14](apple-m5-pro-20261014/report.json): six shapes, three
   backends, six process rounds, 30 matched groups per process.
 - [Reviewed matched-batch measurement, 2026-10-14](digits-batch-reviewed-20261014/manifest.json):

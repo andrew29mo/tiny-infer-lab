@@ -3,6 +3,7 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+import re
 import subprocess
 
 import numpy as np
@@ -27,6 +28,9 @@ def verify(directory):
     rm.require(m['backends']==list(pr.NAMES) and m['partitions']=={
         str(b):[z-a for a,z in pr.partitions(b)] for b in batches},'backends/partition mismatch')
     rm.require(set(m['sources'])==set(cp.SOURCES),'source inventory mismatch')
+    rm.require(isinstance(m['source_revision'],str) and re.fullmatch('[0-9a-f]{40}',m['source_revision'])
+        and all(isinstance(s,str) and re.fullmatch('[0-9a-f]{64}',s) for s in m['sources'].values()),
+        'invalid source provenance')
     for name,sha in m['sources'].items():
         blob=subprocess.check_output(['git','show',m['source_revision']+':'+name],cwd=rm.ROOT)
         rm.require(hashlib.sha256(blob).hexdigest()==sha,'historical source mismatch')
@@ -36,6 +40,23 @@ def verify(directory):
                                        'digits_emlearn.h','digits.onnx'},'incomplete artifact inventory')
     rm.require(build['tiny_build']['library_sha256']==build['artifacts']['tiny.so'] and
         all(build['tiny_build']['sources'][n]==m['sources'][n] for n in rm.BUILD_SOURCES), 'tiny build mismatch')
+    rm.require(m['platform']['system'] in ('Darwin','Linux'),'unsupported build platform')
+    apple=m['platform']['system']=='Darwin'
+    defines=['-DTI_ENABLE_BLAS','-DACCELERATE_NEW_LAPACK' if apple else '-DTI_BLAS_OPENBLAS']
+    libs=['-framework','Accelerate'] if apple else ['-lopenblas']
+    flags=['cc','-Iinclude','-std=c11','-O3','-Wall','-Wextra','-Wpedantic','-Werror',
+           '-ffp-contract=off','-fPIC']
+    commands=[flags+defines+['-c',src,'-o',obj] for src,obj in zip(
+        ['src/tiny_infer.c','src/blas_backend.c'],rm.OBJECTS)]
+    commands += [['cc','-shared']+rm.OBJECTS+libs+['-lm','-o','build/real_engine.so'],
+        ['cc','-Iinclude','-std=c11','-O3']+defines+['tests/test_engine.c']+rm.OBJECTS+
+        libs+['-lm','-o','build/real_test_engine']]
+    rm.require(build['tiny_build']['commands']==commands and
+        set(build['tiny_build']['sources'])==set(rm.BUILD_SOURCES) and
+        set(build['tiny_build']['objects'])==set(rm.OBJECTS),'production build/flags mismatch')
+    rm.require(all(isinstance(s,str) and re.fullmatch('[0-9a-f]{64}',s) for s in
+        list(build['artifacts'].values())+list(build['tiny_build']['objects'].values())),
+        'invalid artifact/object hashes')
     eml=build['emlearn_build']
     rm.require(eml['exact_float32_literals'] is True and eml['headers'] and
         eml['command']==['cc','-std=c11','-O3','-ffp-contract=off','-fPIC','-shared',
@@ -94,9 +115,22 @@ def verify(directory):
     rm.require(set(size['providers'])==set(pr.NAMES) and set(size['artifact_bytes'])==
         {'tiny.so','emlearn.so','digits.onnx','weights.npz'},'deployment inventory mismatch')
     for n,r in size['providers'].items():
+        expected_artifacts={'tiny_input':['tiny.so','weights.npz'],'tiny_blas':['tiny.so','weights.npz'],
+            'emlearn':['emlearn.so'],'onnxruntime':['digits.onnx'],'numpy':['weights.npz'],
+            'sklearn':['weights.npz']}
+        expected_packages={'onnxruntime':['onnxruntime','flatbuffers','packaging','protobuf'],
+            'sklearn':['scikit-learn','scipy','joblib','threadpoolctl']}
+        rm.require(r['artifacts']==expected_artifacts[n] and
+            r['additional_packages']==expected_packages.get(n,[]),'deployment dependency omission')
         rm.require(r['artifact_bytes']==sum(size['artifact_bytes'][p] for p in r['artifacts']) and
             r['additional_package_bytes']==sum(size['packages'][p]['bytes'] for p in r['additional_packages']),
             'deployment total mismatch')
+    rm.require(set(size['packages'])=={'numpy','onnxruntime','flatbuffers','packaging','protobuf',
+        'scikit-learn','scipy','joblib','threadpoolctl'},'package inventory mismatch')
+    for name,p in size['packages'].items():
+        rm.require(p['version']==m['versions'][name] and type(p['bytes']) is int and p['bytes']>0
+            and type(p['file_count']) is int and p['file_count']>0 and
+            re.fullmatch('[0-9a-f]{64}',p['inventory_sha256']), 'invalid installed-package evidence')
     rm.require(size['common_packages']==['numpy'] and
         size['common_package_bytes']==size['packages']['numpy']['bytes'] and size['exclusions'],
         'deployment common/excluded footprint mismatch')

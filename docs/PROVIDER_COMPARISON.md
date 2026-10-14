@@ -112,5 +112,83 @@ relicense them. See [dataset attribution](../models/digits/README.md).
 
 ## Measured results
 
-Results are added only after source-committed, verified runs. No universal speed,
-memory or size advantage is assumed.
+Measured source `fc480ed`, Python 3.12.14, emlearn 0.23.2, ONNX Runtime 1.31.0,
+NumPy 1.26.4 and sklearn 1.6.1. The machine is Apple M5 Pro, macOS/Darwin 27,
+arm64. The sandbox prevented the runner's CPU-name query (`cpu: null` in the
+manifest); the chip name was separately confirmed by a read-only system query.
+No timings were rerun, replaced or selected based on that missing metadata.
+
+All six backends and all five batches scored **438/450 (97.33%)**, with complete
+class agreement. The largest probability error against the independent float64
+oracle was **1.416e-6** (rounded), below the declared elementwise tolerance.
+
+Timing: median of six process medians, **microseconds per prediction**, four full
+450-image sweeps per sample and 12 samples per process. Divide neither by the
+requested batch nor by 450 again. At batch 128 the final call still has 66 rows.
+
+| Batch size | Tiny input | Tiny BLAS | emlearn | ORT CPU | NumPy | sklearn |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | 6.271 | 6.078 | 3.374 | 4.963 | 5.395 | 23.145 |
+| 8 | 1.115 | 1.006 | 1.031 | 0.750 | 0.809 | 3.116 |
+| 32 | 0.546 | 0.449 | 0.783 | 0.236 | 0.305 | 0.933 |
+| 128 | 0.400 | 0.219 | 0.718 | 0.101 | 0.167 | 0.362 |
+| 450 | 0.365 | 0.140 | 0.697 | 0.059 | 0.122 | 0.183 |
+
+emlearn is fastest at batch 1; ORT CPU is fastest at every larger tested batch.
+The emlearn C loop amortizes the Python boundary but does not gain matrix-batch
+efficiency. ORT's graph/kernel optimizations and native softmax are enabled, while
+tiny and NumPy include Python/NumPy softmax. These results establish performance
+for the documented interfaces; they do not isolate the dense kernels or prove a
+universal provider ranking. Tiny C is not presented as faster than these runtimes.
+
+Memory: median **warm process RSS in MiB**, three independent processes per cell.
+These totals include the approximately 38 MiB common Python/NumPy baseline.
+
+| RSS batch | Tiny input | Tiny BLAS | emlearn | ORT CPU | NumPy | sklearn |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | 38.906 | 38.875 | 38.484 | 60.328 | 38.672 | 100.719 |
+| 8 | 38.922 | 38.984 | 38.469 | 60.312 | 38.719 | 100.812 |
+| 32 | 38.828 | 38.828 | 38.328 | 60.312 | 38.672 | 100.734 |
+| 128 | 38.672 | 38.812 | 38.297 | 60.344 | 38.719 | 100.609 |
+| 450 | 38.734 | 38.812 | 38.375 | 60.375 | 38.750 | 100.625 |
+
+Batch-450 probe details, median MiB. Increment is computed within each process,
+then summarized; subtracting independently summarized columns may differ slightly.
+Sub-MiB differences are sensitive to page residency and should not be treated as
+precise model/workspace savings or evidence that larger batches use less memory.
+
+| Memory backend | Baseline RSS | Warm increment | Peak RSS |
+| --- | --- | --- | --- |
+| tiny_input | 38.016 | 0.703 | 38.781 |
+| tiny_blas | 38.109 | 0.734 | 38.812 |
+| emlearn | 38.062 | 0.328 | 38.422 |
+| onnxruntime | 38.078 | 22.297 | 60.375 |
+| numpy | 38.078 | 0.672 | 38.750 |
+| sklearn | 38.062 | 62.641 | 101.172 |
+
+Deployment: **bytes**, uncompressed artifacts and additional installed packages.
+Every row additionally uses the common NumPy package payload of **45,209,250 bytes**
+and the separately excluded Python/OS components. An ONNX model alone is not a
+complete ONNX Runtime deployment. Package inventory digests cover installed payloads,
+not a stripped embedded build; no claim is made that tiny is the smallest possible
+implementation or that wheel payload bytes equal resident memory.
+
+| Deployment backend | Artifact bytes | Extra package bytes |
+| --- | --- | --- |
+| tiny_input | 44766 | 0 |
+| tiny_blas | 44766 | 0 |
+| emlearn | 67448 | 0 |
+| onnxruntime | 9944 | 80192288 |
+| numpy | 10606 | 0 |
+| sklearn | 10606 | 130195580 |
+
+[Manifest and per-process timing ranges](../results/published/providers-20261014/manifest.json),
+[full probability vectors and model identity](../results/published/providers-20261014/correctness.json),
+[all 90 RSS probes](../results/published/providers-20261014/memory.json), and
+[deployment inventory](../results/published/providers-20261014/deployment.json) retain
+the evidence. A verifier regenerates references and recomputes statistics; corruption
+tests change raw data and recompute hashes to challenge semantic validation. CI runs
+production correctness and archived evidence checks on macOS/Linux, plus timing/RSS
+smokes that are not speed gates. These local results remain one model, split, host,
+float precision and warm execution policy; cold startup, power and MCU hardware are
+outside the measurement scope.

@@ -92,6 +92,13 @@ parameter bits and all held-out outputs, and measures matched batches, isolated
 process RSS and deployment payloads separately. emlearn uses an explicit C-loop
 batch adapter; ONNX Runtime uses native dynamic batches. Their API/allocation
 differences and dependency-size exclusions are part of the reported scope.
+On the measured host, all six backends retain **438/450 (97.33%)** accuracy;
+emlearn is fastest at batch 1 and ONNX Runtime at batches 8, 32, 128 and 450.
+At batch 450, ONNX Runtime measures **0.059 µs/prediction** versus C BLAS
+**0.140 µs/prediction**, with median warm Python-process RSS **60.375 MiB** versus
+**38.812 MiB**. These are Python-facing warm throughput and process-RSS figures,
+not bare-kernel timing or model-only RAM. The linked report shows every backend,
+all batches, process ranges and deployment dependencies; no universal win is claimed.
 
 ## Reviewed batch-control measurements
 

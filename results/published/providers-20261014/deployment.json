@@ -1,0 +1,141 @@
+{
+  "artifact_bytes": {
+    "weights.npz": 10606,
+    "digits.onnx": 9944,
+    "emlearn.so": 67448,
+    "tiny.so": 34160
+  },
+  "packages": {
+    "numpy": {
+      "version": "1.26.4",
+      "bytes": 45209250,
+      "file_count": 785,
+      "inventory_sha256": "02ab78a4eabae432f849940370553805e631c55ff4059a9364f8a8649b15ee69"
+    },
+    "onnxruntime": {
+      "version": "1.31.0",
+      "bytes": 77971230,
+      "file_count": 316,
+      "inventory_sha256": "6c11aaf1b9be44a30b30fd7d8167c73826e3dfc715e1b8d830c5afd8554cb1d7"
+    },
+    "flatbuffers": {
+      "version": "25.12.19",
+      "bytes": 85743,
+      "file_count": 10,
+      "inventory_sha256": "41496bdd299a3ad6e093afda4db8ce9e0cf01f6710ff5348b3a2dd33b07233dd"
+    },
+    "packaging": {
+      "version": "26.3",
+      "bytes": 481499,
+      "file_count": 23,
+      "inventory_sha256": "49a7c4389a0c4008c97f18026281f8a20a296e122ca7c3c9ac967467e3a49fe4"
+    },
+    "protobuf": {
+      "version": "7.36.2",
+      "bytes": 1653816,
+      "file_count": 59,
+      "inventory_sha256": "8cfef36791ea113329993abfa5c5d5465417976f0a40da43796a79837f5e3a34"
+    },
+    "scipy": {
+      "version": "1.13.1",
+      "bytes": 93075093,
+      "file_count": 1326,
+      "inventory_sha256": "1e6738048eb29f962676c29b06b5d653facecb40a51b35707bd84174a3398de6"
+    },
+    "scikit-learn": {
+      "version": "1.6.1",
+      "bytes": 36183514,
+      "file_count": 890,
+      "inventory_sha256": "accec238210e2af876659ffef80ce35786400e86deda02ccfa9301934cc28ca1"
+    },
+    "joblib": {
+      "version": "1.4.2",
+      "bytes": 886251,
+      "file_count": 138,
+      "inventory_sha256": "f00ac534d10e3ea45895464e5cbf135fbfa01b571e764eaf6d6e368d5dd19f21"
+    },
+    "threadpoolctl": {
+      "version": "3.6.0",
+      "bytes": 50722,
+      "file_count": 1,
+      "inventory_sha256": "fb731cb1e9ea65a58a062f8572450e879d003e55b99cc7c07fe47367c821d2c1"
+    }
+  },
+  "providers": {
+    "tiny_input": {
+      "artifact_bytes": 44766,
+      "artifacts": [
+        "tiny.so",
+        "weights.npz"
+      ],
+      "additional_packages": [],
+      "additional_package_bytes": 0
+    },
+    "tiny_blas": {
+      "artifact_bytes": 44766,
+      "artifacts": [
+        "tiny.so",
+        "weights.npz"
+      ],
+      "additional_packages": [],
+      "additional_package_bytes": 0
+    },
+    "emlearn": {
+      "artifact_bytes": 67448,
+      "artifacts": [
+        "emlearn.so"
+      ],
+      "additional_packages": [],
+      "additional_package_bytes": 0
+    },
+    "onnxruntime": {
+      "artifact_bytes": 9944,
+      "artifacts": [
+        "digits.onnx"
+      ],
+      "additional_packages": [
+        "onnxruntime",
+        "flatbuffers",
+        "packaging",
+        "protobuf"
+      ],
+      "additional_package_bytes": 80192288
+    },
+    "numpy": {
+      "artifact_bytes": 10606,
+      "artifacts": [
+        "weights.npz"
+      ],
+      "additional_packages": [],
+      "additional_package_bytes": 0
+    },
+    "sklearn": {
+      "artifact_bytes": 10606,
+      "artifacts": [
+        "weights.npz"
+      ],
+      "additional_packages": [
+        "scikit-learn",
+        "scipy",
+        "joblib",
+        "threadpoolctl"
+      ],
+      "additional_package_bytes": 130195580
+    }
+  },
+  "common_packages": [
+    "numpy"
+  ],
+  "common_package_bytes": 45209250,
+  "exclusions": [
+    "Python interpreter/stdlib",
+    "OS libraries and system BLAS",
+    "adapter source",
+    "build tools, emlearn generator and ONNX exporter",
+    "wheel metadata, scripts and bytecode"
+  ],
+  "native_links": {
+    "tiny.so": "build/comparison/tiny.so:\n\tbuild/real_engine.so (compatibility version 0.0.0, current version 0.0.0)\n\t/System/Library/Frameworks/Accelerate.framework/Versions/A/Accelerate (compatibility version 1.0.0, current version 4.0.0)\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1359.0.0)\n",
+    "emlearn.so": "build/comparison/emlearn.so:\n\tbuild/comparison/emlearn.so (compatibility version 0.0.0, current version 0.0.0)\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1359.0.0)\n"
+  }
+}

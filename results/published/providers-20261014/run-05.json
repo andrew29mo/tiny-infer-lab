@@ -1,0 +1,3658 @@
+{
+  "run": 5,
+  "versions": {
+    "python": "3.12.14",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "scikit-learn": "1.6.1",
+    "joblib": "1.4.2",
+    "threadpoolctl": "3.6.0",
+    "emlearn": "0.23.2",
+    "onnx": "1.23.2",
+    "onnxruntime": "1.31.0",
+    "psutil": "7.0.0",
+    "setuptools": "80.9.0",
+    "flatbuffers": "25.12.19",
+    "packaging": "26.3",
+    "protobuf": "7.36.2"
+  },
+  "threadpools": [
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 1,
+      "prefix": "libopenblas",
+      "version": "0.3.23.dev",
+      "threading_layer": "pthreads",
+      "architecture": "armv8"
+    },
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 1,
+      "prefix": "libopenblas",
+      "version": "0.3.27",
+      "threading_layer": "pthreads",
+      "architecture": "neoversen1"
+    },
+    {
+      "user_api": "openmp",
+      "internal_api": "openmp",
+      "num_threads": 1,
+      "prefix": "libomp",
+      "version": null
+    }
+  ],
+  "raw": [
+    {
+      "sample": 0,
+      "batch": 1,
+      "backend": "numpy",
+      "elapsed_ns": 9965084,
+      "predictions": 1800,
+      "ns_per_prediction": 5536.1577777777775,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 0,
+      "batch": 1,
+      "backend": "onnxruntime",
+      "elapsed_ns": 8832625,
+      "predictions": 1800,
+      "ns_per_prediction": 4907.013888888889,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 0,
+      "batch": 1,
+      "backend": "emlearn",
+      "elapsed_ns": 6185125,
+      "predictions": 1800,
+      "ns_per_prediction": 3436.1805555555557,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 0,
+      "batch": 1,
+      "backend": "tiny_blas",
+      "elapsed_ns": 11082000,
+      "predictions": 1800,
+      "ns_per_prediction": 6156.666666666667,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 0,
+      "batch": 1,
+      "backend": "tiny_input",
+      "elapsed_ns": 11444625,
+      "predictions": 1800,
+      "ns_per_prediction": 6358.125,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 0,
+      "batch": 1,
+      "backend": "sklearn",
+      "elapsed_ns": 41739667,
+      "predictions": 1800,
+      "ns_per_prediction": 23188.70388888889,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 0,
+      "batch": 8,
+      "backend": "numpy",
+      "elapsed_ns": 1557833,
+      "predictions": 1800,
+      "ns_per_prediction": 865.4627777777778,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 0,
+      "batch": 8,
+      "backend": "onnxruntime",
+      "elapsed_ns": 1407583,
+      "predictions": 1800,
+      "ns_per_prediction": 781.9905555555556,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 0,
+      "batch": 8,
+      "backend": "emlearn",
+      "elapsed_ns": 1909000,
+      "predictions": 1800,
+      "ns_per_prediction": 1060.5555555555557,
+      "adapter_calls": 228,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 0,
+      "batch": 8,
+      "backend": "tiny_blas",
+      "elapsed_ns": 1855083,
+      "predictions": 1800,
+      "ns_per_prediction": 1030.6016666666667,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 0,
+      "batch": 8,
+      "backend": "tiny_input",
+      "elapsed_ns": 2033250,
+      "predictions": 1800,
+      "ns_per_prediction": 1129.5833333333333,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 0,
+      "batch": 8,
+      "backend": "sklearn",
+      "elapsed_ns": 5509666,
+      "predictions": 1800,
+      "ns_per_prediction": 3060.9255555555555,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 0,
+      "batch": 32,
+      "backend": "numpy",
+      "elapsed_ns": 566750,
+      "predictions": 1800,
+      "ns_per_prediction": 314.8611111111111,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 0,
+      "batch": 32,
+      "backend": "onnxruntime",
+      "elapsed_ns": 434417,
+      "predictions": 1800,
+      "ns_per_prediction": 241.34277777777777,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 0,
+      "batch": 32,
+      "backend": "emlearn",
+      "elapsed_ns": 1386250,
+      "predictions": 1800,
+      "ns_per_prediction": 770.1388888888889,
+      "adapter_calls": 60,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 0,
+      "batch": 32,
+      "backend": "tiny_blas",
+      "elapsed_ns": 841333,
+      "predictions": 1800,
+      "ns_per_prediction": 467.40722222222223,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 0,
+      "batch": 32,
+      "backend": "tiny_input",
+      "elapsed_ns": 973209,
+      "predictions": 1800,
+      "ns_per_prediction": 540.6716666666666,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 0,
+      "batch": 32,
+      "backend": "sklearn",
+      "elapsed_ns": 1686958,
+      "predictions": 1800,
+      "ns_per_prediction": 937.1988888888889,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 0,
+      "batch": 128,
+      "backend": "numpy",
+      "elapsed_ns": 305500,
+      "predictions": 1800,
+      "ns_per_prediction": 169.72222222222223,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 0,
+      "batch": 128,
+      "backend": "onnxruntime",
+      "elapsed_ns": 202084,
+      "predictions": 1800,
+      "ns_per_prediction": 112.2688888888889,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 0,
+      "batch": 128,
+      "backend": "emlearn",
+      "elapsed_ns": 1315416,
+      "predictions": 1800,
+      "ns_per_prediction": 730.7866666666666,
+      "adapter_calls": 16,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 0,
+      "batch": 128,
+      "backend": "tiny_blas",
+      "elapsed_ns": 413917,
+      "predictions": 1800,
+      "ns_per_prediction": 229.95388888888888,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 0,
+      "batch": 128,
+      "backend": "tiny_input",
+      "elapsed_ns": 727125,
+      "predictions": 1800,
+      "ns_per_prediction": 403.9583333333333,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 0,
+      "batch": 128,
+      "backend": "sklearn",
+      "elapsed_ns": 662083,
+      "predictions": 1800,
+      "ns_per_prediction": 367.8238888888889,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 0,
+      "batch": 450,
+      "backend": "numpy",
+      "elapsed_ns": 221041,
+      "predictions": 1800,
+      "ns_per_prediction": 122.80055555555556,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 0,
+      "batch": 450,
+      "backend": "onnxruntime",
+      "elapsed_ns": 115292,
+      "predictions": 1800,
+      "ns_per_prediction": 64.05111111111111,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 0,
+      "batch": 450,
+      "backend": "emlearn",
+      "elapsed_ns": 1253625,
+      "predictions": 1800,
+      "ns_per_prediction": 696.4583333333334,
+      "adapter_calls": 4,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 0,
+      "batch": 450,
+      "backend": "tiny_blas",
+      "elapsed_ns": 264583,
+      "predictions": 1800,
+      "ns_per_prediction": 146.99055555555555,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 0,
+      "batch": 450,
+      "backend": "tiny_input",
+      "elapsed_ns": 631333,
+      "predictions": 1800,
+      "ns_per_prediction": 350.74055555555555,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 0,
+      "batch": 450,
+      "backend": "sklearn",
+      "elapsed_ns": 321833,
+      "predictions": 1800,
+      "ns_per_prediction": 178.79611111111112,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 1,
+      "batch": 8,
+      "backend": "sklearn",
+      "elapsed_ns": 5625584,
+      "predictions": 1800,
+      "ns_per_prediction": 3125.3244444444445,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 1,
+      "batch": 8,
+      "backend": "numpy",
+      "elapsed_ns": 1483500,
+      "predictions": 1800,
+      "ns_per_prediction": 824.1666666666666,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 1,
+      "batch": 8,
+      "backend": "onnxruntime",
+      "elapsed_ns": 1366334,
+      "predictions": 1800,
+      "ns_per_prediction": 759.0744444444445,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 1,
+      "batch": 8,
+      "backend": "emlearn",
+      "elapsed_ns": 1877167,
+      "predictions": 1800,
+      "ns_per_prediction": 1042.8705555555555,
+      "adapter_calls": 228,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 1,
+      "batch": 8,
+      "backend": "tiny_blas",
+      "elapsed_ns": 1929667,
+      "predictions": 1800,
+      "ns_per_prediction": 1072.0372222222222,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 1,
+      "batch": 8,
+      "backend": "tiny_input",
+      "elapsed_ns": 1967666,
+      "predictions": 1800,
+      "ns_per_prediction": 1093.1477777777777,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 1,
+      "batch": 32,
+      "backend": "sklearn",
+      "elapsed_ns": 1645500,
+      "predictions": 1800,
+      "ns_per_prediction": 914.1666666666666,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 1,
+      "batch": 32,
+      "backend": "numpy",
+      "elapsed_ns": 543833,
+      "predictions": 1800,
+      "ns_per_prediction": 302.12944444444446,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 1,
+      "batch": 32,
+      "backend": "onnxruntime",
+      "elapsed_ns": 424875,
+      "predictions": 1800,
+      "ns_per_prediction": 236.04166666666666,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 1,
+      "batch": 32,
+      "backend": "emlearn",
+      "elapsed_ns": 1383875,
+      "predictions": 1800,
+      "ns_per_prediction": 768.8194444444445,
+      "adapter_calls": 60,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 1,
+      "batch": 32,
+      "backend": "tiny_blas",
+      "elapsed_ns": 798083,
+      "predictions": 1800,
+      "ns_per_prediction": 443.37944444444446,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 1,
+      "batch": 32,
+      "backend": "tiny_input",
+      "elapsed_ns": 1025500,
+      "predictions": 1800,
+      "ns_per_prediction": 569.7222222222222,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 1,
+      "batch": 128,
+      "backend": "sklearn",
+      "elapsed_ns": 644458,
+      "predictions": 1800,
+      "ns_per_prediction": 358.03222222222223,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 1,
+      "batch": 128,
+      "backend": "numpy",
+      "elapsed_ns": 294042,
+      "predictions": 1800,
+      "ns_per_prediction": 163.35666666666665,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 1,
+      "batch": 128,
+      "backend": "onnxruntime",
+      "elapsed_ns": 181458,
+      "predictions": 1800,
+      "ns_per_prediction": 100.81,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 1,
+      "batch": 128,
+      "backend": "emlearn",
+      "elapsed_ns": 1261750,
+      "predictions": 1800,
+      "ns_per_prediction": 700.9722222222222,
+      "adapter_calls": 16,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 1,
+      "batch": 128,
+      "backend": "tiny_blas",
+      "elapsed_ns": 394125,
+      "predictions": 1800,
+      "ns_per_prediction": 218.95833333333334,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 1,
+      "batch": 128,
+      "backend": "tiny_input",
+      "elapsed_ns": 692167,
+      "predictions": 1800,
+      "ns_per_prediction": 384.5372222222222,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 1,
+      "batch": 450,
+      "backend": "sklearn",
+      "elapsed_ns": 320166,
+      "predictions": 1800,
+      "ns_per_prediction": 177.87,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 1,
+      "batch": 450,
+      "backend": "numpy",
+      "elapsed_ns": 215791,
+      "predictions": 1800,
+      "ns_per_prediction": 119.88388888888889,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 1,
+      "batch": 450,
+      "backend": "onnxruntime",
+      "elapsed_ns": 103625,
+      "predictions": 1800,
+      "ns_per_prediction": 57.56944444444444,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 1,
+      "batch": 450,
+      "backend": "emlearn",
+      "elapsed_ns": 1251709,
+      "predictions": 1800,
+      "ns_per_prediction": 695.3938888888889,
+      "adapter_calls": 4,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 1,
+      "batch": 450,
+      "backend": "tiny_blas",
+      "elapsed_ns": 274959,
+      "predictions": 1800,
+      "ns_per_prediction": 152.755,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 1,
+      "batch": 450,
+      "backend": "tiny_input",
+      "elapsed_ns": 646209,
+      "predictions": 1800,
+      "ns_per_prediction": 359.005,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 1,
+      "batch": 1,
+      "backend": "sklearn",
+      "elapsed_ns": 44703667,
+      "predictions": 1800,
+      "ns_per_prediction": 24835.370555555557,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 1,
+      "batch": 1,
+      "backend": "numpy",
+      "elapsed_ns": 10207917,
+      "predictions": 1800,
+      "ns_per_prediction": 5671.065,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 1,
+      "batch": 1,
+      "backend": "onnxruntime",
+      "elapsed_ns": 9390791,
+      "predictions": 1800,
+      "ns_per_prediction": 5217.106111111111,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 1,
+      "batch": 1,
+      "backend": "emlearn",
+      "elapsed_ns": 6566500,
+      "predictions": 1800,
+      "ns_per_prediction": 3648.0555555555557,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 1,
+      "batch": 1,
+      "backend": "tiny_blas",
+      "elapsed_ns": 20997417,
+      "predictions": 1800,
+      "ns_per_prediction": 11665.231666666667,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 1,
+      "batch": 1,
+      "backend": "tiny_input",
+      "elapsed_ns": 11907792,
+      "predictions": 1800,
+      "ns_per_prediction": 6615.44,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 2,
+      "batch": 32,
+      "backend": "tiny_input",
+      "elapsed_ns": 1036375,
+      "predictions": 1800,
+      "ns_per_prediction": 575.7638888888889,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 2,
+      "batch": 32,
+      "backend": "sklearn",
+      "elapsed_ns": 1811125,
+      "predictions": 1800,
+      "ns_per_prediction": 1006.1805555555555,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 2,
+      "batch": 32,
+      "backend": "numpy",
+      "elapsed_ns": 603542,
+      "predictions": 1800,
+      "ns_per_prediction": 335.3011111111111,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 2,
+      "batch": 32,
+      "backend": "onnxruntime",
+      "elapsed_ns": 443333,
+      "predictions": 1800,
+      "ns_per_prediction": 246.29611111111112,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 2,
+      "batch": 32,
+      "backend": "emlearn",
+      "elapsed_ns": 1459875,
+      "predictions": 1800,
+      "ns_per_prediction": 811.0416666666666,
+      "adapter_calls": 60,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 2,
+      "batch": 32,
+      "backend": "tiny_blas",
+      "elapsed_ns": 884708,
+      "predictions": 1800,
+      "ns_per_prediction": 491.50444444444446,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 2,
+      "batch": 128,
+      "backend": "tiny_input",
+      "elapsed_ns": 733250,
+      "predictions": 1800,
+      "ns_per_prediction": 407.3611111111111,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 2,
+      "batch": 128,
+      "backend": "sklearn",
+      "elapsed_ns": 761916,
+      "predictions": 1800,
+      "ns_per_prediction": 423.2866666666667,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 2,
+      "batch": 128,
+      "backend": "numpy",
+      "elapsed_ns": 317167,
+      "predictions": 1800,
+      "ns_per_prediction": 176.20388888888888,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 2,
+      "batch": 128,
+      "backend": "onnxruntime",
+      "elapsed_ns": 189833,
+      "predictions": 1800,
+      "ns_per_prediction": 105.46277777777777,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 2,
+      "batch": 128,
+      "backend": "emlearn",
+      "elapsed_ns": 1347459,
+      "predictions": 1800,
+      "ns_per_prediction": 748.5883333333334,
+      "adapter_calls": 16,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 2,
+      "batch": 128,
+      "backend": "tiny_blas",
+      "elapsed_ns": 381375,
+      "predictions": 1800,
+      "ns_per_prediction": 211.875,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 2,
+      "batch": 450,
+      "backend": "tiny_input",
+      "elapsed_ns": 829542,
+      "predictions": 1800,
+      "ns_per_prediction": 460.8566666666667,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 2,
+      "batch": 450,
+      "backend": "sklearn",
+      "elapsed_ns": 407125,
+      "predictions": 1800,
+      "ns_per_prediction": 226.18055555555554,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 2,
+      "batch": 450,
+      "backend": "numpy",
+      "elapsed_ns": 226666,
+      "predictions": 1800,
+      "ns_per_prediction": 125.92555555555556,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 2,
+      "batch": 450,
+      "backend": "onnxruntime",
+      "elapsed_ns": 139958,
+      "predictions": 1800,
+      "ns_per_prediction": 77.75444444444445,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 2,
+      "batch": 450,
+      "backend": "emlearn",
+      "elapsed_ns": 1294292,
+      "predictions": 1800,
+      "ns_per_prediction": 719.0511111111111,
+      "adapter_calls": 4,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 2,
+      "batch": 450,
+      "backend": "tiny_blas",
+      "elapsed_ns": 244250,
+      "predictions": 1800,
+      "ns_per_prediction": 135.69444444444446,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 2,
+      "batch": 1,
+      "backend": "tiny_input",
+      "elapsed_ns": 14587958,
+      "predictions": 1800,
+      "ns_per_prediction": 8104.421111111111,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 2,
+      "batch": 1,
+      "backend": "sklearn",
+      "elapsed_ns": 41806792,
+      "predictions": 1800,
+      "ns_per_prediction": 23225.995555555557,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 2,
+      "batch": 1,
+      "backend": "numpy",
+      "elapsed_ns": 9807625,
+      "predictions": 1800,
+      "ns_per_prediction": 5448.680555555556,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 2,
+      "batch": 1,
+      "backend": "onnxruntime",
+      "elapsed_ns": 8964750,
+      "predictions": 1800,
+      "ns_per_prediction": 4980.416666666667,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 2,
+      "batch": 1,
+      "backend": "emlearn",
+      "elapsed_ns": 6079792,
+      "predictions": 1800,
+      "ns_per_prediction": 3377.662222222222,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 2,
+      "batch": 1,
+      "backend": "tiny_blas",
+      "elapsed_ns": 11047583,
+      "predictions": 1800,
+      "ns_per_prediction": 6137.546111111111,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 2,
+      "batch": 8,
+      "backend": "tiny_input",
+      "elapsed_ns": 1940792,
+      "predictions": 1800,
+      "ns_per_prediction": 1078.2177777777779,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 2,
+      "batch": 8,
+      "backend": "sklearn",
+      "elapsed_ns": 5704250,
+      "predictions": 1800,
+      "ns_per_prediction": 3169.027777777778,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 2,
+      "batch": 8,
+      "backend": "numpy",
+      "elapsed_ns": 1547292,
+      "predictions": 1800,
+      "ns_per_prediction": 859.6066666666667,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 2,
+      "batch": 8,
+      "backend": "onnxruntime",
+      "elapsed_ns": 1381667,
+      "predictions": 1800,
+      "ns_per_prediction": 767.5927777777778,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 2,
+      "batch": 8,
+      "backend": "emlearn",
+      "elapsed_ns": 1898792,
+      "predictions": 1800,
+      "ns_per_prediction": 1054.8844444444444,
+      "adapter_calls": 228,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 2,
+      "batch": 8,
+      "backend": "tiny_blas",
+      "elapsed_ns": 1789000,
+      "predictions": 1800,
+      "ns_per_prediction": 993.8888888888889,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 3,
+      "batch": 128,
+      "backend": "tiny_blas",
+      "elapsed_ns": 411167,
+      "predictions": 1800,
+      "ns_per_prediction": 228.4261111111111,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 3,
+      "batch": 128,
+      "backend": "tiny_input",
+      "elapsed_ns": 702625,
+      "predictions": 1800,
+      "ns_per_prediction": 390.34722222222223,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 3,
+      "batch": 128,
+      "backend": "sklearn",
+      "elapsed_ns": 687375,
+      "predictions": 1800,
+      "ns_per_prediction": 381.875,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 3,
+      "batch": 128,
+      "backend": "numpy",
+      "elapsed_ns": 296334,
+      "predictions": 1800,
+      "ns_per_prediction": 164.63,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 3,
+      "batch": 128,
+      "backend": "onnxruntime",
+      "elapsed_ns": 194792,
+      "predictions": 1800,
+      "ns_per_prediction": 108.21777777777778,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 3,
+      "batch": 128,
+      "backend": "emlearn",
+      "elapsed_ns": 1337291,
+      "predictions": 1800,
+      "ns_per_prediction": 742.9394444444445,
+      "adapter_calls": 16,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 3,
+      "batch": 450,
+      "backend": "tiny_blas",
+      "elapsed_ns": 273000,
+      "predictions": 1800,
+      "ns_per_prediction": 151.66666666666666,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 3,
+      "batch": 450,
+      "backend": "tiny_input",
+      "elapsed_ns": 635542,
+      "predictions": 1800,
+      "ns_per_prediction": 353.0788888888889,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 3,
+      "batch": 450,
+      "backend": "sklearn",
+      "elapsed_ns": 394041,
+      "predictions": 1800,
+      "ns_per_prediction": 218.91166666666666,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 3,
+      "batch": 450,
+      "backend": "numpy",
+      "elapsed_ns": 243709,
+      "predictions": 1800,
+      "ns_per_prediction": 135.39388888888888,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 3,
+      "batch": 450,
+      "backend": "onnxruntime",
+      "elapsed_ns": 109958,
+      "predictions": 1800,
+      "ns_per_prediction": 61.08777777777778,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 3,
+      "batch": 450,
+      "backend": "emlearn",
+      "elapsed_ns": 1253792,
+      "predictions": 1800,
+      "ns_per_prediction": 696.5511111111111,
+      "adapter_calls": 4,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 3,
+      "batch": 1,
+      "backend": "tiny_blas",
+      "elapsed_ns": 11113958,
+      "predictions": 1800,
+      "ns_per_prediction": 6174.421111111111,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 3,
+      "batch": 1,
+      "backend": "tiny_input",
+      "elapsed_ns": 11310417,
+      "predictions": 1800,
+      "ns_per_prediction": 6283.565,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 3,
+      "batch": 1,
+      "backend": "sklearn",
+      "elapsed_ns": 41455042,
+      "predictions": 1800,
+      "ns_per_prediction": 23030.57888888889,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 3,
+      "batch": 1,
+      "backend": "numpy",
+      "elapsed_ns": 9802500,
+      "predictions": 1800,
+      "ns_per_prediction": 5445.833333333333,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 3,
+      "batch": 1,
+      "backend": "onnxruntime",
+      "elapsed_ns": 8969542,
+      "predictions": 1800,
+      "ns_per_prediction": 4983.078888888889,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 3,
+      "batch": 1,
+      "backend": "emlearn",
+      "elapsed_ns": 6028041,
+      "predictions": 1800,
+      "ns_per_prediction": 3348.911666666667,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 3,
+      "batch": 8,
+      "backend": "tiny_blas",
+      "elapsed_ns": 1918500,
+      "predictions": 1800,
+      "ns_per_prediction": 1065.8333333333333,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 3,
+      "batch": 8,
+      "backend": "tiny_input",
+      "elapsed_ns": 1966375,
+      "predictions": 1800,
+      "ns_per_prediction": 1092.4305555555557,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 3,
+      "batch": 8,
+      "backend": "sklearn",
+      "elapsed_ns": 5874000,
+      "predictions": 1800,
+      "ns_per_prediction": 3263.3333333333335,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 3,
+      "batch": 8,
+      "backend": "numpy",
+      "elapsed_ns": 1414625,
+      "predictions": 1800,
+      "ns_per_prediction": 785.9027777777778,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 3,
+      "batch": 8,
+      "backend": "onnxruntime",
+      "elapsed_ns": 1363708,
+      "predictions": 1800,
+      "ns_per_prediction": 757.6155555555556,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 3,
+      "batch": 8,
+      "backend": "emlearn",
+      "elapsed_ns": 1894125,
+      "predictions": 1800,
+      "ns_per_prediction": 1052.2916666666667,
+      "adapter_calls": 228,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 3,
+      "batch": 32,
+      "backend": "tiny_blas",
+      "elapsed_ns": 837458,
+      "predictions": 1800,
+      "ns_per_prediction": 465.25444444444446,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 3,
+      "batch": 32,
+      "backend": "tiny_input",
+      "elapsed_ns": 1038542,
+      "predictions": 1800,
+      "ns_per_prediction": 576.9677777777778,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 3,
+      "batch": 32,
+      "backend": "sklearn",
+      "elapsed_ns": 1775792,
+      "predictions": 1800,
+      "ns_per_prediction": 986.5511111111111,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 3,
+      "batch": 32,
+      "backend": "numpy",
+      "elapsed_ns": 535958,
+      "predictions": 1800,
+      "ns_per_prediction": 297.75444444444446,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 3,
+      "batch": 32,
+      "backend": "onnxruntime",
+      "elapsed_ns": 441958,
+      "predictions": 1800,
+      "ns_per_prediction": 245.53222222222223,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 3,
+      "batch": 32,
+      "backend": "emlearn",
+      "elapsed_ns": 1425292,
+      "predictions": 1800,
+      "ns_per_prediction": 791.8288888888889,
+      "adapter_calls": 60,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 4,
+      "batch": 450,
+      "backend": "emlearn",
+      "elapsed_ns": 1232125,
+      "predictions": 1800,
+      "ns_per_prediction": 684.5138888888889,
+      "adapter_calls": 4,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 4,
+      "batch": 450,
+      "backend": "tiny_blas",
+      "elapsed_ns": 270541,
+      "predictions": 1800,
+      "ns_per_prediction": 150.30055555555555,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 4,
+      "batch": 450,
+      "backend": "tiny_input",
+      "elapsed_ns": 651167,
+      "predictions": 1800,
+      "ns_per_prediction": 361.75944444444445,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 4,
+      "batch": 450,
+      "backend": "sklearn",
+      "elapsed_ns": 332084,
+      "predictions": 1800,
+      "ns_per_prediction": 184.4911111111111,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 4,
+      "batch": 450,
+      "backend": "numpy",
+      "elapsed_ns": 216875,
+      "predictions": 1800,
+      "ns_per_prediction": 120.48611111111111,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 4,
+      "batch": 450,
+      "backend": "onnxruntime",
+      "elapsed_ns": 105125,
+      "predictions": 1800,
+      "ns_per_prediction": 58.40277777777778,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 4,
+      "batch": 1,
+      "backend": "emlearn",
+      "elapsed_ns": 6163291,
+      "predictions": 1800,
+      "ns_per_prediction": 3424.0505555555555,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 4,
+      "batch": 1,
+      "backend": "tiny_blas",
+      "elapsed_ns": 11179541,
+      "predictions": 1800,
+      "ns_per_prediction": 6210.856111111111,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 4,
+      "batch": 1,
+      "backend": "tiny_input",
+      "elapsed_ns": 11308042,
+      "predictions": 1800,
+      "ns_per_prediction": 6282.245555555555,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 4,
+      "batch": 1,
+      "backend": "sklearn",
+      "elapsed_ns": 42122333,
+      "predictions": 1800,
+      "ns_per_prediction": 23401.29611111111,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 4,
+      "batch": 1,
+      "backend": "numpy",
+      "elapsed_ns": 9633833,
+      "predictions": 1800,
+      "ns_per_prediction": 5352.129444444445,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 4,
+      "batch": 1,
+      "backend": "onnxruntime",
+      "elapsed_ns": 8971833,
+      "predictions": 1800,
+      "ns_per_prediction": 4984.3516666666665,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 4,
+      "batch": 8,
+      "backend": "emlearn",
+      "elapsed_ns": 1889708,
+      "predictions": 1800,
+      "ns_per_prediction": 1049.8377777777778,
+      "adapter_calls": 228,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 4,
+      "batch": 8,
+      "backend": "tiny_blas",
+      "elapsed_ns": 1986333,
+      "predictions": 1800,
+      "ns_per_prediction": 1103.5183333333334,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 4,
+      "batch": 8,
+      "backend": "tiny_input",
+      "elapsed_ns": 1963959,
+      "predictions": 1800,
+      "ns_per_prediction": 1091.0883333333334,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 4,
+      "batch": 8,
+      "backend": "sklearn",
+      "elapsed_ns": 5540125,
+      "predictions": 1800,
+      "ns_per_prediction": 3077.847222222222,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 4,
+      "batch": 8,
+      "backend": "numpy",
+      "elapsed_ns": 1481750,
+      "predictions": 1800,
+      "ns_per_prediction": 823.1944444444445,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 4,
+      "batch": 8,
+      "backend": "onnxruntime",
+      "elapsed_ns": 1422750,
+      "predictions": 1800,
+      "ns_per_prediction": 790.4166666666666,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 4,
+      "batch": 32,
+      "backend": "emlearn",
+      "elapsed_ns": 1372416,
+      "predictions": 1800,
+      "ns_per_prediction": 762.4533333333334,
+      "adapter_calls": 60,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 4,
+      "batch": 32,
+      "backend": "tiny_blas",
+      "elapsed_ns": 858000,
+      "predictions": 1800,
+      "ns_per_prediction": 476.6666666666667,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 4,
+      "batch": 32,
+      "backend": "tiny_input",
+      "elapsed_ns": 960166,
+      "predictions": 1800,
+      "ns_per_prediction": 533.4255555555555,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 4,
+      "batch": 32,
+      "backend": "sklearn",
+      "elapsed_ns": 1675541,
+      "predictions": 1800,
+      "ns_per_prediction": 930.8561111111111,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 4,
+      "batch": 32,
+      "backend": "numpy",
+      "elapsed_ns": 542916,
+      "predictions": 1800,
+      "ns_per_prediction": 301.62,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 4,
+      "batch": 32,
+      "backend": "onnxruntime",
+      "elapsed_ns": 410458,
+      "predictions": 1800,
+      "ns_per_prediction": 228.03222222222223,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 4,
+      "batch": 128,
+      "backend": "emlearn",
+      "elapsed_ns": 1285708,
+      "predictions": 1800,
+      "ns_per_prediction": 714.2822222222222,
+      "adapter_calls": 16,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 4,
+      "batch": 128,
+      "backend": "tiny_blas",
+      "elapsed_ns": 398584,
+      "predictions": 1800,
+      "ns_per_prediction": 221.43555555555557,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 4,
+      "batch": 128,
+      "backend": "tiny_input",
+      "elapsed_ns": 735375,
+      "predictions": 1800,
+      "ns_per_prediction": 408.5416666666667,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 4,
+      "batch": 128,
+      "backend": "sklearn",
+      "elapsed_ns": 657375,
+      "predictions": 1800,
+      "ns_per_prediction": 365.2083333333333,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 4,
+      "batch": 128,
+      "backend": "numpy",
+      "elapsed_ns": 298125,
+      "predictions": 1800,
+      "ns_per_prediction": 165.625,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 4,
+      "batch": 128,
+      "backend": "onnxruntime",
+      "elapsed_ns": 180875,
+      "predictions": 1800,
+      "ns_per_prediction": 100.48611111111111,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 5,
+      "batch": 1,
+      "backend": "onnxruntime",
+      "elapsed_ns": 8803250,
+      "predictions": 1800,
+      "ns_per_prediction": 4890.694444444444,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 5,
+      "batch": 1,
+      "backend": "emlearn",
+      "elapsed_ns": 5965917,
+      "predictions": 1800,
+      "ns_per_prediction": 3314.3983333333335,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 5,
+      "batch": 1,
+      "backend": "tiny_blas",
+      "elapsed_ns": 10925666,
+      "predictions": 1800,
+      "ns_per_prediction": 6069.814444444444,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 5,
+      "batch": 1,
+      "backend": "tiny_input",
+      "elapsed_ns": 11230500,
+      "predictions": 1800,
+      "ns_per_prediction": 6239.166666666667,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 5,
+      "batch": 1,
+      "backend": "sklearn",
+      "elapsed_ns": 41581000,
+      "predictions": 1800,
+      "ns_per_prediction": 23100.555555555555,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 5,
+      "batch": 1,
+      "backend": "numpy",
+      "elapsed_ns": 9720958,
+      "predictions": 1800,
+      "ns_per_prediction": 5400.532222222222,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 5,
+      "batch": 8,
+      "backend": "onnxruntime",
+      "elapsed_ns": 1331166,
+      "predictions": 1800,
+      "ns_per_prediction": 739.5366666666666,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 5,
+      "batch": 8,
+      "backend": "emlearn",
+      "elapsed_ns": 1837500,
+      "predictions": 1800,
+      "ns_per_prediction": 1020.8333333333334,
+      "adapter_calls": 228,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 5,
+      "batch": 8,
+      "backend": "tiny_blas",
+      "elapsed_ns": 1800167,
+      "predictions": 1800,
+      "ns_per_prediction": 1000.0927777777778,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 5,
+      "batch": 8,
+      "backend": "tiny_input",
+      "elapsed_ns": 1989250,
+      "predictions": 1800,
+      "ns_per_prediction": 1105.138888888889,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 5,
+      "batch": 8,
+      "backend": "sklearn",
+      "elapsed_ns": 5652334,
+      "predictions": 1800,
+      "ns_per_prediction": 3140.1855555555558,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 5,
+      "batch": 8,
+      "backend": "numpy",
+      "elapsed_ns": 1515709,
+      "predictions": 1800,
+      "ns_per_prediction": 842.0605555555555,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 5,
+      "batch": 32,
+      "backend": "onnxruntime",
+      "elapsed_ns": 445875,
+      "predictions": 1800,
+      "ns_per_prediction": 247.70833333333334,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 5,
+      "batch": 32,
+      "backend": "emlearn",
+      "elapsed_ns": 1423875,
+      "predictions": 1800,
+      "ns_per_prediction": 791.0416666666666,
+      "adapter_calls": 60,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 5,
+      "batch": 32,
+      "backend": "tiny_blas",
+      "elapsed_ns": 809458,
+      "predictions": 1800,
+      "ns_per_prediction": 449.6988888888889,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 5,
+      "batch": 32,
+      "backend": "tiny_input",
+      "elapsed_ns": 1018875,
+      "predictions": 1800,
+      "ns_per_prediction": 566.0416666666666,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 5,
+      "batch": 32,
+      "backend": "sklearn",
+      "elapsed_ns": 1843458,
+      "predictions": 1800,
+      "ns_per_prediction": 1024.1433333333334,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 5,
+      "batch": 32,
+      "backend": "numpy",
+      "elapsed_ns": 592542,
+      "predictions": 1800,
+      "ns_per_prediction": 329.19,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 5,
+      "batch": 128,
+      "backend": "onnxruntime",
+      "elapsed_ns": 215000,
+      "predictions": 1800,
+      "ns_per_prediction": 119.44444444444444,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 5,
+      "batch": 128,
+      "backend": "emlearn",
+      "elapsed_ns": 1295917,
+      "predictions": 1800,
+      "ns_per_prediction": 719.9538888888889,
+      "adapter_calls": 16,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 5,
+      "batch": 128,
+      "backend": "tiny_blas",
+      "elapsed_ns": 409708,
+      "predictions": 1800,
+      "ns_per_prediction": 227.61555555555555,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 5,
+      "batch": 128,
+      "backend": "tiny_input",
+      "elapsed_ns": 708000,
+      "predictions": 1800,
+      "ns_per_prediction": 393.3333333333333,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 5,
+      "batch": 128,
+      "backend": "sklearn",
+      "elapsed_ns": 683750,
+      "predictions": 1800,
+      "ns_per_prediction": 379.8611111111111,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 5,
+      "batch": 128,
+      "backend": "numpy",
+      "elapsed_ns": 297542,
+      "predictions": 1800,
+      "ns_per_prediction": 165.3011111111111,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 5,
+      "batch": 450,
+      "backend": "onnxruntime",
+      "elapsed_ns": 108500,
+      "predictions": 1800,
+      "ns_per_prediction": 60.27777777777778,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 5,
+      "batch": 450,
+      "backend": "emlearn",
+      "elapsed_ns": 1247917,
+      "predictions": 1800,
+      "ns_per_prediction": 693.2872222222222,
+      "adapter_calls": 4,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 5,
+      "batch": 450,
+      "backend": "tiny_blas",
+      "elapsed_ns": 260125,
+      "predictions": 1800,
+      "ns_per_prediction": 144.51388888888889,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 5,
+      "batch": 450,
+      "backend": "tiny_input",
+      "elapsed_ns": 650250,
+      "predictions": 1800,
+      "ns_per_prediction": 361.25,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 5,
+      "batch": 450,
+      "backend": "sklearn",
+      "elapsed_ns": 323000,
+      "predictions": 1800,
+      "ns_per_prediction": 179.44444444444446,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 5,
+      "batch": 450,
+      "backend": "numpy",
+      "elapsed_ns": 215833,
+      "predictions": 1800,
+      "ns_per_prediction": 119.90722222222222,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 6,
+      "batch": 8,
+      "backend": "sklearn",
+      "elapsed_ns": 5643083,
+      "predictions": 1800,
+      "ns_per_prediction": 3135.0461111111113,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 6,
+      "batch": 8,
+      "backend": "tiny_input",
+      "elapsed_ns": 2052750,
+      "predictions": 1800,
+      "ns_per_prediction": 1140.4166666666667,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 6,
+      "batch": 8,
+      "backend": "tiny_blas",
+      "elapsed_ns": 1881625,
+      "predictions": 1800,
+      "ns_per_prediction": 1045.3472222222222,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 6,
+      "batch": 8,
+      "backend": "emlearn",
+      "elapsed_ns": 1916834,
+      "predictions": 1800,
+      "ns_per_prediction": 1064.9077777777777,
+      "adapter_calls": 228,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 6,
+      "batch": 8,
+      "backend": "onnxruntime",
+      "elapsed_ns": 1333416,
+      "predictions": 1800,
+      "ns_per_prediction": 740.7866666666666,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 6,
+      "batch": 8,
+      "backend": "numpy",
+      "elapsed_ns": 1438209,
+      "predictions": 1800,
+      "ns_per_prediction": 799.005,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 6,
+      "batch": 32,
+      "backend": "sklearn",
+      "elapsed_ns": 1680791,
+      "predictions": 1800,
+      "ns_per_prediction": 933.7727777777778,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 6,
+      "batch": 32,
+      "backend": "tiny_input",
+      "elapsed_ns": 1010667,
+      "predictions": 1800,
+      "ns_per_prediction": 561.4816666666667,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 6,
+      "batch": 32,
+      "backend": "tiny_blas",
+      "elapsed_ns": 848375,
+      "predictions": 1800,
+      "ns_per_prediction": 471.31944444444446,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 6,
+      "batch": 32,
+      "backend": "emlearn",
+      "elapsed_ns": 1369917,
+      "predictions": 1800,
+      "ns_per_prediction": 761.065,
+      "adapter_calls": 60,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 6,
+      "batch": 32,
+      "backend": "onnxruntime",
+      "elapsed_ns": 415750,
+      "predictions": 1800,
+      "ns_per_prediction": 230.97222222222223,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 6,
+      "batch": 32,
+      "backend": "numpy",
+      "elapsed_ns": 537500,
+      "predictions": 1800,
+      "ns_per_prediction": 298.6111111111111,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 6,
+      "batch": 128,
+      "backend": "sklearn",
+      "elapsed_ns": 654500,
+      "predictions": 1800,
+      "ns_per_prediction": 363.6111111111111,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 6,
+      "batch": 128,
+      "backend": "tiny_input",
+      "elapsed_ns": 696208,
+      "predictions": 1800,
+      "ns_per_prediction": 386.78222222222223,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 6,
+      "batch": 128,
+      "backend": "tiny_blas",
+      "elapsed_ns": 399125,
+      "predictions": 1800,
+      "ns_per_prediction": 221.73611111111111,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 6,
+      "batch": 128,
+      "backend": "emlearn",
+      "elapsed_ns": 1284917,
+      "predictions": 1800,
+      "ns_per_prediction": 713.8427777777778,
+      "adapter_calls": 16,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 6,
+      "batch": 128,
+      "backend": "onnxruntime",
+      "elapsed_ns": 176625,
+      "predictions": 1800,
+      "ns_per_prediction": 98.125,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 6,
+      "batch": 128,
+      "backend": "numpy",
+      "elapsed_ns": 293667,
+      "predictions": 1800,
+      "ns_per_prediction": 163.14833333333334,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 6,
+      "batch": 450,
+      "backend": "sklearn",
+      "elapsed_ns": 355416,
+      "predictions": 1800,
+      "ns_per_prediction": 197.45333333333335,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 6,
+      "batch": 450,
+      "backend": "tiny_input",
+      "elapsed_ns": 680250,
+      "predictions": 1800,
+      "ns_per_prediction": 377.9166666666667,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 6,
+      "batch": 450,
+      "backend": "tiny_blas",
+      "elapsed_ns": 255584,
+      "predictions": 1800,
+      "ns_per_prediction": 141.9911111111111,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 6,
+      "batch": 450,
+      "backend": "emlearn",
+      "elapsed_ns": 1249209,
+      "predictions": 1800,
+      "ns_per_prediction": 694.005,
+      "adapter_calls": 4,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 6,
+      "batch": 450,
+      "backend": "onnxruntime",
+      "elapsed_ns": 101958,
+      "predictions": 1800,
+      "ns_per_prediction": 56.64333333333333,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 6,
+      "batch": 450,
+      "backend": "numpy",
+      "elapsed_ns": 224042,
+      "predictions": 1800,
+      "ns_per_prediction": 124.46777777777778,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 6,
+      "batch": 1,
+      "backend": "sklearn",
+      "elapsed_ns": 41907083,
+      "predictions": 1800,
+      "ns_per_prediction": 23281.71277777778,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 6,
+      "batch": 1,
+      "backend": "tiny_input",
+      "elapsed_ns": 11258083,
+      "predictions": 1800,
+      "ns_per_prediction": 6254.490555555555,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 6,
+      "batch": 1,
+      "backend": "tiny_blas",
+      "elapsed_ns": 11244083,
+      "predictions": 1800,
+      "ns_per_prediction": 6246.712777777778,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 6,
+      "batch": 1,
+      "backend": "emlearn",
+      "elapsed_ns": 5965083,
+      "predictions": 1800,
+      "ns_per_prediction": 3313.935,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 6,
+      "batch": 1,
+      "backend": "onnxruntime",
+      "elapsed_ns": 8846917,
+      "predictions": 1800,
+      "ns_per_prediction": 4914.953888888889,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 6,
+      "batch": 1,
+      "backend": "numpy",
+      "elapsed_ns": 9719292,
+      "predictions": 1800,
+      "ns_per_prediction": 5399.606666666667,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 7,
+      "batch": 32,
+      "backend": "tiny_input",
+      "elapsed_ns": 1021334,
+      "predictions": 1800,
+      "ns_per_prediction": 567.4077777777778,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 7,
+      "batch": 32,
+      "backend": "tiny_blas",
+      "elapsed_ns": 798959,
+      "predictions": 1800,
+      "ns_per_prediction": 443.86611111111114,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 7,
+      "batch": 32,
+      "backend": "emlearn",
+      "elapsed_ns": 1443708,
+      "predictions": 1800,
+      "ns_per_prediction": 802.06,
+      "adapter_calls": 60,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 7,
+      "batch": 32,
+      "backend": "onnxruntime",
+      "elapsed_ns": 425584,
+      "predictions": 1800,
+      "ns_per_prediction": 236.43555555555557,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 7,
+      "batch": 32,
+      "backend": "numpy",
+      "elapsed_ns": 552459,
+      "predictions": 1800,
+      "ns_per_prediction": 306.9216666666667,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 7,
+      "batch": 32,
+      "backend": "sklearn",
+      "elapsed_ns": 1747292,
+      "predictions": 1800,
+      "ns_per_prediction": 970.7177777777778,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 7,
+      "batch": 128,
+      "backend": "tiny_input",
+      "elapsed_ns": 756792,
+      "predictions": 1800,
+      "ns_per_prediction": 420.44,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 7,
+      "batch": 128,
+      "backend": "tiny_blas",
+      "elapsed_ns": 409125,
+      "predictions": 1800,
+      "ns_per_prediction": 227.29166666666666,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 7,
+      "batch": 128,
+      "backend": "emlearn",
+      "elapsed_ns": 1307333,
+      "predictions": 1800,
+      "ns_per_prediction": 726.2961111111111,
+      "adapter_calls": 16,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 7,
+      "batch": 128,
+      "backend": "onnxruntime",
+      "elapsed_ns": 176791,
+      "predictions": 1800,
+      "ns_per_prediction": 98.21722222222222,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 7,
+      "batch": 128,
+      "backend": "numpy",
+      "elapsed_ns": 301834,
+      "predictions": 1800,
+      "ns_per_prediction": 167.68555555555557,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 7,
+      "batch": 128,
+      "backend": "sklearn",
+      "elapsed_ns": 676459,
+      "predictions": 1800,
+      "ns_per_prediction": 375.81055555555554,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 7,
+      "batch": 450,
+      "backend": "tiny_input",
+      "elapsed_ns": 667042,
+      "predictions": 1800,
+      "ns_per_prediction": 370.5788888888889,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 7,
+      "batch": 450,
+      "backend": "tiny_blas",
+      "elapsed_ns": 266208,
+      "predictions": 1800,
+      "ns_per_prediction": 147.89333333333335,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 7,
+      "batch": 450,
+      "backend": "emlearn",
+      "elapsed_ns": 1287834,
+      "predictions": 1800,
+      "ns_per_prediction": 715.4633333333334,
+      "adapter_calls": 4,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 7,
+      "batch": 450,
+      "backend": "onnxruntime",
+      "elapsed_ns": 106333,
+      "predictions": 1800,
+      "ns_per_prediction": 59.07388888888889,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 7,
+      "batch": 450,
+      "backend": "numpy",
+      "elapsed_ns": 218125,
+      "predictions": 1800,
+      "ns_per_prediction": 121.18055555555556,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 7,
+      "batch": 450,
+      "backend": "sklearn",
+      "elapsed_ns": 325250,
+      "predictions": 1800,
+      "ns_per_prediction": 180.69444444444446,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 7,
+      "batch": 1,
+      "backend": "tiny_input",
+      "elapsed_ns": 11137875,
+      "predictions": 1800,
+      "ns_per_prediction": 6187.708333333333,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 7,
+      "batch": 1,
+      "backend": "tiny_blas",
+      "elapsed_ns": 10916625,
+      "predictions": 1800,
+      "ns_per_prediction": 6064.791666666667,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 7,
+      "batch": 1,
+      "backend": "emlearn",
+      "elapsed_ns": 6085084,
+      "predictions": 1800,
+      "ns_per_prediction": 3380.6022222222223,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 7,
+      "batch": 1,
+      "backend": "onnxruntime",
+      "elapsed_ns": 8840833,
+      "predictions": 1800,
+      "ns_per_prediction": 4911.573888888889,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 7,
+      "batch": 1,
+      "backend": "numpy",
+      "elapsed_ns": 9860166,
+      "predictions": 1800,
+      "ns_per_prediction": 5477.87,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 7,
+      "batch": 1,
+      "backend": "sklearn",
+      "elapsed_ns": 41676875,
+      "predictions": 1800,
+      "ns_per_prediction": 23153.819444444445,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 7,
+      "batch": 8,
+      "backend": "tiny_input",
+      "elapsed_ns": 2043916,
+      "predictions": 1800,
+      "ns_per_prediction": 1135.5088888888888,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 7,
+      "batch": 8,
+      "backend": "tiny_blas",
+      "elapsed_ns": 1840416,
+      "predictions": 1800,
+      "ns_per_prediction": 1022.4533333333334,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 7,
+      "batch": 8,
+      "backend": "emlearn",
+      "elapsed_ns": 1899459,
+      "predictions": 1800,
+      "ns_per_prediction": 1055.255,
+      "adapter_calls": 228,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 7,
+      "batch": 8,
+      "backend": "onnxruntime",
+      "elapsed_ns": 1320833,
+      "predictions": 1800,
+      "ns_per_prediction": 733.7961111111111,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 7,
+      "batch": 8,
+      "backend": "numpy",
+      "elapsed_ns": 1437834,
+      "predictions": 1800,
+      "ns_per_prediction": 798.7966666666666,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 7,
+      "batch": 8,
+      "backend": "sklearn",
+      "elapsed_ns": 5583500,
+      "predictions": 1800,
+      "ns_per_prediction": 3101.9444444444443,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 8,
+      "batch": 128,
+      "backend": "tiny_blas",
+      "elapsed_ns": 414292,
+      "predictions": 1800,
+      "ns_per_prediction": 230.16222222222223,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 8,
+      "batch": 128,
+      "backend": "emlearn",
+      "elapsed_ns": 1272708,
+      "predictions": 1800,
+      "ns_per_prediction": 707.06,
+      "adapter_calls": 16,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 8,
+      "batch": 128,
+      "backend": "onnxruntime",
+      "elapsed_ns": 191375,
+      "predictions": 1800,
+      "ns_per_prediction": 106.31944444444444,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 8,
+      "batch": 128,
+      "backend": "numpy",
+      "elapsed_ns": 298333,
+      "predictions": 1800,
+      "ns_per_prediction": 165.74055555555555,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 8,
+      "batch": 128,
+      "backend": "sklearn",
+      "elapsed_ns": 661917,
+      "predictions": 1800,
+      "ns_per_prediction": 367.7316666666667,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 8,
+      "batch": 128,
+      "backend": "tiny_input",
+      "elapsed_ns": 703292,
+      "predictions": 1800,
+      "ns_per_prediction": 390.71777777777777,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 8,
+      "batch": 450,
+      "backend": "tiny_blas",
+      "elapsed_ns": 254750,
+      "predictions": 1800,
+      "ns_per_prediction": 141.52777777777777,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 8,
+      "batch": 450,
+      "backend": "emlearn",
+      "elapsed_ns": 1263292,
+      "predictions": 1800,
+      "ns_per_prediction": 701.8288888888889,
+      "adapter_calls": 4,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 8,
+      "batch": 450,
+      "backend": "onnxruntime",
+      "elapsed_ns": 107750,
+      "predictions": 1800,
+      "ns_per_prediction": 59.861111111111114,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 8,
+      "batch": 450,
+      "backend": "numpy",
+      "elapsed_ns": 253375,
+      "predictions": 1800,
+      "ns_per_prediction": 140.76388888888889,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 8,
+      "batch": 450,
+      "backend": "sklearn",
+      "elapsed_ns": 349084,
+      "predictions": 1800,
+      "ns_per_prediction": 193.93555555555557,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 8,
+      "batch": 450,
+      "backend": "tiny_input",
+      "elapsed_ns": 655375,
+      "predictions": 1800,
+      "ns_per_prediction": 364.09722222222223,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 8,
+      "batch": 1,
+      "backend": "tiny_blas",
+      "elapsed_ns": 11009958,
+      "predictions": 1800,
+      "ns_per_prediction": 6116.643333333333,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 8,
+      "batch": 1,
+      "backend": "emlearn",
+      "elapsed_ns": 6163500,
+      "predictions": 1800,
+      "ns_per_prediction": 3424.1666666666665,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 8,
+      "batch": 1,
+      "backend": "onnxruntime",
+      "elapsed_ns": 8813375,
+      "predictions": 1800,
+      "ns_per_prediction": 4896.319444444444,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 8,
+      "batch": 1,
+      "backend": "numpy",
+      "elapsed_ns": 9851375,
+      "predictions": 1800,
+      "ns_per_prediction": 5472.986111111111,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 8,
+      "batch": 1,
+      "backend": "sklearn",
+      "elapsed_ns": 41674458,
+      "predictions": 1800,
+      "ns_per_prediction": 23152.476666666666,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 8,
+      "batch": 1,
+      "backend": "tiny_input",
+      "elapsed_ns": 11243125,
+      "predictions": 1800,
+      "ns_per_prediction": 6246.180555555556,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 8,
+      "batch": 8,
+      "backend": "tiny_blas",
+      "elapsed_ns": 1817792,
+      "predictions": 1800,
+      "ns_per_prediction": 1009.8844444444444,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 8,
+      "batch": 8,
+      "backend": "emlearn",
+      "elapsed_ns": 1838666,
+      "predictions": 1800,
+      "ns_per_prediction": 1021.4811111111111,
+      "adapter_calls": 228,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 8,
+      "batch": 8,
+      "backend": "onnxruntime",
+      "elapsed_ns": 1334583,
+      "predictions": 1800,
+      "ns_per_prediction": 741.435,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 8,
+      "batch": 8,
+      "backend": "numpy",
+      "elapsed_ns": 1427250,
+      "predictions": 1800,
+      "ns_per_prediction": 792.9166666666666,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 8,
+      "batch": 8,
+      "backend": "sklearn",
+      "elapsed_ns": 5594625,
+      "predictions": 1800,
+      "ns_per_prediction": 3108.125,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 8,
+      "batch": 8,
+      "backend": "tiny_input",
+      "elapsed_ns": 2004125,
+      "predictions": 1800,
+      "ns_per_prediction": 1113.4027777777778,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 8,
+      "batch": 32,
+      "backend": "tiny_blas",
+      "elapsed_ns": 848167,
+      "predictions": 1800,
+      "ns_per_prediction": 471.2038888888889,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 8,
+      "batch": 32,
+      "backend": "emlearn",
+      "elapsed_ns": 1405458,
+      "predictions": 1800,
+      "ns_per_prediction": 780.81,
+      "adapter_calls": 60,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 8,
+      "batch": 32,
+      "backend": "onnxruntime",
+      "elapsed_ns": 422625,
+      "predictions": 1800,
+      "ns_per_prediction": 234.79166666666666,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 8,
+      "batch": 32,
+      "backend": "numpy",
+      "elapsed_ns": 575667,
+      "predictions": 1800,
+      "ns_per_prediction": 319.815,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 8,
+      "batch": 32,
+      "backend": "sklearn",
+      "elapsed_ns": 1629833,
+      "predictions": 1800,
+      "ns_per_prediction": 905.4627777777778,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 8,
+      "batch": 32,
+      "backend": "tiny_input",
+      "elapsed_ns": 988625,
+      "predictions": 1800,
+      "ns_per_prediction": 549.2361111111111,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 9,
+      "batch": 450,
+      "backend": "emlearn",
+      "elapsed_ns": 1224208,
+      "predictions": 1800,
+      "ns_per_prediction": 680.1155555555556,
+      "adapter_calls": 4,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 9,
+      "batch": 450,
+      "backend": "onnxruntime",
+      "elapsed_ns": 108291,
+      "predictions": 1800,
+      "ns_per_prediction": 60.16166666666667,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 9,
+      "batch": 450,
+      "backend": "numpy",
+      "elapsed_ns": 220208,
+      "predictions": 1800,
+      "ns_per_prediction": 122.33777777777777,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 9,
+      "batch": 450,
+      "backend": "sklearn",
+      "elapsed_ns": 326458,
+      "predictions": 1800,
+      "ns_per_prediction": 181.36555555555555,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 9,
+      "batch": 450,
+      "backend": "tiny_input",
+      "elapsed_ns": 629667,
+      "predictions": 1800,
+      "ns_per_prediction": 349.815,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 9,
+      "batch": 450,
+      "backend": "tiny_blas",
+      "elapsed_ns": 272833,
+      "predictions": 1800,
+      "ns_per_prediction": 151.5738888888889,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 9,
+      "batch": 1,
+      "backend": "emlearn",
+      "elapsed_ns": 6140333,
+      "predictions": 1800,
+      "ns_per_prediction": 3411.2961111111113,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 9,
+      "batch": 1,
+      "backend": "onnxruntime",
+      "elapsed_ns": 9109750,
+      "predictions": 1800,
+      "ns_per_prediction": 5060.972222222223,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 9,
+      "batch": 1,
+      "backend": "numpy",
+      "elapsed_ns": 9668500,
+      "predictions": 1800,
+      "ns_per_prediction": 5371.388888888889,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 9,
+      "batch": 1,
+      "backend": "sklearn",
+      "elapsed_ns": 41936875,
+      "predictions": 1800,
+      "ns_per_prediction": 23298.26388888889,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 9,
+      "batch": 1,
+      "backend": "tiny_input",
+      "elapsed_ns": 11206458,
+      "predictions": 1800,
+      "ns_per_prediction": 6225.81,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 9,
+      "batch": 1,
+      "backend": "tiny_blas",
+      "elapsed_ns": 10892708,
+      "predictions": 1800,
+      "ns_per_prediction": 6051.504444444445,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 9,
+      "batch": 8,
+      "backend": "emlearn",
+      "elapsed_ns": 1866875,
+      "predictions": 1800,
+      "ns_per_prediction": 1037.1527777777778,
+      "adapter_calls": 228,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 9,
+      "batch": 8,
+      "backend": "onnxruntime",
+      "elapsed_ns": 1320084,
+      "predictions": 1800,
+      "ns_per_prediction": 733.38,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 9,
+      "batch": 8,
+      "backend": "numpy",
+      "elapsed_ns": 1476666,
+      "predictions": 1800,
+      "ns_per_prediction": 820.37,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 9,
+      "batch": 8,
+      "backend": "sklearn",
+      "elapsed_ns": 5438459,
+      "predictions": 1800,
+      "ns_per_prediction": 3021.366111111111,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 9,
+      "batch": 8,
+      "backend": "tiny_input",
+      "elapsed_ns": 2039667,
+      "predictions": 1800,
+      "ns_per_prediction": 1133.1483333333333,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 9,
+      "batch": 8,
+      "backend": "tiny_blas",
+      "elapsed_ns": 1901042,
+      "predictions": 1800,
+      "ns_per_prediction": 1056.1344444444444,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 9,
+      "batch": 32,
+      "backend": "emlearn",
+      "elapsed_ns": 1374166,
+      "predictions": 1800,
+      "ns_per_prediction": 763.4255555555555,
+      "adapter_calls": 60,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 9,
+      "batch": 32,
+      "backend": "onnxruntime",
+      "elapsed_ns": 419792,
+      "predictions": 1800,
+      "ns_per_prediction": 233.21777777777777,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 9,
+      "batch": 32,
+      "backend": "numpy",
+      "elapsed_ns": 543167,
+      "predictions": 1800,
+      "ns_per_prediction": 301.75944444444445,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 9,
+      "batch": 32,
+      "backend": "sklearn",
+      "elapsed_ns": 1679792,
+      "predictions": 1800,
+      "ns_per_prediction": 933.2177777777778,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 9,
+      "batch": 32,
+      "backend": "tiny_input",
+      "elapsed_ns": 1024333,
+      "predictions": 1800,
+      "ns_per_prediction": 569.0738888888889,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 9,
+      "batch": 32,
+      "backend": "tiny_blas",
+      "elapsed_ns": 830166,
+      "predictions": 1800,
+      "ns_per_prediction": 461.2033333333333,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 9,
+      "batch": 128,
+      "backend": "emlearn",
+      "elapsed_ns": 1293041,
+      "predictions": 1800,
+      "ns_per_prediction": 718.3561111111111,
+      "adapter_calls": 16,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 9,
+      "batch": 128,
+      "backend": "onnxruntime",
+      "elapsed_ns": 180292,
+      "predictions": 1800,
+      "ns_per_prediction": 100.16222222222223,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 9,
+      "batch": 128,
+      "backend": "numpy",
+      "elapsed_ns": 297916,
+      "predictions": 1800,
+      "ns_per_prediction": 165.5088888888889,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 9,
+      "batch": 128,
+      "backend": "sklearn",
+      "elapsed_ns": 673875,
+      "predictions": 1800,
+      "ns_per_prediction": 374.375,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 9,
+      "batch": 128,
+      "backend": "tiny_input",
+      "elapsed_ns": 749000,
+      "predictions": 1800,
+      "ns_per_prediction": 416.1111111111111,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 9,
+      "batch": 128,
+      "backend": "tiny_blas",
+      "elapsed_ns": 395125,
+      "predictions": 1800,
+      "ns_per_prediction": 219.51388888888889,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 10,
+      "batch": 1,
+      "backend": "onnxruntime",
+      "elapsed_ns": 8727833,
+      "predictions": 1800,
+      "ns_per_prediction": 4848.796111111111,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 10,
+      "batch": 1,
+      "backend": "numpy",
+      "elapsed_ns": 9840458,
+      "predictions": 1800,
+      "ns_per_prediction": 5466.921111111111,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 10,
+      "batch": 1,
+      "backend": "sklearn",
+      "elapsed_ns": 41484500,
+      "predictions": 1800,
+      "ns_per_prediction": 23046.944444444445,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 10,
+      "batch": 1,
+      "backend": "tiny_input",
+      "elapsed_ns": 11043167,
+      "predictions": 1800,
+      "ns_per_prediction": 6135.092777777778,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 10,
+      "batch": 1,
+      "backend": "tiny_blas",
+      "elapsed_ns": 10811416,
+      "predictions": 1800,
+      "ns_per_prediction": 6006.3422222222225,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 10,
+      "batch": 1,
+      "backend": "emlearn",
+      "elapsed_ns": 6025083,
+      "predictions": 1800,
+      "ns_per_prediction": 3347.2683333333334,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 10,
+      "batch": 8,
+      "backend": "onnxruntime",
+      "elapsed_ns": 1377833,
+      "predictions": 1800,
+      "ns_per_prediction": 765.4627777777778,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 10,
+      "batch": 8,
+      "backend": "numpy",
+      "elapsed_ns": 1427208,
+      "predictions": 1800,
+      "ns_per_prediction": 792.8933333333333,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 10,
+      "batch": 8,
+      "backend": "sklearn",
+      "elapsed_ns": 5685833,
+      "predictions": 1800,
+      "ns_per_prediction": 3158.7961111111113,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 10,
+      "batch": 8,
+      "backend": "tiny_input",
+      "elapsed_ns": 2119458,
+      "predictions": 1800,
+      "ns_per_prediction": 1177.4766666666667,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 10,
+      "batch": 8,
+      "backend": "tiny_blas",
+      "elapsed_ns": 1779291,
+      "predictions": 1800,
+      "ns_per_prediction": 988.495,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 10,
+      "batch": 8,
+      "backend": "emlearn",
+      "elapsed_ns": 1834000,
+      "predictions": 1800,
+      "ns_per_prediction": 1018.8888888888889,
+      "adapter_calls": 228,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 10,
+      "batch": 32,
+      "backend": "onnxruntime",
+      "elapsed_ns": 413583,
+      "predictions": 1800,
+      "ns_per_prediction": 229.76833333333335,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 10,
+      "batch": 32,
+      "backend": "numpy",
+      "elapsed_ns": 546167,
+      "predictions": 1800,
+      "ns_per_prediction": 303.4261111111111,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 10,
+      "batch": 32,
+      "backend": "sklearn",
+      "elapsed_ns": 1647167,
+      "predictions": 1800,
+      "ns_per_prediction": 915.0927777777778,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 10,
+      "batch": 32,
+      "backend": "tiny_input",
+      "elapsed_ns": 1015667,
+      "predictions": 1800,
+      "ns_per_prediction": 564.2594444444444,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 10,
+      "batch": 32,
+      "backend": "tiny_blas",
+      "elapsed_ns": 777625,
+      "predictions": 1800,
+      "ns_per_prediction": 432.0138888888889,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 10,
+      "batch": 32,
+      "backend": "emlearn",
+      "elapsed_ns": 1435875,
+      "predictions": 1800,
+      "ns_per_prediction": 797.7083333333334,
+      "adapter_calls": 60,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 10,
+      "batch": 128,
+      "backend": "onnxruntime",
+      "elapsed_ns": 177458,
+      "predictions": 1800,
+      "ns_per_prediction": 98.58777777777777,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 10,
+      "batch": 128,
+      "backend": "numpy",
+      "elapsed_ns": 322833,
+      "predictions": 1800,
+      "ns_per_prediction": 179.35166666666666,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 10,
+      "batch": 128,
+      "backend": "sklearn",
+      "elapsed_ns": 659916,
+      "predictions": 1800,
+      "ns_per_prediction": 366.62,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 10,
+      "batch": 128,
+      "backend": "tiny_input",
+      "elapsed_ns": 736916,
+      "predictions": 1800,
+      "ns_per_prediction": 409.3977777777778,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 10,
+      "batch": 128,
+      "backend": "tiny_blas",
+      "elapsed_ns": 417417,
+      "predictions": 1800,
+      "ns_per_prediction": 231.89833333333334,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 10,
+      "batch": 128,
+      "backend": "emlearn",
+      "elapsed_ns": 1256875,
+      "predictions": 1800,
+      "ns_per_prediction": 698.2638888888889,
+      "adapter_calls": 16,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 10,
+      "batch": 450,
+      "backend": "onnxruntime",
+      "elapsed_ns": 104083,
+      "predictions": 1800,
+      "ns_per_prediction": 57.82388888888889,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 10,
+      "batch": 450,
+      "backend": "numpy",
+      "elapsed_ns": 216583,
+      "predictions": 1800,
+      "ns_per_prediction": 120.32388888888889,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 10,
+      "batch": 450,
+      "backend": "sklearn",
+      "elapsed_ns": 320166,
+      "predictions": 1800,
+      "ns_per_prediction": 177.87,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 10,
+      "batch": 450,
+      "backend": "tiny_input",
+      "elapsed_ns": 652875,
+      "predictions": 1800,
+      "ns_per_prediction": 362.7083333333333,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 10,
+      "batch": 450,
+      "backend": "tiny_blas",
+      "elapsed_ns": 261583,
+      "predictions": 1800,
+      "ns_per_prediction": 145.3238888888889,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 10,
+      "batch": 450,
+      "backend": "emlearn",
+      "elapsed_ns": 1242125,
+      "predictions": 1800,
+      "ns_per_prediction": 690.0694444444445,
+      "adapter_calls": 4,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 11,
+      "batch": 8,
+      "backend": "numpy",
+      "elapsed_ns": 1432292,
+      "predictions": 1800,
+      "ns_per_prediction": 795.7177777777778,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 11,
+      "batch": 8,
+      "backend": "sklearn",
+      "elapsed_ns": 5593834,
+      "predictions": 1800,
+      "ns_per_prediction": 3107.6855555555558,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 11,
+      "batch": 8,
+      "backend": "tiny_input",
+      "elapsed_ns": 2016792,
+      "predictions": 1800,
+      "ns_per_prediction": 1120.44,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 11,
+      "batch": 8,
+      "backend": "tiny_blas",
+      "elapsed_ns": 1837375,
+      "predictions": 1800,
+      "ns_per_prediction": 1020.7638888888889,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 11,
+      "batch": 8,
+      "backend": "emlearn",
+      "elapsed_ns": 1871292,
+      "predictions": 1800,
+      "ns_per_prediction": 1039.6066666666666,
+      "adapter_calls": 228,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 11,
+      "batch": 8,
+      "backend": "onnxruntime",
+      "elapsed_ns": 1315708,
+      "predictions": 1800,
+      "ns_per_prediction": 730.9488888888889,
+      "adapter_calls": 228,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 11,
+      "batch": 32,
+      "backend": "numpy",
+      "elapsed_ns": 562542,
+      "predictions": 1800,
+      "ns_per_prediction": 312.5233333333333,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 11,
+      "batch": 32,
+      "backend": "sklearn",
+      "elapsed_ns": 1654667,
+      "predictions": 1800,
+      "ns_per_prediction": 919.2594444444444,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 11,
+      "batch": 32,
+      "backend": "tiny_input",
+      "elapsed_ns": 957208,
+      "predictions": 1800,
+      "ns_per_prediction": 531.7822222222222,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 11,
+      "batch": 32,
+      "backend": "tiny_blas",
+      "elapsed_ns": 804083,
+      "predictions": 1800,
+      "ns_per_prediction": 446.7127777777778,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 11,
+      "batch": 32,
+      "backend": "emlearn",
+      "elapsed_ns": 1465834,
+      "predictions": 1800,
+      "ns_per_prediction": 814.3522222222222,
+      "adapter_calls": 60,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 11,
+      "batch": 32,
+      "backend": "onnxruntime",
+      "elapsed_ns": 408792,
+      "predictions": 1800,
+      "ns_per_prediction": 227.10666666666665,
+      "adapter_calls": 60,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 11,
+      "batch": 128,
+      "backend": "numpy",
+      "elapsed_ns": 328542,
+      "predictions": 1800,
+      "ns_per_prediction": 182.52333333333334,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 11,
+      "batch": 128,
+      "backend": "sklearn",
+      "elapsed_ns": 735791,
+      "predictions": 1800,
+      "ns_per_prediction": 408.7727777777778,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 11,
+      "batch": 128,
+      "backend": "tiny_input",
+      "elapsed_ns": 741209,
+      "predictions": 1800,
+      "ns_per_prediction": 411.78277777777777,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 11,
+      "batch": 128,
+      "backend": "tiny_blas",
+      "elapsed_ns": 408000,
+      "predictions": 1800,
+      "ns_per_prediction": 226.66666666666666,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 11,
+      "batch": 128,
+      "backend": "emlearn",
+      "elapsed_ns": 1257459,
+      "predictions": 1800,
+      "ns_per_prediction": 698.5883333333334,
+      "adapter_calls": 16,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 11,
+      "batch": 128,
+      "backend": "onnxruntime",
+      "elapsed_ns": 187167,
+      "predictions": 1800,
+      "ns_per_prediction": 103.98166666666667,
+      "adapter_calls": 16,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 11,
+      "batch": 450,
+      "backend": "numpy",
+      "elapsed_ns": 220958,
+      "predictions": 1800,
+      "ns_per_prediction": 122.75444444444445,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 11,
+      "batch": 450,
+      "backend": "sklearn",
+      "elapsed_ns": 332041,
+      "predictions": 1800,
+      "ns_per_prediction": 184.46722222222223,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 11,
+      "batch": 450,
+      "backend": "tiny_input",
+      "elapsed_ns": 650583,
+      "predictions": 1800,
+      "ns_per_prediction": 361.435,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 11,
+      "batch": 450,
+      "backend": "tiny_blas",
+      "elapsed_ns": 263083,
+      "predictions": 1800,
+      "ns_per_prediction": 146.15722222222223,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 11,
+      "batch": 450,
+      "backend": "emlearn",
+      "elapsed_ns": 1253583,
+      "predictions": 1800,
+      "ns_per_prediction": 696.435,
+      "adapter_calls": 4,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 11,
+      "batch": 450,
+      "backend": "onnxruntime",
+      "elapsed_ns": 104584,
+      "predictions": 1800,
+      "ns_per_prediction": 58.102222222222224,
+      "adapter_calls": 4,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 11,
+      "batch": 1,
+      "backend": "numpy",
+      "elapsed_ns": 9723000,
+      "predictions": 1800,
+      "ns_per_prediction": 5401.666666666667,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 11,
+      "batch": 1,
+      "backend": "sklearn",
+      "elapsed_ns": 41189083,
+      "predictions": 1800,
+      "ns_per_prediction": 22882.823888888888,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 11,
+      "batch": 1,
+      "backend": "tiny_input",
+      "elapsed_ns": 11351667,
+      "predictions": 1800,
+      "ns_per_prediction": 6306.481666666667,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 11,
+      "batch": 1,
+      "backend": "tiny_blas",
+      "elapsed_ns": 11040375,
+      "predictions": 1800,
+      "ns_per_prediction": 6133.541666666667,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    },
+    {
+      "sample": 11,
+      "batch": 1,
+      "backend": "emlearn",
+      "elapsed_ns": 6008000,
+      "predictions": 1800,
+      "ns_per_prediction": 3337.777777777778,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": 1800
+    },
+    {
+      "sample": 11,
+      "batch": 1,
+      "backend": "onnxruntime",
+      "elapsed_ns": 8928708,
+      "predictions": 1800,
+      "ns_per_prediction": 4960.393333333333,
+      "adapter_calls": 1800,
+      "emlearn_single_calls": null
+    }
+  ],
+  "ort": {
+    "providers": [
+      "CPUExecutionProvider"
+    ],
+    "intra_threads": 1,
+    "inter_threads": 1,
+    "execution": "sequential",
+    "optimization": "all"
+  },
+  "all_outputs_checked": true
+}

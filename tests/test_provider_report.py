@@ -26,7 +26,9 @@ class ReportTests(unittest.TestCase):
                ('correctness.json',lambda r:r['outputs']['128']['emlearn'].update(correct=450)),
                ('correctness.json',lambda r:r['outputs']['128']['emlearn']['probabilities'][-1].__setitem__(0,.5)),
                ('memory.json',lambda r:r[0].update(incremental_warm_rss_bytes=999)),
-               ('deployment.json',lambda r:r['providers']['onnxruntime'].update(artifact_bytes=1))]
+               ('deployment.json',lambda r:r['providers']['onnxruntime'].update(artifact_bytes=1)),
+               ('deployment.json',lambda r:r['providers']['onnxruntime'].update(
+                    additional_packages=[],additional_package_bytes=0))]
         for filename,change in cases:
             with self.subTest(file=filename),tempfile.TemporaryDirectory() as tmp:
                 directory=Path(tmp)/'report';shutil.copytree(PUBLISHED,directory)

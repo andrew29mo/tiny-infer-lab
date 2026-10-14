@@ -1,0 +1,2312 @@
+[
+  {
+    "repeat": 0,
+    "backend": "tiny_input",
+    "batch": 1,
+    "baseline_rss_bytes": 39911424,
+    "loaded_rss_bytes": 40386560,
+    "warm_rss_bytes": 40796160,
+    "incremental_warm_rss_bytes": 884736,
+    "process_peak_rss_bytes": 40796160,
+    "load_ns": 3007250,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 0,
+    "backend": "tiny_blas",
+    "batch": 1,
+    "baseline_rss_bytes": 39878656,
+    "loaded_rss_bytes": 40337408,
+    "warm_rss_bytes": 40763392,
+    "incremental_warm_rss_bytes": 884736,
+    "process_peak_rss_bytes": 40763392,
+    "load_ns": 2930291,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 0,
+    "backend": "emlearn",
+    "batch": 1,
+    "baseline_rss_bytes": 39829504,
+    "loaded_rss_bytes": 39911424,
+    "warm_rss_bytes": 40353792,
+    "incremental_warm_rss_bytes": 524288,
+    "process_peak_rss_bytes": 40353792,
+    "load_ns": 1099042,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 0,
+    "backend": "onnxruntime",
+    "batch": 1,
+    "baseline_rss_bytes": 39895040,
+    "loaded_rss_bytes": 62832640,
+    "warm_rss_bytes": 63193088,
+    "incremental_warm_rss_bytes": 23298048,
+    "process_peak_rss_bytes": 63193088,
+    "load_ns": 13889917,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 0,
+    "backend": "numpy",
+    "batch": 1,
+    "baseline_rss_bytes": 39862272,
+    "loaded_rss_bytes": 40255488,
+    "warm_rss_bytes": 40550400,
+    "incremental_warm_rss_bytes": 688128,
+    "process_peak_rss_bytes": 40550400,
+    "load_ns": 1952917,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 0,
+    "backend": "sklearn",
+    "batch": 1,
+    "baseline_rss_bytes": 39895040,
+    "loaded_rss_bytes": 105021440,
+    "warm_rss_bytes": 105611264,
+    "incremental_warm_rss_bytes": 65716224,
+    "process_peak_rss_bytes": 106233856,
+    "load_ns": 428649833,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.27",
+        "threading_layer": "pthreads",
+        "architecture": "neoversen1"
+      },
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 1,
+        "prefix": "libomp",
+        "version": null
+      }
+    ]
+  },
+  {
+    "repeat": 0,
+    "backend": "tiny_input",
+    "batch": 8,
+    "baseline_rss_bytes": 39829504,
+    "loaded_rss_bytes": 40304640,
+    "warm_rss_bytes": 40697856,
+    "incremental_warm_rss_bytes": 868352,
+    "process_peak_rss_bytes": 40697856,
+    "load_ns": 3075500,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 0,
+    "backend": "tiny_blas",
+    "batch": 8,
+    "baseline_rss_bytes": 39911424,
+    "loaded_rss_bytes": 40402944,
+    "warm_rss_bytes": 40845312,
+    "incremental_warm_rss_bytes": 933888,
+    "process_peak_rss_bytes": 40845312,
+    "load_ns": 3061958,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 0,
+    "backend": "emlearn",
+    "batch": 8,
+    "baseline_rss_bytes": 39829504,
+    "loaded_rss_bytes": 39927808,
+    "warm_rss_bytes": 40337408,
+    "incremental_warm_rss_bytes": 507904,
+    "process_peak_rss_bytes": 40337408,
+    "load_ns": 1181041,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 0,
+    "backend": "onnxruntime",
+    "batch": 8,
+    "baseline_rss_bytes": 39911424,
+    "loaded_rss_bytes": 62980096,
+    "warm_rss_bytes": 63340544,
+    "incremental_warm_rss_bytes": 23429120,
+    "process_peak_rss_bytes": 63340544,
+    "load_ns": 13403000,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 0,
+    "backend": "numpy",
+    "batch": 8,
+    "baseline_rss_bytes": 39911424,
+    "loaded_rss_bytes": 40304640,
+    "warm_rss_bytes": 40599552,
+    "incremental_warm_rss_bytes": 688128,
+    "process_peak_rss_bytes": 40599552,
+    "load_ns": 1835125,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 0,
+    "backend": "sklearn",
+    "batch": 8,
+    "baseline_rss_bytes": 39911424,
+    "loaded_rss_bytes": 105054208,
+    "warm_rss_bytes": 105709568,
+    "incremental_warm_rss_bytes": 65798144,
+    "process_peak_rss_bytes": 106266624,
+    "load_ns": 411520709,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.27",
+        "threading_layer": "pthreads",
+        "architecture": "neoversen1"
+      },
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 1,
+        "prefix": "libomp",
+        "version": null
+      }
+    ]
+  },
+  {
+    "repeat": 0,
+    "backend": "tiny_input",
+    "batch": 32,
+    "baseline_rss_bytes": 39862272,
+    "loaded_rss_bytes": 40337408,
+    "warm_rss_bytes": 40714240,
+    "incremental_warm_rss_bytes": 851968,
+    "process_peak_rss_bytes": 40714240,
+    "load_ns": 7881209,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 0,
+    "backend": "tiny_blas",
+    "batch": 32,
+    "baseline_rss_bytes": 39813120,
+    "loaded_rss_bytes": 40304640,
+    "warm_rss_bytes": 40665088,
+    "incremental_warm_rss_bytes": 851968,
+    "process_peak_rss_bytes": 40665088,
+    "load_ns": 3044208,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 0,
+    "backend": "emlearn",
+    "batch": 32,
+    "baseline_rss_bytes": 39927808,
+    "loaded_rss_bytes": 40009728,
+    "warm_rss_bytes": 40288256,
+    "incremental_warm_rss_bytes": 360448,
+    "process_peak_rss_bytes": 40304640,
+    "load_ns": 1155042,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 0,
+    "backend": "onnxruntime",
+    "batch": 32,
+    "baseline_rss_bytes": 40042496,
+    "loaded_rss_bytes": 63127552,
+    "warm_rss_bytes": 63471616,
+    "incremental_warm_rss_bytes": 23429120,
+    "process_peak_rss_bytes": 63471616,
+    "load_ns": 13943959,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 0,
+    "backend": "numpy",
+    "batch": 32,
+    "baseline_rss_bytes": 39862272,
+    "loaded_rss_bytes": 40239104,
+    "warm_rss_bytes": 40550400,
+    "incremental_warm_rss_bytes": 688128,
+    "process_peak_rss_bytes": 40550400,
+    "load_ns": 1945542,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 0,
+    "backend": "sklearn",
+    "batch": 32,
+    "baseline_rss_bytes": 39976960,
+    "loaded_rss_bytes": 105086976,
+    "warm_rss_bytes": 105725952,
+    "incremental_warm_rss_bytes": 65748992,
+    "process_peak_rss_bytes": 106283008,
+    "load_ns": 422524958,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.27",
+        "threading_layer": "pthreads",
+        "architecture": "neoversen1"
+      },
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 1,
+        "prefix": "libomp",
+        "version": null
+      }
+    ]
+  },
+  {
+    "repeat": 0,
+    "backend": "tiny_input",
+    "batch": 128,
+    "baseline_rss_bytes": 39845888,
+    "loaded_rss_bytes": 40288256,
+    "warm_rss_bytes": 40550400,
+    "incremental_warm_rss_bytes": 704512,
+    "process_peak_rss_bytes": 40566784,
+    "load_ns": 3231709,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 0,
+    "backend": "tiny_blas",
+    "batch": 128,
+    "baseline_rss_bytes": 39944192,
+    "loaded_rss_bytes": 40402944,
+    "warm_rss_bytes": 40697856,
+    "incremental_warm_rss_bytes": 753664,
+    "process_peak_rss_bytes": 40697856,
+    "load_ns": 2892959,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 0,
+    "backend": "emlearn",
+    "batch": 128,
+    "baseline_rss_bytes": 39813120,
+    "loaded_rss_bytes": 39895040,
+    "warm_rss_bytes": 40108032,
+    "incremental_warm_rss_bytes": 294912,
+    "process_peak_rss_bytes": 40189952,
+    "load_ns": 1062667,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 0,
+    "backend": "onnxruntime",
+    "batch": 128,
+    "baseline_rss_bytes": 39862272,
+    "loaded_rss_bytes": 62930944,
+    "warm_rss_bytes": 63340544,
+    "incremental_warm_rss_bytes": 23478272,
+    "process_peak_rss_bytes": 63340544,
+    "load_ns": 13588625,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 0,
+    "backend": "numpy",
+    "batch": 128,
+    "baseline_rss_bytes": 39976960,
+    "loaded_rss_bytes": 40370176,
+    "warm_rss_bytes": 40632320,
+    "incremental_warm_rss_bytes": 655360,
+    "process_peak_rss_bytes": 40632320,
+    "load_ns": 1957250,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 0,
+    "backend": "sklearn",
+    "batch": 128,
+    "baseline_rss_bytes": 39845888,
+    "loaded_rss_bytes": 104857600,
+    "warm_rss_bytes": 105496576,
+    "incremental_warm_rss_bytes": 65650688,
+    "process_peak_rss_bytes": 106070016,
+    "load_ns": 426794875,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.27",
+        "threading_layer": "pthreads",
+        "architecture": "neoversen1"
+      },
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 1,
+        "prefix": "libomp",
+        "version": null
+      }
+    ]
+  },
+  {
+    "repeat": 0,
+    "backend": "tiny_input",
+    "batch": 450,
+    "baseline_rss_bytes": 39895040,
+    "loaded_rss_bytes": 40386560,
+    "warm_rss_bytes": 40615936,
+    "incremental_warm_rss_bytes": 720896,
+    "process_peak_rss_bytes": 40665088,
+    "load_ns": 2961542,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 0,
+    "backend": "tiny_blas",
+    "batch": 450,
+    "baseline_rss_bytes": 39960576,
+    "loaded_rss_bytes": 40419328,
+    "warm_rss_bytes": 40697856,
+    "incremental_warm_rss_bytes": 737280,
+    "process_peak_rss_bytes": 40697856,
+    "load_ns": 3087250,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 0,
+    "backend": "emlearn",
+    "batch": 450,
+    "baseline_rss_bytes": 39911424,
+    "loaded_rss_bytes": 39993344,
+    "warm_rss_bytes": 40255488,
+    "incremental_warm_rss_bytes": 344064,
+    "process_peak_rss_bytes": 40288256,
+    "load_ns": 1157667,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 0,
+    "backend": "onnxruntime",
+    "batch": 450,
+    "baseline_rss_bytes": 39927808,
+    "loaded_rss_bytes": 62898176,
+    "warm_rss_bytes": 63307776,
+    "incremental_warm_rss_bytes": 23379968,
+    "process_peak_rss_bytes": 63307776,
+    "load_ns": 14146000,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 0,
+    "backend": "numpy",
+    "batch": 450,
+    "baseline_rss_bytes": 39829504,
+    "loaded_rss_bytes": 40255488,
+    "warm_rss_bytes": 40599552,
+    "incremental_warm_rss_bytes": 770048,
+    "process_peak_rss_bytes": 40599552,
+    "load_ns": 1938625,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 0,
+    "backend": "sklearn",
+    "batch": 450,
+    "baseline_rss_bytes": 39944192,
+    "loaded_rss_bytes": 105119744,
+    "warm_rss_bytes": 105709568,
+    "incremental_warm_rss_bytes": 65765376,
+    "process_peak_rss_bytes": 106332160,
+    "load_ns": 419827334,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.27",
+        "threading_layer": "pthreads",
+        "architecture": "neoversen1"
+      },
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 1,
+        "prefix": "libomp",
+        "version": null
+      }
+    ]
+  },
+  {
+    "repeat": 1,
+    "backend": "tiny_input",
+    "batch": 1,
+    "baseline_rss_bytes": 39927808,
+    "loaded_rss_bytes": 40386560,
+    "warm_rss_bytes": 40828928,
+    "incremental_warm_rss_bytes": 901120,
+    "process_peak_rss_bytes": 40828928,
+    "load_ns": 2850500,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 1,
+    "backend": "tiny_blas",
+    "batch": 1,
+    "baseline_rss_bytes": 39911424,
+    "loaded_rss_bytes": 40353792,
+    "warm_rss_bytes": 40763392,
+    "incremental_warm_rss_bytes": 851968,
+    "process_peak_rss_bytes": 40763392,
+    "load_ns": 3169667,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 1,
+    "backend": "emlearn",
+    "batch": 1,
+    "baseline_rss_bytes": 39796736,
+    "loaded_rss_bytes": 39878656,
+    "warm_rss_bytes": 40321024,
+    "incremental_warm_rss_bytes": 524288,
+    "process_peak_rss_bytes": 40321024,
+    "load_ns": 1228625,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 1,
+    "backend": "onnxruntime",
+    "batch": 1,
+    "baseline_rss_bytes": 39878656,
+    "loaded_rss_bytes": 62849024,
+    "warm_rss_bytes": 63258624,
+    "incremental_warm_rss_bytes": 23379968,
+    "process_peak_rss_bytes": 63258624,
+    "load_ns": 14206209,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 1,
+    "backend": "numpy",
+    "batch": 1,
+    "baseline_rss_bytes": 39895040,
+    "loaded_rss_bytes": 40271872,
+    "warm_rss_bytes": 40550400,
+    "incremental_warm_rss_bytes": 655360,
+    "process_peak_rss_bytes": 40550400,
+    "load_ns": 1910334,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 1,
+    "backend": "sklearn",
+    "batch": 1,
+    "baseline_rss_bytes": 39845888,
+    "loaded_rss_bytes": 105103360,
+    "warm_rss_bytes": 105644032,
+    "incremental_warm_rss_bytes": 65798144,
+    "process_peak_rss_bytes": 106299392,
+    "load_ns": 428199875,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.27",
+        "threading_layer": "pthreads",
+        "architecture": "neoversen1"
+      },
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 1,
+        "prefix": "libomp",
+        "version": null
+      }
+    ]
+  },
+  {
+    "repeat": 1,
+    "backend": "tiny_input",
+    "batch": 8,
+    "baseline_rss_bytes": 39895040,
+    "loaded_rss_bytes": 40386560,
+    "warm_rss_bytes": 40812544,
+    "incremental_warm_rss_bytes": 917504,
+    "process_peak_rss_bytes": 40812544,
+    "load_ns": 3504125,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 1,
+    "backend": "tiny_blas",
+    "batch": 8,
+    "baseline_rss_bytes": 39976960,
+    "loaded_rss_bytes": 40468480,
+    "warm_rss_bytes": 40910848,
+    "incremental_warm_rss_bytes": 933888,
+    "process_peak_rss_bytes": 40910848,
+    "load_ns": 3161500,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 1,
+    "backend": "emlearn",
+    "batch": 8,
+    "baseline_rss_bytes": 39813120,
+    "loaded_rss_bytes": 39927808,
+    "warm_rss_bytes": 40304640,
+    "incremental_warm_rss_bytes": 491520,
+    "process_peak_rss_bytes": 40304640,
+    "load_ns": 1186000,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 1,
+    "backend": "onnxruntime",
+    "batch": 8,
+    "baseline_rss_bytes": 39862272,
+    "loaded_rss_bytes": 62832640,
+    "warm_rss_bytes": 63242240,
+    "incremental_warm_rss_bytes": 23379968,
+    "process_peak_rss_bytes": 63242240,
+    "load_ns": 13742042,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 1,
+    "backend": "numpy",
+    "batch": 8,
+    "baseline_rss_bytes": 39976960,
+    "loaded_rss_bytes": 40370176,
+    "warm_rss_bytes": 40648704,
+    "incremental_warm_rss_bytes": 671744,
+    "process_peak_rss_bytes": 40648704,
+    "load_ns": 1998792,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 1,
+    "backend": "sklearn",
+    "batch": 8,
+    "baseline_rss_bytes": 39927808,
+    "loaded_rss_bytes": 105086976,
+    "warm_rss_bytes": 105742336,
+    "incremental_warm_rss_bytes": 65814528,
+    "process_peak_rss_bytes": 106315776,
+    "load_ns": 431267250,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.27",
+        "threading_layer": "pthreads",
+        "architecture": "neoversen1"
+      },
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 1,
+        "prefix": "libomp",
+        "version": null
+      }
+    ]
+  },
+  {
+    "repeat": 1,
+    "backend": "tiny_input",
+    "batch": 32,
+    "baseline_rss_bytes": 39763968,
+    "loaded_rss_bytes": 40271872,
+    "warm_rss_bytes": 40599552,
+    "incremental_warm_rss_bytes": 835584,
+    "process_peak_rss_bytes": 40599552,
+    "load_ns": 2990333,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 1,
+    "backend": "tiny_blas",
+    "batch": 32,
+    "baseline_rss_bytes": 39895040,
+    "loaded_rss_bytes": 40370176,
+    "warm_rss_bytes": 40730624,
+    "incremental_warm_rss_bytes": 835584,
+    "process_peak_rss_bytes": 40730624,
+    "load_ns": 3055000,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 1,
+    "backend": "emlearn",
+    "batch": 32,
+    "baseline_rss_bytes": 39829504,
+    "loaded_rss_bytes": 39911424,
+    "warm_rss_bytes": 40173568,
+    "incremental_warm_rss_bytes": 344064,
+    "process_peak_rss_bytes": 40206336,
+    "load_ns": 1206375,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 1,
+    "backend": "onnxruntime",
+    "batch": 32,
+    "baseline_rss_bytes": 39976960,
+    "loaded_rss_bytes": 62750720,
+    "warm_rss_bytes": 63160320,
+    "incremental_warm_rss_bytes": 23183360,
+    "process_peak_rss_bytes": 63160320,
+    "load_ns": 13990917,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 1,
+    "backend": "numpy",
+    "batch": 32,
+    "baseline_rss_bytes": 39895040,
+    "loaded_rss_bytes": 40288256,
+    "warm_rss_bytes": 40583168,
+    "incremental_warm_rss_bytes": 688128,
+    "process_peak_rss_bytes": 40583168,
+    "load_ns": 2109208,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 1,
+    "backend": "sklearn",
+    "batch": 32,
+    "baseline_rss_bytes": 39829504,
+    "loaded_rss_bytes": 104988672,
+    "warm_rss_bytes": 105627648,
+    "incremental_warm_rss_bytes": 65798144,
+    "process_peak_rss_bytes": 106201088,
+    "load_ns": 437216000,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.27",
+        "threading_layer": "pthreads",
+        "architecture": "neoversen1"
+      },
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 1,
+        "prefix": "libomp",
+        "version": null
+      }
+    ]
+  },
+  {
+    "repeat": 1,
+    "backend": "tiny_input",
+    "batch": 128,
+    "baseline_rss_bytes": 39944192,
+    "loaded_rss_bytes": 40419328,
+    "warm_rss_bytes": 40665088,
+    "incremental_warm_rss_bytes": 720896,
+    "process_peak_rss_bytes": 40697856,
+    "load_ns": 3001667,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 1,
+    "backend": "tiny_blas",
+    "batch": 128,
+    "baseline_rss_bytes": 39927808,
+    "loaded_rss_bytes": 40402944,
+    "warm_rss_bytes": 40697856,
+    "incremental_warm_rss_bytes": 770048,
+    "process_peak_rss_bytes": 40697856,
+    "load_ns": 2910542,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 1,
+    "backend": "emlearn",
+    "batch": 128,
+    "baseline_rss_bytes": 39845888,
+    "loaded_rss_bytes": 39944192,
+    "warm_rss_bytes": 40157184,
+    "incremental_warm_rss_bytes": 311296,
+    "process_peak_rss_bytes": 40239104,
+    "load_ns": 1151083,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 1,
+    "backend": "onnxruntime",
+    "batch": 128,
+    "baseline_rss_bytes": 39845888,
+    "loaded_rss_bytes": 62881792,
+    "warm_rss_bytes": 63275008,
+    "incremental_warm_rss_bytes": 23429120,
+    "process_peak_rss_bytes": 63275008,
+    "load_ns": 13888458,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 1,
+    "backend": "numpy",
+    "batch": 128,
+    "baseline_rss_bytes": 39813120,
+    "loaded_rss_bytes": 40255488,
+    "warm_rss_bytes": 40583168,
+    "incremental_warm_rss_bytes": 770048,
+    "process_peak_rss_bytes": 40583168,
+    "load_ns": 1882791,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 1,
+    "backend": "sklearn",
+    "batch": 128,
+    "baseline_rss_bytes": 39927808,
+    "loaded_rss_bytes": 105218048,
+    "warm_rss_bytes": 105775104,
+    "incremental_warm_rss_bytes": 65847296,
+    "process_peak_rss_bytes": 106463232,
+    "load_ns": 428368041,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.27",
+        "threading_layer": "pthreads",
+        "architecture": "neoversen1"
+      },
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 1,
+        "prefix": "libomp",
+        "version": null
+      }
+    ]
+  },
+  {
+    "repeat": 1,
+    "backend": "tiny_input",
+    "batch": 450,
+    "baseline_rss_bytes": 39862272,
+    "loaded_rss_bytes": 40337408,
+    "warm_rss_bytes": 40599552,
+    "incremental_warm_rss_bytes": 737280,
+    "process_peak_rss_bytes": 40615936,
+    "load_ns": 3300083,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 1,
+    "backend": "tiny_blas",
+    "batch": 450,
+    "baseline_rss_bytes": 39960576,
+    "loaded_rss_bytes": 40419328,
+    "warm_rss_bytes": 40730624,
+    "incremental_warm_rss_bytes": 770048,
+    "process_peak_rss_bytes": 40730624,
+    "load_ns": 3059375,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 1,
+    "backend": "emlearn",
+    "batch": 450,
+    "baseline_rss_bytes": 39813120,
+    "loaded_rss_bytes": 39895040,
+    "warm_rss_bytes": 40173568,
+    "incremental_warm_rss_bytes": 360448,
+    "process_peak_rss_bytes": 40189952,
+    "load_ns": 1144792,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 1,
+    "backend": "onnxruntime",
+    "batch": 450,
+    "baseline_rss_bytes": 39976960,
+    "loaded_rss_bytes": 62980096,
+    "warm_rss_bytes": 63406080,
+    "incremental_warm_rss_bytes": 23429120,
+    "process_peak_rss_bytes": 63406080,
+    "load_ns": 20372375,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 1,
+    "backend": "numpy",
+    "batch": 450,
+    "baseline_rss_bytes": 40321024,
+    "loaded_rss_bytes": 40714240,
+    "warm_rss_bytes": 41009152,
+    "incremental_warm_rss_bytes": 688128,
+    "process_peak_rss_bytes": 41009152,
+    "load_ns": 1908125,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 1,
+    "backend": "sklearn",
+    "batch": 450,
+    "baseline_rss_bytes": 39911424,
+    "loaded_rss_bytes": 104873984,
+    "warm_rss_bytes": 105512960,
+    "incremental_warm_rss_bytes": 65601536,
+    "process_peak_rss_bytes": 106086400,
+    "load_ns": 420795166,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.27",
+        "threading_layer": "pthreads",
+        "architecture": "neoversen1"
+      },
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 1,
+        "prefix": "libomp",
+        "version": null
+      }
+    ]
+  },
+  {
+    "repeat": 2,
+    "backend": "tiny_input",
+    "batch": 1,
+    "baseline_rss_bytes": 39845888,
+    "loaded_rss_bytes": 40304640,
+    "warm_rss_bytes": 40714240,
+    "incremental_warm_rss_bytes": 868352,
+    "process_peak_rss_bytes": 40714240,
+    "load_ns": 3252416,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 2,
+    "backend": "tiny_blas",
+    "batch": 1,
+    "baseline_rss_bytes": 39796736,
+    "loaded_rss_bytes": 40304640,
+    "warm_rss_bytes": 40747008,
+    "incremental_warm_rss_bytes": 950272,
+    "process_peak_rss_bytes": 40747008,
+    "load_ns": 2905208,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 2,
+    "backend": "emlearn",
+    "batch": 1,
+    "baseline_rss_bytes": 39845888,
+    "loaded_rss_bytes": 39927808,
+    "warm_rss_bytes": 40386560,
+    "incremental_warm_rss_bytes": 540672,
+    "process_peak_rss_bytes": 40386560,
+    "load_ns": 1096500,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 2,
+    "backend": "onnxruntime",
+    "batch": 1,
+    "baseline_rss_bytes": 39976960,
+    "loaded_rss_bytes": 62914560,
+    "warm_rss_bytes": 63324160,
+    "incremental_warm_rss_bytes": 23347200,
+    "process_peak_rss_bytes": 63324160,
+    "load_ns": 13990208,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 2,
+    "backend": "numpy",
+    "batch": 1,
+    "baseline_rss_bytes": 39895040,
+    "loaded_rss_bytes": 40271872,
+    "warm_rss_bytes": 40534016,
+    "incremental_warm_rss_bytes": 638976,
+    "process_peak_rss_bytes": 40534016,
+    "load_ns": 1986625,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 2,
+    "backend": "sklearn",
+    "batch": 1,
+    "baseline_rss_bytes": 39862272,
+    "loaded_rss_bytes": 104906752,
+    "warm_rss_bytes": 105496576,
+    "incremental_warm_rss_bytes": 65634304,
+    "process_peak_rss_bytes": 106119168,
+    "load_ns": 409440167,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.27",
+        "threading_layer": "pthreads",
+        "architecture": "neoversen1"
+      },
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 1,
+        "prefix": "libomp",
+        "version": null
+      }
+    ]
+  },
+  {
+    "repeat": 2,
+    "backend": "tiny_input",
+    "batch": 8,
+    "baseline_rss_bytes": 39993344,
+    "loaded_rss_bytes": 40484864,
+    "warm_rss_bytes": 40828928,
+    "incremental_warm_rss_bytes": 835584,
+    "process_peak_rss_bytes": 40828928,
+    "load_ns": 6803500,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 2,
+    "backend": "tiny_blas",
+    "batch": 8,
+    "baseline_rss_bytes": 39944192,
+    "loaded_rss_bytes": 40419328,
+    "warm_rss_bytes": 40878080,
+    "incremental_warm_rss_bytes": 933888,
+    "process_peak_rss_bytes": 40878080,
+    "load_ns": 2933416,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 2,
+    "backend": "emlearn",
+    "batch": 8,
+    "baseline_rss_bytes": 39862272,
+    "loaded_rss_bytes": 39960576,
+    "warm_rss_bytes": 40337408,
+    "incremental_warm_rss_bytes": 475136,
+    "process_peak_rss_bytes": 40337408,
+    "load_ns": 1113208,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 2,
+    "backend": "onnxruntime",
+    "batch": 8,
+    "baseline_rss_bytes": 39878656,
+    "loaded_rss_bytes": 62849024,
+    "warm_rss_bytes": 63242240,
+    "incremental_warm_rss_bytes": 23363584,
+    "process_peak_rss_bytes": 63242240,
+    "load_ns": 13784000,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 2,
+    "backend": "numpy",
+    "batch": 8,
+    "baseline_rss_bytes": 39862272,
+    "loaded_rss_bytes": 40271872,
+    "warm_rss_bytes": 40566784,
+    "incremental_warm_rss_bytes": 704512,
+    "process_peak_rss_bytes": 40566784,
+    "load_ns": 1819792,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 2,
+    "backend": "sklearn",
+    "batch": 8,
+    "baseline_rss_bytes": 39796736,
+    "loaded_rss_bytes": 104841216,
+    "warm_rss_bytes": 105463808,
+    "incremental_warm_rss_bytes": 65667072,
+    "process_peak_rss_bytes": 106053632,
+    "load_ns": 420165792,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.27",
+        "threading_layer": "pthreads",
+        "architecture": "neoversen1"
+      },
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 1,
+        "prefix": "libomp",
+        "version": null
+      }
+    ]
+  },
+  {
+    "repeat": 2,
+    "backend": "tiny_input",
+    "batch": 32,
+    "baseline_rss_bytes": 40173568,
+    "loaded_rss_bytes": 40648704,
+    "warm_rss_bytes": 40992768,
+    "incremental_warm_rss_bytes": 819200,
+    "process_peak_rss_bytes": 40992768,
+    "load_ns": 3446417,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 2,
+    "backend": "tiny_blas",
+    "batch": 32,
+    "baseline_rss_bytes": 39813120,
+    "loaded_rss_bytes": 40337408,
+    "warm_rss_bytes": 40714240,
+    "incremental_warm_rss_bytes": 901120,
+    "process_peak_rss_bytes": 40714240,
+    "load_ns": 3255000,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 2,
+    "backend": "emlearn",
+    "batch": 32,
+    "baseline_rss_bytes": 39845888,
+    "loaded_rss_bytes": 39927808,
+    "warm_rss_bytes": 40189952,
+    "incremental_warm_rss_bytes": 344064,
+    "process_peak_rss_bytes": 40222720,
+    "load_ns": 1263250,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 2,
+    "backend": "onnxruntime",
+    "batch": 32,
+    "baseline_rss_bytes": 39911424,
+    "loaded_rss_bytes": 62914560,
+    "warm_rss_bytes": 63242240,
+    "incremental_warm_rss_bytes": 23330816,
+    "process_peak_rss_bytes": 63242240,
+    "load_ns": 13304166,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 2,
+    "backend": "numpy",
+    "batch": 32,
+    "baseline_rss_bytes": 39845888,
+    "loaded_rss_bytes": 40239104,
+    "warm_rss_bytes": 40501248,
+    "incremental_warm_rss_bytes": 655360,
+    "process_peak_rss_bytes": 40501248,
+    "load_ns": 1823833,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 2,
+    "backend": "sklearn",
+    "batch": 32,
+    "baseline_rss_bytes": 39813120,
+    "loaded_rss_bytes": 104742912,
+    "warm_rss_bytes": 105365504,
+    "incremental_warm_rss_bytes": 65552384,
+    "process_peak_rss_bytes": 105955328,
+    "load_ns": 418509333,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.27",
+        "threading_layer": "pthreads",
+        "architecture": "neoversen1"
+      },
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 1,
+        "prefix": "libomp",
+        "version": null
+      }
+    ]
+  },
+  {
+    "repeat": 2,
+    "backend": "tiny_input",
+    "batch": 128,
+    "baseline_rss_bytes": 39845888,
+    "loaded_rss_bytes": 40321024,
+    "warm_rss_bytes": 40550400,
+    "incremental_warm_rss_bytes": 704512,
+    "process_peak_rss_bytes": 40599552,
+    "load_ns": 3270792,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 2,
+    "backend": "tiny_blas",
+    "batch": 128,
+    "baseline_rss_bytes": 39878656,
+    "loaded_rss_bytes": 40353792,
+    "warm_rss_bytes": 40665088,
+    "incremental_warm_rss_bytes": 786432,
+    "process_peak_rss_bytes": 40665088,
+    "load_ns": 3029292,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 2,
+    "backend": "emlearn",
+    "batch": 128,
+    "baseline_rss_bytes": 39911424,
+    "loaded_rss_bytes": 39993344,
+    "warm_rss_bytes": 40206336,
+    "incremental_warm_rss_bytes": 294912,
+    "process_peak_rss_bytes": 40288256,
+    "load_ns": 1134500,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 2,
+    "backend": "onnxruntime",
+    "batch": 128,
+    "baseline_rss_bytes": 39845888,
+    "loaded_rss_bytes": 62898176,
+    "warm_rss_bytes": 63275008,
+    "incremental_warm_rss_bytes": 23429120,
+    "process_peak_rss_bytes": 63275008,
+    "load_ns": 13790625,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 2,
+    "backend": "numpy",
+    "batch": 128,
+    "baseline_rss_bytes": 39895040,
+    "loaded_rss_bytes": 40321024,
+    "warm_rss_bytes": 40599552,
+    "incremental_warm_rss_bytes": 704512,
+    "process_peak_rss_bytes": 40599552,
+    "load_ns": 1910916,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 2,
+    "backend": "sklearn",
+    "batch": 128,
+    "baseline_rss_bytes": 39845888,
+    "loaded_rss_bytes": 104808448,
+    "warm_rss_bytes": 105381888,
+    "incremental_warm_rss_bytes": 65536000,
+    "process_peak_rss_bytes": 106020864,
+    "load_ns": 416046000,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.27",
+        "threading_layer": "pthreads",
+        "architecture": "neoversen1"
+      },
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 1,
+        "prefix": "libomp",
+        "version": null
+      }
+    ]
+  },
+  {
+    "repeat": 2,
+    "backend": "tiny_input",
+    "batch": 450,
+    "baseline_rss_bytes": 39862272,
+    "loaded_rss_bytes": 40370176,
+    "warm_rss_bytes": 40665088,
+    "incremental_warm_rss_bytes": 802816,
+    "process_peak_rss_bytes": 40665088,
+    "load_ns": 3082167,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 2,
+    "backend": "tiny_blas",
+    "batch": 450,
+    "baseline_rss_bytes": 39862272,
+    "loaded_rss_bytes": 40370176,
+    "warm_rss_bytes": 40665088,
+    "incremental_warm_rss_bytes": 802816,
+    "process_peak_rss_bytes": 40665088,
+    "load_ns": 2896083,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 2,
+    "backend": "emlearn",
+    "batch": 450,
+    "baseline_rss_bytes": 39911424,
+    "loaded_rss_bytes": 40009728,
+    "warm_rss_bytes": 40239104,
+    "incremental_warm_rss_bytes": 327680,
+    "process_peak_rss_bytes": 40304640,
+    "load_ns": 1054708,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 2,
+    "backend": "onnxruntime",
+    "batch": 450,
+    "baseline_rss_bytes": 39927808,
+    "loaded_rss_bytes": 62865408,
+    "warm_rss_bytes": 63307776,
+    "incremental_warm_rss_bytes": 23379968,
+    "process_peak_rss_bytes": 63307776,
+    "load_ns": 13278709,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 2,
+    "backend": "numpy",
+    "batch": 450,
+    "baseline_rss_bytes": 39927808,
+    "loaded_rss_bytes": 40304640,
+    "warm_rss_bytes": 40632320,
+    "incremental_warm_rss_bytes": 704512,
+    "process_peak_rss_bytes": 40632320,
+    "load_ns": 2105000,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      }
+    ]
+  },
+  {
+    "repeat": 2,
+    "backend": "sklearn",
+    "batch": 450,
+    "baseline_rss_bytes": 39796736,
+    "loaded_rss_bytes": 104857600,
+    "warm_rss_bytes": 105480192,
+    "incremental_warm_rss_bytes": 65683456,
+    "process_peak_rss_bytes": 106053632,
+    "load_ns": 431656292,
+    "correctness_checked": true,
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.23.dev",
+        "threading_layer": "pthreads",
+        "architecture": "armv8"
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libopenblas",
+        "version": "0.3.27",
+        "threading_layer": "pthreads",
+        "architecture": "neoversen1"
+      },
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 1,
+        "prefix": "libomp",
+        "version": null
+      }
+    ]
+  }
+]

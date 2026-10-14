@@ -5,6 +5,7 @@ Standard library only; never regenerate or relabel historical measurements.
 import json
 from pathlib import Path
 import re
+from statistics import median
 
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -113,6 +114,34 @@ def check(root=ROOT):
                   '**%.2f×**'%original['output_over_input_first']['ratio_of_pooled_medians'],
                   '**%.2f×**'%original['input_over_system_blas']['ratio_of_pooled_medians']]:
         require(claim in archived,'README synthetic claim mismatch: '+claim)
+    providers=read_json(root,'providers-20261014/manifest.json')
+    memory=read_json(root,'providers-20261014/memory.json')
+    deploy=read_json(root,'providers-20261014/deployment.json')
+    provider_doc='docs/PROVIDER_COMPARISON.md'
+    names=providers['backends'];batches=providers['batches'];stats=providers['summaries']
+    expect_table(root,provider_doc,'Batch size',[[str(b)]+[
+        '%.3f'%(stats[str(b)][n]['median_ns']/1000) for n in names] for b in batches])
+    expect_table(root,provider_doc,'RSS batch',[[str(b)]+['%.3f'%(median(
+        r['warm_rss_bytes'] for r in memory if r['batch']==b and r['backend']==n)/1048576)
+        for n in names] for b in batches])
+    expect_table(root,provider_doc,'Memory backend',[[n]+['%.3f'%(median(
+        r[k] for r in memory if r['batch']==450 and r['backend']==n)/1048576)
+        for k in ['baseline_rss_bytes','incremental_warm_rss_bytes','process_peak_rss_bytes']]
+        for n in names])
+    expect_table(root,provider_doc,'Deployment backend',[[n,str(deploy['providers'][n]['artifact_bytes']),
+        str(deploy['providers'][n]['additional_package_bytes'])] for n in names])
+    provider_text=(root/provider_doc).read_text()
+    evidence=read_json(root,'providers-20261014/correctness.json')
+    require(providers['source_revision'][:7] in provider_text and
+        '**%s bytes**'%format(deploy['common_package_bytes'],',') in provider_text and
+        '**%.3fe-6**'%(max(v['max_abs_error'] for rows in evidence['outputs'].values()
+                          for v in rows.values())*1e6) in provider_text,'provider source/size/error mismatch')
+    current=section(readme,'Provider comparison')
+    for claim in ['438/450 (97.33%)']+['**%.3f µs/prediction**'%(stats['450'][n]['median_ns']/1000)
+                for n in ['onnxruntime','tiny_blas']]+['**%.3f MiB**'%(median(
+                r['warm_rss_bytes'] for r in memory if r['batch']==450 and r['backend']==n)/1048576)
+                for n in ['onnxruntime','tiny_blas']]:
+        require(claim in current,'README provider claim mismatch: '+claim)
     # Relative documentation links, including issue/PR templates; external links are not fetched.
     documents=[root/'README.md',root/'CONTRIBUTING.md',root/'results/published/README.md']
     documents += list((root/'docs').rglob('*.md')) + list((root/'models').rglob('*.md'))
@@ -121,7 +150,7 @@ def check(root=ROOT):
         for link in re.findall(r'\]\(([^)]+)\)',path.read_text()):
             if '://' in link or link.startswith('#'):continue
             require((path.parent/link.split('#')[0]).exists(),'broken relative documentation link: '+str(path.relative_to(root)))
-    print('PASS: all six published result tables, scoped README accuracy/ratios and relative documentation links')
+    print('PASS: all ten published result tables, scoped README claims and relative documentation links')
 
 
 if __name__=='__main__':check()

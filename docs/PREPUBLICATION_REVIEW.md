@@ -72,6 +72,39 @@ The repository remains **Private**, and no publication/access-grant operation is
 part of this review. The post-push CI run is checked separately at completion;
 a document entry is not itself proof that remote checks passed.
 
+## Same-model provider extension — 2026-10-14
+
+The later [provider comparison](PROVIDER_COMPARISON.md), measured at source
+`fc480ed`, adds emlearn 0.23.2 and ONNX Runtime 1.31.0 alongside tiny C, NumPy and
+sklearn. The model and held-out split are unchanged; all six providers and five
+batch sizes retain 438/450 correct predictions. This extends the previous review;
+it does not relabel earlier timings as new-provider measurements.
+
+- emlearn's parameter literal rounding is replaced with exact float32 literals.
+  Compiled parameters and serialized ONNX initializers are read back and compared
+  bitwise. Upstream emlearn arithmetic/softmax is used through a C-loop batch adapter.
+- All outputs are compared to the independent oracle. Tests observe actual native
+  and ORT input blocks, challenge warm stale tails, and reject a truly compiled
+  emlearn adapter that drops final rows. Timed samples validate every full sweep.
+- Six fresh timing processes, five batch sizes and one-thread policies are recorded.
+  emlearn wins batch 1; ORT wins larger tested batches. No tiny-engine superiority
+  or kernel-only comparison is claimed. The CPU label was separately queried when
+  sandboxed runner metadata returned unavailable; timings were not selected/rerun.
+- Ninety fresh subprocesses record baseline/loaded/warm/peak RSS and validate outputs.
+  RSS is not described as pure model RAM or MCU hardware evidence. Deployment
+  artifacts, additional package payloads and common NumPy are separately accounted;
+  Python/OS/system-BLAS exclusions and installed-wheel limits are explicit.
+- Archived-evidence tests reject rehashed corruptions, including omission of ORT
+  runtime dependencies. Four new numerical tables and README claims are checked
+  automatically against raw reports. Both Python modes run in macOS/Linux CI.
+- Generated model headers, ONNX files, native libraries, package environments and
+  diagnostic stderr remain local. Only reviewed JSON evidence is uploaded; package
+  paths are hashed or normalized, not published as private installation paths.
+  No third-party package code is vendored or relicensed by this project.
+
+The repository remains Private. Remote CI and visibility are verified separately
+after the final evidence commit; this entry does not attest to an unobserved run.
+
 ## Initial findings corrected
 
 1. **An empty evidence report could pass verification.** The verifier now rejects
