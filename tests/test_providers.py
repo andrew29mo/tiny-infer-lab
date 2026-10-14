@@ -9,7 +9,9 @@ import shutil
 import subprocess
 import sys
 import tempfile
+from types import SimpleNamespace
 import unittest
+from unittest.mock import patch
 
 import numpy as np
 from threadpoolctl import threadpool_limits
@@ -82,6 +84,63 @@ class ProviderTests(unittest.TestCase):
             model.graph.initializer[1].CopyFrom(nh.from_array(arr,'b1'))
             onnx.save(model,path/'digits.onnx')
             with self.assertRaises(ValueError):cp.audit_exports(path,self.clf)
+
+    def test_changed_softmax_axis_rejected(self):
+        import onnx
+        with tempfile.TemporaryDirectory() as tmp:
+            path=Path(tmp)
+            for name in ('emlearn.so','digits.onnx','weights.npz'):
+                shutil.copyfile(cp.ARTIFACTS/name,path/name)
+            cp.audit_exports(path,self.clf)
+            model=onnx.load(path/'digits.onnx')
+            model.graph.node[-1].attribute[0].i=0
+            onnx.save(model,path/'digits.onnx')
+            with self.assertRaisesRegex(ValueError,'connectivity/activation'):
+                cp.audit_exports(path,self.clf)
+
+    def test_all_provider_call_audit_and_hook_restoration(self):
+        providers={n:pr.Provider(n,cp.ARTIFACTS) for n in pr.NAMES}
+        original=np.dot
+        with threadpool_limits(limits=1):
+            result=cp.audit_calls(providers,self.x,self.gold,cp.BATCHES)
+        self.assertIs(np.dot,original)
+        for b,rows in result.items():
+            self.assertEqual(set(rows),set(pr.NAMES))
+            for r in rows.values():
+                self.assertEqual(r['observed_rows'],450)
+                self.assertEqual(r['batch_rows'],[z-a for a,z in pr.partitions(int(b))])
+        with patch.object(pr,'validate',side_effect=ValueError('injected')):
+            with self.assertRaises(ValueError):
+                cp.audit_calls({'numpy':providers['numpy']},self.x,self.gold,[128])
+        self.assertIs(np.dot,original)
+
+    def test_rss_snapshot_precedes_validation_on_real_inference_path(self):
+        import psutil
+        state={'validated':False}
+        validate=pr.validate
+        def checking(answer,gold):
+            validate(answer,gold);state['validated']=True
+        def current():return 999999 if state['validated'] else 100000
+        process=SimpleNamespace(memory_info=lambda:SimpleNamespace(rss=current()))
+        with patch.object(psutil,'Process',return_value=process),patch.object(pr,'validate',side_effect=checking),\
+             patch.object(pr.resource,'getrusage',side_effect=lambda _:SimpleNamespace(ru_maxrss=current())),\
+             contextlib.redirect_stdout(io.StringIO()) as output:
+            pr.memory(SimpleNamespace(artifacts=cp.ARTIFACTS,backend='numpy',batch=128))
+        r=json.loads(output.getvalue())
+        self.assertTrue(state['validated'])
+        self.assertEqual(r['warm_rss_bytes'],100000)
+        self.assertEqual(r['post_validation_rss_bytes'],999999)
+        self.assertEqual(r['rss_phase'],'before_reference_validation')
+        self.assertEqual(r['capacity'],128)
+
+    def test_missing_installed_payload_file_rejected(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path=Path(tmp);(path/'present.py').write_text('')
+            dist=SimpleNamespace(files=[Path('present.py'),Path('missing.py')],
+                locate_file=lambda p:path/p,version='fixture')
+            with patch.object(cp.metadata,'distribution',return_value=dist):
+                with self.assertRaisesRegex(ValueError,'missing installed package file'):
+                    cp.deployment(cp.ARTIFACTS)
 
     def test_compiled_emlearn_tail_mutation_rejected(self):
         # Compile a real faulty adapter against the real upstream implementation.

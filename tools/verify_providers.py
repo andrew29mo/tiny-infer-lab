@@ -15,7 +15,8 @@ import real_model as rm
 def verify(directory):
     directory=Path(directory)
     m=json.loads((directory/'manifest.json').read_text())
-    rm.require(m['schema']==1 and m['protocol']=='same-model-providers-v1','schema/protocol mismatch')
+    rm.require(type(m['schema']) is int and m['schema'] in (1,2) and m['protocol']=={
+        1:'same-model-providers-v1',2:'same-model-providers-reviewed-v2'}[m['schema']], 'schema/protocol mismatch')
     batches=m['batches']
     rm.require(batches and len(batches)==len(set(batches)) and all(type(b) is int and 1<=b<=450 for b in batches),
                'invalid batches')
@@ -72,6 +73,13 @@ def verify(directory):
         c['dataset_sha256']==model['dataset_sha256'] and c['test_ids']==model['test_ids'] and
         c['labels']==y.tolist(),'model/split mismatch')
     rm.require(c['export_audit']==build['export_audit']==audit,'parameter export mismatch')
+    def validate_observations(observations):
+        expected={str(b):{n:dict(observed_calls=len(pr.partitions(b)),observed_rows=450,
+            batch_rows=[z-a for a,z in pr.partitions(b)],
+            input_sha256=hashlib.sha256(x.astype('<f4').tobytes()).hexdigest())
+            for n in pr.NAMES} for b in batches}
+        rm.require(observations==expected,'actual provider input observations mismatch')
+    if m['schema']==2:validate_observations(c['observations'])
     stored_gold=np.asarray(c['reference_probabilities'])
     rm.require(stored_gold.shape==(450,10) and np.isfinite(stored_gold).all() and
         np.allclose(stored_gold,gold,atol=1e-14,rtol=1e-12),'stored oracle mismatch')
@@ -88,6 +96,7 @@ def verify(directory):
         r=json.loads((directory/('run-%02d.json'%i)).read_text())
         rm.require(r['run']==i and r['versions']==m['versions'] and r['all_outputs_checked'] is True,
                    'run/version/check mismatch')
+        if m['schema']==2:validate_observations(r['observations'])
         rm.require(r['threadpools'] and all(p['num_threads']==1 for p in r['threadpools']), 'uncontrolled threadpool')
         rm.require(r['ort']==dict(providers=['CPUExecutionProvider'],intra_threads=1,inter_threads=1,
             execution='sequential',optimization='all'),'ORT execution policy mismatch')
@@ -111,6 +120,13 @@ def verify(directory):
             r['incremental_warm_rss_bytes']==r['warm_rss_bytes']-r['baseline_rss_bytes'],'invalid memory metrics')
         rm.require(r['threadpools'] and all(p['num_threads']==1 for p in r['threadpools']),
                    'uncontrolled memory-probe threadpool')
+        if m['schema']==2:
+            rm.require(r['rss_phase']=='before_reference_validation' and r['capacity']==r['batch'] and
+                r['checked_predictions']==450 and r['input_sha256']==hashlib.sha256(x.astype('<f4').tobytes()).hexdigest()
+                and all(type(r[k]) is int and r[k]>0 for k in ['baseline_peak_rss_bytes',
+                'loaded_peak_rss_bytes','post_validation_rss_bytes','post_validation_peak_rss_bytes']) and
+                r['baseline_peak_rss_bytes']<=r['loaded_peak_rss_bytes']<=r['process_peak_rss_bytes']<=
+                r['post_validation_peak_rss_bytes'],'memory phase/input/peak mismatch')
     size=json.loads((directory/'deployment.json').read_text())
     rm.require(set(size['providers'])==set(pr.NAMES) and set(size['artifact_bytes'])==
         {'tiny.so','emlearn.so','digits.onnx','weights.npz'},'deployment inventory mismatch')
@@ -131,10 +147,30 @@ def verify(directory):
         rm.require(p['version']==m['versions'][name] and type(p['bytes']) is int and p['bytes']>0
             and type(p['file_count']) is int and p['file_count']>0 and
             re.fullmatch('[0-9a-f]{64}',p['inventory_sha256']), 'invalid installed-package evidence')
+    if m['schema']==2:
+        rm.require('package_files' in size and 'artifact_files' in size and
+            set(size['package_files'])==set(size['packages']) and
+            set(size['artifact_files'])==set(size['artifact_bytes']),'missing raw deployment inventory')
+        for name,files in size['package_files'].items():
+            rm.require(files and all(not Path(p).is_absolute() and '..' not in Path(p).parts for p in files),
+                'unsafe installed file path')
+            for f in files.values():
+                rm.require(type(f['bytes']) is int and f['bytes']>=0 and
+                    re.fullmatch('[0-9a-f]{64}',f['sha256']),'invalid installed file record')
+            p=size['packages'][name]
+            rm.require(p['file_count']==len(files) and p['bytes']==sum(f['bytes'] for f in files.values()) and
+                p['inventory_sha256']==hashlib.sha256(json.dumps(files,sort_keys=True).encode()).hexdigest(),
+                'package total/digest disagrees with raw file inventory')
+        for name,f in size['artifact_files'].items():
+            rm.require(type(f['bytes']) is int and f['bytes']>0 and
+                f['bytes']==size['artifact_bytes'][name] and f['sha256']==build['artifacts'][name],
+                'deployment artifact size/hash mismatch')
     rm.require(size['common_packages']==['numpy'] and
         size['common_package_bytes']==size['packages']['numpy']['bytes'] and size['exclusions'],
         'deployment common/excluded footprint mismatch')
-    print('PASS: six providers, frozen parameters/split, full outputs, raw timing/RSS/size and source provenance')
+    print('PASS: six providers, frozen parameters/split, full outputs, raw timing/RSS/size and source provenance; '+
+        ('reviewed phase/observations/file-inventory checks' if m['schema']==2 else
+         'legacy aggregate-only size and post-validation RSS; not reviewed v2 evidence'))
     return m
 
 

@@ -99,12 +99,33 @@ def audit_exports(directory, clf):
     expected = parameter_bytes(clf)
     rm.require(actual.astype('<f4').tobytes()==expected, 'compiled emlearn parameters differ')
     model = onnx.load(directory/'digits.onnx')
+    onnx.checker.check_model(model,full_check=True)
     rm.require([n.op_type for n in model.graph.node]==['MatMul','Add','Relu','MatMul','Add','Softmax']
                and [n.name for n in model.graph.initializer]==['w1','b1','w2','b2'], 'ONNX graph differs')
+    expected_edges=[(['input','w1'],['a']),(['a','b1'],['b']),(['b'],['h']),
+                    (['h','w2'],['c']),(['c','b2'],['logits']),(['logits'],['probabilities'])]
+    rm.require([(list(n.input),list(n.output)) for n in model.graph.node]==expected_edges and
+        all(n.domain=='' and len(n.attribute)==0 for n in model.graph.node[:-1]) and
+        len(model.graph.node[-1].attribute)==1 and
+        onnx.helper.get_attribute_value(model.graph.node[-1].attribute[0])==1 and
+        model.graph.node[-1].attribute[0].name=='axis' and
+        [(o.domain,o.version) for o in model.opset_import]==[('',17)] and model.ir_version==9,
+        'ONNX connectivity/activation/opset differs')
+    def tensor_info(v):
+        t=v.type.tensor_type
+        return v.name,t.elem_type,[(d.dim_param or d.dim_value) for d in t.shape.dim]
+    rm.require([tensor_info(v) for v in model.graph.input]==[('input',1,['N',64])] and
+        [tensor_info(v) for v in model.graph.output]==[('probabilities',1,['N',10])],
+        'ONNX input/output contract differs')
     arrays = [nh.to_array(t) for t in model.graph.initializer]
+    rm.require([a.shape for a in arrays]==[(64,32),(32,),(32,10),(10,)] and
+        all(a.dtype==np.float32 for a in arrays),'ONNX parameter shape/dtype differs')
     rm.require(np.concatenate([a.ravel() for a in arrays]).astype('<f4').tobytes()==expected,
                'serialized ONNX parameters differ')
     with np.load(directory/'weights.npz',allow_pickle=False) as data:
+        rm.require(set(data.files)=={'w1','b1','w2','b2'} and [data[k].shape for k in
+            ('w1','b1','w2','b2')]==[(64,32),(32,),(32,10),(10,)] and
+            all(data[k].dtype==np.float32 for k in data.files),'parameter file shape/dtype differs')
         rm.require(b''.join(data[k].astype('<f4').tobytes() for k in ('w1','b1','w2','b2'))==expected,
                    'tiny/NumPy/sklearn parameter file differs')
     return dict(parameter_sha256=hashlib.sha256(expected).hexdigest(),parameter_count=2410,
@@ -132,6 +153,53 @@ def prepare(args):
     print('PASS: unchanged model exported; compiled emlearn/ONNX parameter bits verified')
 
 
+def audit_calls(providers,x,gold,batches):
+    """Observe real calls on the same sweep path, and remove hooks before timing."""
+    import ctypes as C
+    result={str(b):{} for b in batches}
+    input_sha=hashlib.sha256(x.astype('<f4').tobytes()).hexdigest()
+    for name,p in providers.items():
+        observed=[];dot_calls=[]
+        if name=='onnxruntime':
+            target,attr=p.session,'run';original=getattr(target,attr)
+            def wrapper(outputs,inputs):
+                observed.append(inputs['input'].copy())
+                return original(outputs,inputs)
+        elif name=='sklearn':
+            target,attr=p.clf,'predict_proba';original=getattr(target,attr)
+            def wrapper(block):
+                observed.append(block.copy());return original(block)
+        elif name=='numpy':
+            target,attr=np,'dot';original=getattr(target,attr)
+            def wrapper(a,b,**kwargs):
+                dot_calls.append((a.shape,b.shape))
+                if b.shape==(64,32):observed.append(a.copy())
+                return original(a,b,**kwargs)
+        else:
+            target=p.lib;attr='comparison_emlearn' if name=='emlearn' else 'ti_forward_batch'
+            original=getattr(target,attr)
+            def wrapper(*args):
+                ptr,n=(args[0],args[1]) if name=='emlearn' else (args[1],args[2])
+                observed.append(np.ctypeslib.as_array(ptr,shape=(n*64,)).reshape(n,64).copy())
+                return original(*args)
+        setattr(target,attr,wrapper)
+        try:
+            for b in batches:
+                observed.clear();dot_calls.clear();p.poison()
+                pr.validate(pr.sweep(p,x,b),gold)
+                sizes=[z-a for a,z in pr.partitions(b)]
+                rm.require([len(v) for v in observed]==sizes and
+                    np.array_equal(np.concatenate(observed),x),'actual provider input coverage mismatch')
+                if name=='numpy':
+                    rm.require(dot_calls==[shape for n in sizes for shape in
+                        [((n,64),(64,32)),((n,32),(32,10))]],'actual NumPy dense calls mismatch')
+                result[str(b)][name]=dict(observed_calls=len(observed),observed_rows=sum(sizes),
+                    batch_rows=sizes,input_sha256=input_sha)
+        finally:
+            setattr(target,attr,original)
+    return result
+
+
 def check(args):
     model,x,y,clf = rm.restore(rm.MODEL)
     # Full float64 fsum oracle, not just stored sklearn predictions.
@@ -148,6 +216,7 @@ def check(args):
     providers = {name:pr.Provider(name,args.artifacts) for name in pr.NAMES}
     outputs = {}
     with threadpool_limits(limits=1):
+        observations=audit_calls(providers,x,gold,args.batches)
         for batch in args.batches:
             outputs[str(batch)] = {}
             for name,provider in providers.items():
@@ -158,7 +227,7 @@ def check(args):
                     correct=int((answer.argmax(1)==y).sum()),max_abs_error=float(abs(answer-gold).max()))
     return dict(model_sha256=rm.digest(rm.MODEL),dataset_sha256=model['dataset_sha256'],
                 test_ids=model['test_ids'],labels=y.tolist(),reference_probabilities=gold.tolist(),
-                export_audit=audit_exports(args.artifacts,clf),outputs=outputs)
+                export_audit=audit_exports(args.artifacts,clf),outputs=outputs,observations=observations)
 
 
 def order(run,sample,batches):
@@ -176,6 +245,7 @@ def worker(args):
     providers={n:pr.Provider(n,args.artifacts) for n in pr.NAMES}
     raw=[]
     with threadpool_limits(limits=1):
+        observations=audit_calls(providers,x,gold,args.batches)
         for b in args.batches:
             for p in providers.values():
                 for _ in range(2):pr.validate(pr.sweep(p,x,b),gold)
@@ -190,11 +260,13 @@ def worker(args):
                     predictions=450*args.repeats,ns_per_prediction=elapsed/(450*args.repeats),
                     adapter_calls=len(pr.partitions(b))*args.repeats,
                     emlearn_single_calls=450*args.repeats if name=='emlearn' else None))
+                del answers,answer  # release previous sample outputs outside the next timer
         pools=[{k:v for k,v in p.items() if k!='filepath'} for p in threadpool_info()]
         rm.require(pools and all(p['num_threads']==1 for p in pools), 'uncontrolled BLAS threads')
     rm.save(args.output,dict(run=args.run,versions=versions(),threadpools=pools,raw=raw,
         ort=dict(providers=providers['onnxruntime'].session.get_providers(),intra_threads=1,
-                 inter_threads=1,execution='sequential',optimization='all'),all_outputs_checked=True))
+                 inter_threads=1,execution='sequential',optimization='all'),all_outputs_checked=True,
+                 observations=observations))
 
 
 def summarize(records,batches):
@@ -212,7 +284,7 @@ def summarize(records,batches):
 def deployment(directory):
     # Installed wheel payload, excluding bytecode/cache/metadata/scripts. This is
     # not a minimal linker closure or compressed wheel size; common NumPy separate.
-    packages={}
+    packages={};package_files={}
     for name in ['numpy','onnxruntime','flatbuffers','packaging','protobuf','scipy',
                  'scikit-learn','joblib','threadpoolctl']:
         dist=metadata.distribution(name)
@@ -222,10 +294,12 @@ def deployment(directory):
             if '..' in path.parts or '__pycache__' in path.parts or path.suffix=='.pyc' or any(
                     q.endswith(('.dist-info','.data')) for q in path.parts):continue
             actual=Path(dist.locate_file(p))
-            if actual.is_file():files[str(p)]=dict(bytes=actual.stat().st_size,sha256=rm.digest(actual))
+            rm.require(actual.is_file(),'missing installed package file: '+name+'/'+str(p))
+            files[str(p)]=dict(bytes=actual.stat().st_size,sha256=rm.digest(actual))
         rm.require(files, 'empty distribution inventory')
         packages[name]=dict(version=dist.version,bytes=sum(v['bytes'] for v in files.values()),
             file_count=len(files),inventory_sha256=hashlib.sha256(json.dumps(files,sort_keys=True).encode()).hexdigest())
+        package_files[name]=files
     artifact_sizes={p.name:p.stat().st_size for p in directory.iterdir() if p.name in
                     {'tiny.so','emlearn.so','digits.onnx','weights.npz'}}
     model_files={'tiny_input':['tiny.so','weights.npz'],'tiny_blas':['tiny.so','weights.npz'],
@@ -236,7 +310,9 @@ def deployment(directory):
     providers={n:dict(artifact_bytes=sum(artifact_sizes[p] for p in model_files[n]),
         artifacts=model_files[n],additional_packages=extra.get(n,[]),
         additional_package_bytes=sum(packages[p]['bytes'] for p in extra.get(n,[]))) for n in pr.NAMES}
+    artifact_files={n:dict(bytes=size,sha256=rm.digest(directory/n)) for n,size in artifact_sizes.items()}
     return dict(artifact_bytes=artifact_sizes,packages=packages,providers=providers,
+        package_files=package_files,artifact_files=artifact_files,
         common_packages=['numpy'],common_package_bytes=packages['numpy']['bytes'],
         exclusions=['Python interpreter/stdlib','OS libraries and system BLAS','adapter source',
                     'build tools, emlearn generator and ONNX exporter','wheel metadata, scripts and bytecode'],
@@ -279,7 +355,7 @@ def benchmark(args):
     rm.save(args.output/'deployment.json',deployment(args.artifacts))
     rm.require(sources=={p:rm.digest(p) for p in SOURCES} and before=={
         p.name:rm.digest(p) for p in args.artifacts.iterdir() if p.is_file()},'source/artifact changed during run')
-    rm.save(args.output/'manifest.json',dict(schema=1,protocol='same-model-providers-v1',
+    rm.save(args.output/'manifest.json',dict(schema=2,protocol='same-model-providers-reviewed-v2',
         created_utc=dt.datetime.now(dt.timezone.utc).isoformat(),source_revision=revision,sources=sources,
         versions=versions(),platform=dict(system=platform.system(),release=platform.release(),
         machine=platform.machine(),cpu=rm.cpu_name()),build=info,runs=args.runs,samples=args.samples,

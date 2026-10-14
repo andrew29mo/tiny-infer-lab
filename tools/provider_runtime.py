@@ -5,6 +5,7 @@ probabilities. Conversion, finite-input checks and probability output are timed.
 """
 import argparse
 import ctypes as C
+import hashlib
 import json
 from pathlib import Path
 import resource
@@ -134,26 +135,34 @@ def memory(args):
     import psutil
     from threadpoolctl import threadpool_info, threadpool_limits
     x = np.load(args.artifacts/'input.npy',allow_pickle=False)
+    gold = np.load(args.artifacts/'gold.npy',allow_pickle=False)
+    input_sha=hashlib.sha256(x.astype('<f4').tobytes()).hexdigest()
+    def snapshot():
+        rss=process.memory_info().rss
+        peak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+        return rss,int(peak if sys.platform=='darwin' else peak*1024)
     with threadpool_limits(limits=1):
         process = psutil.Process()
-        baseline = process.memory_info().rss
+        baseline,baseline_peak = snapshot()
         start = time.perf_counter_ns()
         provider = Provider(args.backend,args.artifacts,capacity=args.batch)
         load_ns = time.perf_counter_ns()-start
-        loaded = process.memory_info().rss
+        loaded,loaded_peak = snapshot()
         with threadpool_limits(limits=1):
             for _ in range(5):
                 answer = sweep(provider,x,args.batch)
+            # Snapshot before numerical checking or post-run library inspection.
+            warm,peak_bytes = snapshot()
             pools=[{k:v for k,v in p.items() if k!='filepath'} for p in threadpool_info()]
             require(pools and all(p['num_threads']==1 for p in pools),'uncontrolled probe threads')
-        gold = np.load(args.artifacts/'gold.npy',allow_pickle=False)
         validate(answer,gold)
-        warm = process.memory_info().rss
-        peak = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
-        peak_bytes = int(peak if sys.platform=='darwin' else peak*1024)
+        post_validation,post_validation_peak = snapshot()
         print(json.dumps(dict(backend=args.backend,batch=args.batch,baseline_rss_bytes=baseline,
             loaded_rss_bytes=loaded,warm_rss_bytes=warm,incremental_warm_rss_bytes=warm-baseline,
-            process_peak_rss_bytes=peak_bytes,load_ns=load_ns,correctness_checked=True,threadpools=pools)))
+            process_peak_rss_bytes=peak_bytes,load_ns=load_ns,correctness_checked=True,threadpools=pools,
+            rss_phase='before_reference_validation',input_sha256=input_sha,capacity=args.batch,
+            checked_predictions=450,baseline_peak_rss_bytes=baseline_peak,loaded_peak_rss_bytes=loaded_peak,
+            post_validation_rss_bytes=post_validation,post_validation_peak_rss_bytes=post_validation_peak)))
 
 
 if __name__=='__main__':
