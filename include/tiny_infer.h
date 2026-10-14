@@ -1,0 +1,41 @@
+#ifndef TINY_INFER_H
+#define TINY_INFER_H
+
+#include <stddef.h>
+#include <stdint.h>
+
+typedef enum {
+    TI_OK = 0, TI_INVALID, TI_OVERFLOW, TI_CAPACITY, TI_NONFINITE, TI_ALIAS,
+    TI_UNSUPPORTED
+} ti_status;
+typedef enum { TI_OUTPUT_FIRST = 0, TI_INPUT_FIRST = 1, TI_SYSTEM_BLAS = 2 } ti_kernel;
+
+/* Configure BLAS once on the calling thread, outside timed inference. */
+int ti_blas_available(void);
+ti_status ti_blas_configure(void);
+int ti_blas_is_single_threaded(void);
+const char *ti_blas_name(void);
+
+/* Row-major W1[input][hidden], W2[hidden][output]. Borrowed, immutable
+ * weights must remain alive and unchanged after initialization. */
+typedef struct {
+    size_t input_dim, hidden_dim, output_dim;
+    const float *w1, *b1, *w2, *b2;
+    uint32_t initialized;
+} ti_model;
+
+ti_status ti_model_init(ti_model *model, size_t input_dim, size_t hidden_dim,
+                       size_t output_dim, const float *w1, size_t w1_count,
+                       const float *b1, size_t b1_count,
+                       const float *w2, size_t w2_count,
+                       const float *b2, size_t b2_count);
+
+/* Single vector: y = ReLU(x W1 + b1) W2 + b2.
+ * No heap allocation. Workspace and output must be disjoint from one another,
+ * input, and all weights. On failure workspace/output can be partially written.
+ * Concurrent calls require separate workspace/output; weights can be shared. */
+ti_status ti_forward(const ti_model *model, const float *input, size_t input_count,
+                     float *workspace, size_t workspace_count,
+                     float *output, size_t output_count, ti_kernel kernel);
+const char *ti_status_string(ti_status status);
+#endif
