@@ -27,6 +27,8 @@ them. ONNX Runtime uses its installed CPU runtime. Primary versions are pinned;
 recorded package versions and installed-payload inventories describe the measured
 environment. This does not promise identical transitive wheels on every platform.
 
+Current setup pins setuptools 83.0.0 for the packaging security fix documented in [SECURITY.md](../SECURITY.md). Archived comparisons retain their original toolchain versions and source revisions, including setuptools 80.9.0. Their numbers describe those historical environments; no new performance or installed-size measurement is implied by this dependency update.
+
 ## Model identity and correctness
 
 - Original model JSON, dataset hash, test IDs and labels are retained. The fixed
