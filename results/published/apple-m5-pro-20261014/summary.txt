@@ -1,0 +1,13 @@
+Tiny Infer Lab — multi-shape CPU comparison
+UTC: 2026-10-14T05:01:00.675517+00:00
+Provider: Apple Accelerate CBLAS
+All production objects and measured final outputs verified against independent oracle.
+Shape | output_first us | input_first us | BLAS us | output/input | input/BLAS
+8x16x4 | 0.080 | 0.039 | 0.042 | 2.033x | 0.935x
+31x17x9 | 0.219 | 0.133 | 0.072 | 1.644x | 1.837x
+128x256x32 | 15.990 | 2.908 | 1.580 | 5.498x | 1.841x
+256x512x64 | 104.973 | 10.314 | 3.188 | 10.177x | 3.236x
+1024x1024x256 | 1286.855 | 73.873 | 12.172 | 17.420x | 6.069x
+1024x64x1024 | 72.188 | 9.175 | 2.481 | 7.868x | 3.698x
+Ratios > 1 mean the denominator is faster. Six shapes are not a universal benchmark.
+Percentiles describe batch means, not individual-call tail latency.

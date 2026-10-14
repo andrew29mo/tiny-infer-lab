@@ -60,6 +60,17 @@ The default suite covers **8→16→4, 31→17→9, 128→256→32, 256→512→
 1024→1024→256, and 1024→64→1024**. Results are reported separately per shape;
 a speedup on one shape is not advertised as a general engine speedup.
 
+## Measured result
+
+On the Apple M5 Pro baseline, the loop-order gain ranges from **1.64× to 17.42×**
+across six shapes; it is **5.50×** on the original 128→256→32 case. System BLAS
+is faster than input_first in **five of six** cases, including **1.84×** on the
+original case. The tiny 8→16→4 case slightly favors input_first.
+
+The approximately 5.5× gain is a comparison between two handwritten loop layouts,
+not evidence of outperforming optimized BLAS. See the [per-shape result table,
+process ranges and raw evidence](docs/RESULTS.md).
+
 ## Evidence and reproducibility
 
 Selected, publication-ready measurements live under [`results/published/`](results/published/).
@@ -124,6 +135,9 @@ tools/            Deterministic workloads, timed executable and suite runner
 docs/             Measurement protocol
 results/published/ Selected raw measurements and provenance
 ```
+
+The [CI matrix](https://github.com/andrew29mo/tiny-infer-lab/actions/workflows/ci.yml)
+checks macOS and Linux with BLAS enabled and disabled.
 
 ## Project status
 

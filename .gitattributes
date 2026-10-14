@@ -1,1 +1,4 @@
 * text=auto eol=lf
+results/published/**/*.csv linguist-generated=true
+results/published/**/report.json linguist-generated=true
+results/published/**/*.stderr.txt linguist-generated=true

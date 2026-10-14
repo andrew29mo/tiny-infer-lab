@@ -9,7 +9,8 @@ experiment, not a trained model or a comparison with complete ML frameworks.
 Every backend calls the same `ti_forward` validation, bias handling, ReLU and
 finite-result checks. BLAS uses `cblas_sgemv` with a transpose view of the same
 row-major weights: `y = W^T x + bias`, with `beta=1` after copying the bias. It
-uses no preprocessing, weight packing or alternate weight layout. Matrix/vector
+uses no application-level preprocessing, weight packing or alternate weight layout;
+vendor BLAS internals remain opaque. Matrix/vector
 multiplication is appropriate because batch size is one.
 
 All C kernels use the same compilation settings. Vendor BLAS is a precompiled
