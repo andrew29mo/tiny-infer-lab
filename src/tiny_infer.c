@@ -85,6 +85,47 @@ ti_status ti_forward(const ti_model *m, const float *x, size_t nx,
     return finite_array(y, out) ? TI_OK : TI_NONFINITE;
 }
 
+static void batch_dense(const float *x, const float *w, const float *b, float *y,
+                        size_t batch, size_t in, size_t out, ti_kernel kernel) {
+    if (kernel == TI_SYSTEM_BLAS) {
+        ti_blas_batch_dense(x, w, b, y, batch, in, out);
+    } else {
+        for (size_t row = 0; row < batch; ++row)
+            dense(x + row * in, w, b, y + row * out, in, out, kernel);
+    }
+}
+
+ti_status ti_forward_batch(const ti_model *m, const float *x, size_t batch, size_t nx,
+                           float *h, size_t nh, float *y, size_t ny, ti_kernel kernel) {
+    size_t n1, n2, bx, bh, by;
+    if (!m || m->initialized != TI_MAGIC || !batch || !x || !h || !y ||
+        (kernel != TI_OUTPUT_FIRST && kernel != TI_INPUT_FIRST && kernel != TI_SYSTEM_BLAS))
+        return TI_INVALID;
+    if (!safe_elements(m->input_dim, m->hidden_dim, &n1) ||
+        !safe_elements(m->hidden_dim, m->output_dim, &n2) ||
+        !safe_elements(batch, m->input_dim, &bx) ||
+        !safe_elements(batch, m->hidden_dim, &bh) ||
+        !safe_elements(batch, m->output_dim, &by)) return TI_OVERFLOW;
+    if (kernel == TI_SYSTEM_BLAS) {
+        if (!ti_blas_available()) return TI_UNSUPPORTED;
+        if (batch > INT_MAX || m->input_dim > INT_MAX ||
+            m->hidden_dim > INT_MAX || m->output_dim > INT_MAX) return TI_OVERFLOW;
+    }
+    if (nx < bx || nh < bh || ny < by) return TI_CAPACITY;
+    const float *reads[] = {x, m->w1, m->b1, m->w2, m->b2};
+    size_t lengths[] = {bx, n1, m->hidden_dim, n2, m->output_dim};
+    if (overlap(h, bh, y, by)) return TI_ALIAS;
+    for (size_t i = 0; i < 5; ++i)
+        if (overlap(h, bh, reads[i], lengths[i]) ||
+            overlap(y, by, reads[i], lengths[i])) return TI_ALIAS;
+    if (!finite_array(x, bx)) return TI_NONFINITE;
+    batch_dense(x, m->w1, m->b1, h, batch, m->input_dim, m->hidden_dim, kernel);
+    if (!finite_array(h, bh)) return TI_NONFINITE;
+    for (size_t index = 0; index < bh; ++index) if (h[index] < 0) h[index] = 0;
+    batch_dense(h, m->w2, m->b2, y, batch, m->hidden_dim, m->output_dim, kernel);
+    return finite_array(y, by) ? TI_OK : TI_NONFINITE;
+}
+
 const char *ti_status_string(ti_status s) {
     switch (s) {
         case TI_OK: return "ok";

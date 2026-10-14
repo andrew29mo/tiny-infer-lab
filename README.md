@@ -73,6 +73,14 @@ diagnostic. Training-isolation and deliberately broken C implementations challen
 the validation pipeline. See [setup, protocol and results](docs/REAL_MODEL.md).
 The default engine build and synthetic tests still require no numerical Python packages.
 
+## Batch inference
+
+The C API also supports contiguous batches, with caller-owned workspace and a
+system-BLAS SGEMM path. [Matched-batch validation and real measurements](docs/BATCH_INFERENCE.md)
+compare batch sizes 1, 8, 32, 128 and 450 with NumPy and sklearn using the same
+450 held-out images and tail partitions. A simultaneously measured single-image
+C loop shows how much call/validation overhead batching can amortize.
+
 ## Measured result
 
 On the archived Apple M5 Pro baseline (source revision `2d95f10`), the loop-order gain ranges from **1.64× to 17.42×**

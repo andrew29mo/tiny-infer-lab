@@ -42,5 +42,15 @@ ti_status ti_model_init(ti_model *model, size_t input_dim, size_t hidden_dim,
 ti_status ti_forward(const ti_model *model, const float *input, size_t input_count,
                      float *workspace, size_t workspace_count,
                      float *output, size_t output_count, ti_kernel kernel);
+/* Contiguous row-major batch: input[batch][input_dim],
+ * workspace[batch][hidden_dim], output[batch][output_dim]. Batch must be > 0.
+ * Counts are total float elements, not bytes or row counts. The single-vector
+ * pointer, immutability, aliasing, failure and concurrency obligations above
+ * also apply to the full batch ranges. No padding/strides are supported.
+ * Handwritten backends run row loops inside C; system BLAS uses two SGEMMs.
+ * The caller owns all workspace/output; vendor BLAS may allocate internally. */
+ti_status ti_forward_batch(const ti_model *model, const float *input, size_t batch,
+                           size_t input_count, float *workspace, size_t workspace_count,
+                           float *output, size_t output_count, ti_kernel kernel);
 const char *ti_status_string(ti_status status);
 #endif

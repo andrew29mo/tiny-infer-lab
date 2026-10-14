@@ -48,3 +48,16 @@ void ti_blas_dense(const float *x, const float *w, const float *b, float *y,
     (void)x; (void)w; (void)b; (void)y; (void)in; (void)out;
 #endif
 }
+
+void ti_blas_batch_dense(const float *x, const float *w, const float *b, float *y,
+                         size_t batch, size_t in, size_t out) {
+#if defined(TI_ENABLE_BLAS)
+    for (size_t row = 0; row < batch; ++row)
+        for (size_t col = 0; col < out; ++col) y[row * out + col] = b[col];
+    cblas_sgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans,
+                (int)batch, (int)out, (int)in, 1.0f, x, (int)in,
+                w, (int)out, 1.0f, y, (int)out);
+#else
+    (void)x; (void)w; (void)b; (void)y; (void)batch; (void)in; (void)out;
+#endif
+}

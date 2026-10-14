@@ -26,6 +26,9 @@ def load(path):
     lib.ti_model_init.restype = C.c_int
     lib.ti_forward.argtypes = [C.POINTER(Model), P, S, P, S, P, S, C.c_int]
     lib.ti_forward.restype = C.c_int
+    if hasattr(lib, 'ti_forward_batch'):
+        lib.ti_forward_batch.argtypes = [C.POINTER(Model), P, S, S, P, S, P, S, C.c_int]
+        lib.ti_forward_batch.restype = C.c_int
     lib.ti_blas_available.restype = C.c_int
     lib.ti_blas_configure.restype = C.c_int
     lib.ti_blas_is_single_threaded.restype = C.c_int

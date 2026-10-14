@@ -74,3 +74,16 @@ jobs:
           python -O tests/test_real_report.py
       - name: Real-model timing smoke (not a performance gate)
         run: python tools/real_model.py benchmark --runs 1 --samples 2
+
+      - name: Matched-batch production-object correctness and fault detection
+        run: |
+          python tools/batch_model.py build --blas 1
+          python tests/test_batch_model.py build/real_engine.so
+          python -O tests/test_batch_model.py build/real_engine.so
+          python tests/test_batch_mutations.py --blas 1
+      - name: Archived matched-batch evidence
+        run: |
+          python tests/test_batch_report.py
+          python -O tests/test_batch_report.py
+      - name: Matched-batch timing smoke (not a performance gate)
+        run: python tools/batch_model.py benchmark --runs 1 --samples 2 --batches 1,8,128,450

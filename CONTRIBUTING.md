@@ -28,3 +28,8 @@ in an isolated environment and follow [the real-model checks](docs/REAL_MODEL.md
 Keep model accuracy separate from engine numerical agreement and API timing.
 Never tune model parameters on the held-out test set or turn shared CI timing
 into a performance threshold. Preserve dataset attribution and dependency licenses.
+
+Batch changes must preserve the [batch API contract and timing scope](docs/BATCH_INFERENCE.md).
+Run native batch guard/sanitizer tests, the independent batch oracle and the
+real-model batch/fault tests. Keep all tail rows and use identical partitions
+for C, NumPy and sklearn; record the concurrently measured single-image baseline.

@@ -18,7 +18,7 @@ ifeq ($(BLAS),1)
 endif
 
 .PHONY: all demo test sanitize mutation build-check publication-check bench clean FORCE
-all: $(BUILD)/test_engine $(BUILD)/libtiny_infer.so $(BUILD)/benchmark $(BUILD)/demo
+all: $(BUILD)/test_batch $(BUILD)/test_engine $(BUILD)/libtiny_infer.so $(BUILD)/benchmark $(BUILD)/demo
 $(BUILD):
 	mkdir -p $@
 FORCE:
@@ -29,14 +29,19 @@ $(BUILD)/libtiny_infer.so: $(OBJECTS)
 	$(CC) -shared $(OBJECTS) $(LDLIBS) -lm -o $@
 $(BUILD)/test_engine: tests/test_engine.c $(OBJECTS)
 	$(CC) $(CPPFLAGS) $(CFLAGS) $^ $(LDLIBS) -lm -o $@
+$(BUILD)/test_batch: tests/test_batch.c $(OBJECTS)
+	$(CC) $(CPPFLAGS) $(CFLAGS) $^ $(LDLIBS) -lm -o $@
 $(BUILD)/benchmark: tools/benchmark.c $(OBJECTS)
 	$(CC) $(CPPFLAGS) $(CFLAGS) $^ $(LDLIBS) -lm -o $@
 $(BUILD)/demo: examples/demo.c $(OBJECTS)
 	$(CC) $(CPPFLAGS) $(CFLAGS) $^ $(LDLIBS) -lm -o $@
 demo: $(BUILD)/demo
 	./$(BUILD)/demo
-test: $(BUILD)/test_engine $(BUILD)/libtiny_infer.so
+test: $(BUILD)/test_batch $(BUILD)/test_engine $(BUILD)/libtiny_infer.so
 	./$(BUILD)/test_engine
+	./$(BUILD)/test_batch
+	$(PYTHON) tests/test_batch_reference.py $(BUILD)/libtiny_infer.so
+	$(PYTHON) -O tests/test_batch_reference.py $(BUILD)/libtiny_infer.so
 	$(PYTHON) tests/test_reference.py $(BUILD)/libtiny_infer.so
 	$(PYTHON) -O tests/test_reference.py $(BUILD)/libtiny_infer.so
 	$(PYTHON) tests/check_no_heap.py $(BUILD)/tiny_infer.o
@@ -47,6 +52,8 @@ test: $(BUILD)/test_engine $(BUILD)/libtiny_infer.so
 sanitize: | $(BUILD)
 	$(CC) $(CPPFLAGS) -std=c11 -O1 -g -Wall -Wextra -Wpedantic -Werror -ffp-contract=off -fsanitize=address,undefined -fno-omit-frame-pointer tests/test_engine.c $(ENGINE) $(LDLIBS) -lm -o $(BUILD)/test_sanitize
 	UBSAN_OPTIONS=halt_on_error=1 ./$(BUILD)/test_sanitize
+	$(CC) $(CPPFLAGS) -std=c11 -O1 -g -Wall -Wextra -Wpedantic -Werror -ffp-contract=off -fsanitize=address,undefined -fno-omit-frame-pointer tests/test_batch.c $(ENGINE) $(LDLIBS) -lm -o $(BUILD)/test_batch_sanitize
+	UBSAN_OPTIONS=halt_on_error=1 ./$(BUILD)/test_batch_sanitize
 mutation: | $(BUILD)
 	$(PYTHON) tests/test_mutations.py --cc "$(CC)" --blas $(BLAS)
 build-check:
