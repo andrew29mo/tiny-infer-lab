@@ -128,7 +128,7 @@ relicense them. See [dataset attribution](../models/digits/README.md).
 
 ## Measured results
 
-Reviewed v2 source `c7ff4ea`, Python 3.12.14, emlearn 0.23.2, ONNX Runtime 1.31.0,
+Reviewed v2 source `95d831d`, Python 3.12.14, emlearn 0.23.2, ONNX Runtime 1.31.0,
 NumPy 1.26.4 and sklearn 1.6.1, on Apple M5 Pro, Darwin 27, arm64. CPU identity
 is captured directly in this manifest. The previous v1 data and its different RSS
 phase are preserved in the [original report](PROVIDER_COMPARISON_ORIGINAL.md).
@@ -148,11 +148,11 @@ rows; batch 8 ends with two. Actual observed inputs cover all 450 rows in order.
 
 | Batch size | Tiny input | Tiny BLAS | emlearn | ORT CPU | NumPy | sklearn |
 | --- | --- | --- | --- | --- | --- | --- |
-| 1 | 6.356 | 6.225 | 3.440 | 4.996 | 5.501 | 23.393 |
-| 8 | 1.143 | 1.032 | 1.046 | 0.755 | 0.821 | 3.162 |
-| 32 | 0.556 | 0.456 | 0.792 | 0.240 | 0.310 | 0.950 |
-| 128 | 0.399 | 0.221 | 0.725 | 0.101 | 0.169 | 0.376 |
-| 450 | 0.369 | 0.141 | 0.710 | 0.058 | 0.122 | 0.185 |
+| 1 | 6.416 | 6.270 | 3.479 | 5.041 | 5.508 | 23.599 |
+| 8 | 1.163 | 1.052 | 1.061 | 0.765 | 0.826 | 3.184 |
+| 32 | 0.560 | 0.458 | 0.799 | 0.246 | 0.309 | 0.981 |
+| 128 | 0.409 | 0.224 | 0.731 | 0.107 | 0.170 | 0.383 |
+| 450 | 0.373 | 0.142 | 0.707 | 0.059 | 0.123 | 0.188 |
 
 emlearn is fastest at batch 1; ORT CPU is fastest at every larger tested batch.
 The emlearn C loop amortizes the Python boundary but does not gain matrix-batch
@@ -168,11 +168,11 @@ then validated; post-validation metrics are retained separately.
 
 | RSS batch | Tiny input | Tiny BLAS | emlearn | ORT CPU | NumPy | sklearn |
 | --- | --- | --- | --- | --- | --- | --- |
-| 1 | 38.906 | 38.875 | 38.625 | 60.312 | 38.766 | 94.172 |
-| 8 | 38.906 | 38.984 | 38.484 | 60.500 | 38.766 | 94.250 |
-| 32 | 38.828 | 38.969 | 38.469 | 60.453 | 38.750 | 94.141 |
-| 128 | 38.844 | 38.875 | 38.406 | 60.422 | 38.844 | 94.281 |
-| 450 | 38.797 | 38.844 | 38.453 | 60.344 | 38.781 | 94.172 |
+| 1 | 38.922 | 38.969 | 38.578 | 60.422 | 38.750 | 94.328 |
+| 8 | 38.953 | 39.031 | 38.672 | 60.484 | 38.953 | 94.188 |
+| 32 | 38.844 | 38.922 | 38.438 | 60.344 | 38.797 | 94.234 |
+| 128 | 38.906 | 38.844 | 38.453 | 60.422 | 38.781 | 94.312 |
+| 450 | 38.922 | 38.938 | 38.469 | 60.422 | 38.828 | 94.312 |
 
 Batch-450 probe details, median MiB. Increment is computed within each process,
 then summarized. These are process residency and process-lifetime peak figures,
@@ -182,12 +182,12 @@ Sub-MiB differences do not establish meaningful engine RAM advantages.
 
 | Memory backend | Baseline RSS | Warm increment | Peak RSS |
 | --- | --- | --- | --- |
-| tiny_input | 38.172 | 0.625 | 38.891 |
-| tiny_blas | 38.156 | 0.672 | 38.906 |
-| emlearn | 38.281 | 0.188 | 38.641 |
-| onnxruntime | 38.281 | 22.109 | 60.344 |
-| numpy | 38.219 | 0.594 | 38.781 |
-| sklearn | 38.203 | 55.969 | 94.734 |
+| tiny_input | 38.297 | 0.625 | 38.984 |
+| tiny_blas | 38.266 | 0.641 | 38.984 |
+| emlearn | 38.297 | 0.188 | 38.656 |
+| onnxruntime | 38.328 | 22.094 | 60.422 |
+| numpy | 38.266 | 0.594 | 38.828 |
+| sklearn | 38.203 | 56.109 | 94.781 |
 
 Deployment: **bytes**, uncompressed artifacts and additional installed packages.
 Every row additionally uses the common NumPy package payload of **45,209,250 bytes**

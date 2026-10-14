@@ -36,13 +36,22 @@ not evidence of wrong original weights, test-set tuning or fabricated timings.
    processes now archive untimed observations at real C, ORT, NumPy dot and
    sklearn boundaries using the same sweep path. Ordered input hashes, observed
    calls, total rows and tails must match the canonical 450 rows. Hooks are removed
-   before warmup/timing and restored on errors. Test hooks do not contribute to
+   before warmup/timing and restored on errors. Restoration preserves whether the
+   original attribute belonged to the class or instance; assigning a bound method
+   back to an instance incorrectly bypassed class-descriptor lookup in a first
+   v2 candidate. That defect was reproduced on actual sklearn dispatch, then
+   fixed and tested on both sklearn/ORT success paths and error restoration.
+   Test hooks do not contribute to
    measured times. Sample outputs are released outside the next timer rather
    than charging the prior sample's deallocation to the next backend.
 
 ## Verified identity and production coverage
 
-The reviewed source is `c7ff4ea`. All seven generated model/input/build artifacts
+The final reviewed source is `95d831d`. The first v2 candidate at `c7ff4ea` was
+superseded because its method restoration changed dispatch; its records remain
+in [Git history](https://github.com/andrew29mo/tiny-infer-lab/tree/abcb4ea/results/published/providers-reviewed-20261014).
+The current v2 report was remeasured after the fix, not selected by speed or
+relabeled as a run of the fixed code. All seven generated model/input/build artifacts
 and both tiny production objects are byte-identical to v1: model, inputs and
 native implementations did not change. All 2,410 compiled emlearn parameters
 and all serialized ONNX initializers match the frozen float32 weights. Canonical

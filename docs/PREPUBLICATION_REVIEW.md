@@ -109,9 +109,11 @@ after the final evidence commit; this entry does not attest to an unobserved run
 
 The [provider review](PROVIDER_REVIEW.md) documents independently reproduced
 Softmax-axis and balanced deployment-total validation gaps, and the original
-post-validation RSS phase. Reviewed v2 evidence at `c7ff4ea` adds strict graph
+post-validation RSS phase. Final reviewed v2 evidence at `95d831d` adds strict graph
 identity, actual input observations in each timing process, phased RSS and raw
-per-file deployment records. Native libraries, model and input artifacts remain
+per-file deployment records, with exact class/instance restoration after observation.
+The first v2 candidate was replaced after that dispatch issue was found; its raw
+records remain in Git history. Native libraries, model and input artifacts remain
 byte-identical to the original provider measurement. All fourteen numerical tables
 retain their own source/protocol attribution; no historical timings were relabeled.
 Repository visibility and remote CI are checked separately after upload.
