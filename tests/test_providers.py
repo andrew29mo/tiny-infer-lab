@@ -101,9 +101,14 @@ class ProviderTests(unittest.TestCase):
     def test_all_provider_call_audit_and_hook_restoration(self):
         providers={n:pr.Provider(n,cp.ARTIFACTS) for n in pr.NAMES}
         original=np.dot
+        dispatch=[(providers['onnxruntime'].session,'run'),(providers['sklearn'].clf,'predict_proba')]
+        prior=[(attr in vars(obj),vars(obj).get(attr)) for obj,attr in dispatch]
         with threadpool_limits(limits=1):
             result=cp.audit_calls(providers,self.x,self.gold,cp.BATCHES)
         self.assertIs(np.dot,original)
+        for (obj,attr),(present,value) in zip(dispatch,prior):
+            self.assertEqual(attr in vars(obj),present)
+            if present:self.assertIs(vars(obj)[attr],value)
         for b,rows in result.items():
             self.assertEqual(set(rows),set(pr.NAMES))
             for r in rows.values():
@@ -113,6 +118,10 @@ class ProviderTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 cp.audit_calls({'numpy':providers['numpy']},self.x,self.gold,[128])
         self.assertIs(np.dot,original)
+        with patch.object(pr,'validate',side_effect=ValueError('injected')):
+            with self.assertRaises(ValueError):
+                cp.audit_calls({'sklearn':providers['sklearn']},self.x,self.gold,[128])
+        self.assertNotIn('predict_proba',vars(providers['sklearn'].clf))
 
     def test_rss_snapshot_precedes_validation_on_real_inference_path(self):
         import psutil

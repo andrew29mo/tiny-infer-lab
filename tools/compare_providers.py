@@ -182,6 +182,10 @@ def audit_calls(providers,x,gold,batches):
                 ptr,n=(args[0],args[1]) if name=='emlearn' else (args[1],args[2])
                 observed.append(np.ctypeslib.as_array(ptr,shape=(n*64,)).reshape(n,64).copy())
                 return original(*args)
+        # A restored bound method is not equivalent to restoring an absent
+        # instance attribute: it bypasses the original class descriptor lookup.
+        had_attribute=attr in vars(target)
+        previous=vars(target).get(attr)
         setattr(target,attr,wrapper)
         try:
             for b in batches:
@@ -196,7 +200,10 @@ def audit_calls(providers,x,gold,batches):
                 result[str(b)][name]=dict(observed_calls=len(observed),observed_rows=sum(sizes),
                     batch_rows=sizes,input_sha256=input_sha)
         finally:
-            setattr(target,attr,original)
+            if had_attribute:setattr(target,attr,previous)
+            else:delattr(target,attr)
+            rm.require((attr in vars(target))==had_attribute and
+                (not had_attribute or vars(target)[attr] is previous),'audit hook restoration changed dispatch')
     return result
 
 
