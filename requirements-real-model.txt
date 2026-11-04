@@ -1,6 +1,6 @@
 # Optional training/reference dependencies; default engine/tests stay dependency-free.
-numpy==1.26.4
-scipy==1.13.1
-scikit-learn==1.6.1
-joblib==1.4.2
-threadpoolctl==3.6.0
+numpy==2.5.4
+scipy==1.18.1
+scikit-learn==1.9.1
+joblib==1.6.0
+threadpoolctl==3.7.0
